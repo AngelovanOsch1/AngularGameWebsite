@@ -1,0 +1,11 @@
+<form [formGroup]='signUpForm'>
+  <label>username</label>
+  <input formControlName='username' />
+  <label>email</label>
+  <input formControlName='emailAddress' />
+  <label>password</label>
+  <input formControlName='password' />
+  <label>repeat password</label>
+  <input formControlName='repeatPassword' />
+  <button (click)='submitForm()'>submit</button>
+</form>
