@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'PoppinsItalic';
+  src: url('./app/fonts/Poppins-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: url('./app/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsSemiBold';
+  src: url('./app/fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  src: url('./app/fonts/Poppins-Bold.ttf');
+} 
+
+$black: #2B2D42;
+$secondary-color: #00FFA3;
+$primary-color: #4056F4;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+div, p {
+    font-family: 'PoppinsRegular';
+}
+
+span {
+    font-family: 'PoppinsItalic';
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'PoppinsBold';
+    color: #ffff;
+}
