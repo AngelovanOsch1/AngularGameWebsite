@@ -92,9 +92,7 @@ export class SignupComponent {
       password
     );
 
-    if (this.userCredentials == null) {
-      return;
-    } else {
+    if (this.userCredentials) {
       this.repositoryService
         .getUsersCollection()
         .doc(this.userCredentials.user.uid)
@@ -106,6 +104,6 @@ export class SignupComponent {
           role: 'user',
           profilePhoto: '',
         });
-    }
+    } 
   }
 }
