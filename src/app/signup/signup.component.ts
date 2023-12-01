@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserCredential } from 'firebase/auth';
 import { createUser } from '../firebase/firebase_functions';
 import { RepositoryService } from '../repository.service';
+import { ToastService } from './toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { RepositoryService } from '../repository.service';
   providers: [RepositoryService],
 })
 export class SignupComponent {
-  constructor(private repositoryService: RepositoryService) {}
+  constructor(private repositoryService: RepositoryService, private toastService: ToastService) {}
 
   userCredentials?: UserCredential;
   signUpForm: FormGroup = new FormGroup({
@@ -22,7 +23,10 @@ export class SignupComponent {
   });
 
   async submitForm() {
+    this.toastService.show('De aanvraag is niet geldig. Controleer de velden.');
+
     if (this.signUpForm.invalid) {
+      this.toastService.show('The request is invalid. Check the fields.');
       return this.signUpForm.markAllAsTouched();
     }
 
