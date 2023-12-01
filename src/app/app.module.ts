@@ -9,10 +9,11 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

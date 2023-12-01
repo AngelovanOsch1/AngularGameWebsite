@@ -14,7 +14,7 @@ import {
 } from 'firebase/auth';
 import { auth } from './firebase';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ToastService } from '../signup/toast.service';
+import { ToastService } from '../services/toast.service';
 
 @Injectable({
   providedIn: 'root',

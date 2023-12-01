@@ -7,13 +7,13 @@ import {
 } from '@angular/forms';
 import { UserCredential } from 'firebase/auth';
 import { FirebaseFunctions } from '../firebase/firebase_functions';
-import { RepositoryService } from '../repository.service';
-import { ToastService } from './toast.service';
+import { RepositoryService } from '../services/repository.service';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.sass'],
+  styleUrls: ['./signup.component.scss'],
   providers: [RepositoryService, FirebaseFunctions],
 })
 export class SignupComponent {
@@ -101,8 +101,10 @@ export class SignupComponent {
         .set({
           username: username,
           emailAddress: emailAddress,
-          role: 'user',
           newsletter: newsletter,
+          isOnline: false,
+          role: 'user',
+          profilePhoto: '',
         });
     }
   }
