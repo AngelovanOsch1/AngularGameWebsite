@@ -8,10 +8,10 @@ export class ToastService {
 
   constructor(private snackBar: MatSnackBar) {}
 
-  show(message: string, duration: number = 3000) {
+  show(message: string, duration: number = 5000) {
     this.snackBar.open(message, 'Close', {
       duration: duration,
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       verticalPosition: 'bottom',
     });
   }
