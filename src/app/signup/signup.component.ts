@@ -47,6 +47,7 @@ export class SignupComponent {
         .set({
           username: username,
           emailAddress: emailAddress,
+          role: 'user',
         });
     }
   }
