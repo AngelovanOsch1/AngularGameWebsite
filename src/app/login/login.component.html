@@ -1,0 +1,10 @@
+<form [formGroup]='loginForm'>
+  <label>email</label>
+  <input formControlName='emailAddress' />
+  <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
+  <label>password</label>
+  <input formControlName='password' />
+  <div class="loan-form__get-error">{{getError('password')}}</div>
+
+  <button (click)='login()'>login</button>
+</form>

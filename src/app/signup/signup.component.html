@@ -1,11 +1,20 @@
 <form [formGroup]='signUpForm'>
   <label>username</label>
   <input formControlName='username' />
+  <div class="loan-form__get-error">{{getError('username')}}</div>
   <label>email</label>
   <input formControlName='emailAddress' />
+  <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
   <label>password</label>
   <input formControlName='password' />
+    <div class="loan-form__get-error">{{getError('password')}}</div>
+
   <label>repeat password</label>
   <input formControlName='repeatPassword' />
+    <div class="loan-form__get-error">{{getError('repeatPassword')}}</div>
+    <div *ngIf="signUpForm.hasError('passwordsNotMatch')">
+      Passwords do not match.
+    </div>
+    <input type='checkbox' formControlName='newsletter'>
   <button (click)='submitForm()'>submit</button>
 </form>
