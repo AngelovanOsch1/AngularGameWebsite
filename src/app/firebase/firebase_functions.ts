@@ -8,6 +8,8 @@ import {
 } from 'firebase/auth';
 import { auth } from './firebase';
 import { ToastService } from '../services/toast.service';
+import { RepositoryService } from '../services/repository.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,11 @@ import { ToastService } from '../services/toast.service';
 export class FirebaseFunctions {
   userCredentials?: UserCredential;
 
-  constructor(private toastService: ToastService) {}
+  constructor(
+    private toastService: ToastService,
+    private repositoryService: RepositoryService,
+    private router: Router
+  ) {}
 
   async createUser(
     email: string,
@@ -87,11 +93,27 @@ export class FirebaseFunctions {
     }
     return undefined;
   }
+
+  async logout(userId: string) {
+    try {
+      await signOut(auth);
+      localStorage.removeItem('userId');
+      this.repositoryService.getUsersCollection().doc(userId).update({
+        isOnline: false,
+      });
+      this.router.navigate(['/']);
+    } catch (e) {
+      this.toastService.show(
+        'Oeps! Er is iets verkeerd gegaan. Probeer het later nog een keer'
+      );
+    }
+  }
 }
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
+    localStorage.setItem('userId', uid);
   } else {
   }
 });

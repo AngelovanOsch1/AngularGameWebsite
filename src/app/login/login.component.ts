@@ -3,6 +3,7 @@ import { FirebaseFunctions } from '../firebase/firebase_functions';
 import { UserCredential } from 'firebase/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepositoryService } from '../services/repository.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
 
   constructor(
     private firebaseFunctions: FirebaseFunctions,
-    private repositoryService: RepositoryService
+    private repositoryService: RepositoryService,
+    private router: Router
   ) {}
   loginForm: FormGroup = new FormGroup({
     emailAddress: new FormControl('', [Validators.required]),
@@ -55,6 +57,8 @@ export class LoginComponent {
         .update({
           isOnline: true,
         });
+
+      this.router.navigate(['/']);
     }
   }
 }

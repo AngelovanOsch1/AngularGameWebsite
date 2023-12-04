@@ -9,25 +9,6 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/gamewebsite",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/custom-theme.scss",
-              "src/styles.sass"
-            ],
-            "scripts": []
-          },
           "configurations": {
             "development": {
               "buildOptimizer": false,
@@ -54,6 +35,23 @@
             }
           },
           "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              "src/assets"
+            ],
+            "index": "src/index.html",
+            "inlineStyleLanguage": "sass",
+            "main": "src/main.ts",
+            "outputPath": "dist/gamewebsite",
+            "polyfills": [
+              "zone.js"
+            ],
+            "scripts": [],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "tsConfig": "tsconfig.app.json"
+          },
           "options": {
             "assets": [
               "src/favicon.ico",

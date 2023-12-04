@@ -1,7 +1,8 @@
 <header *ngIf="showHeader">
   <h1>Your App Name</h1>
   <nav>
-    <button routerLink="/login">Login</button>
-    <button routerLink="/signup">Signup</button>
+    <button *ngIf="!user?.isOnline" routerLink="/login">Login</button>
+    <button *ngIf="!user?.isOnline" routerLink="/signup">Signup</button>
+    <button *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
   </nav>
 </header>
