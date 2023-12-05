@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providers: [RepositoryService, FirebaseFunctions],
 })
 export class LoginComponent {
-  userCredentials?: UserCredential;
+  userCredentials?: UserCredential | null;
 
   constructor(
     private firebaseFunctions: FirebaseFunctions,

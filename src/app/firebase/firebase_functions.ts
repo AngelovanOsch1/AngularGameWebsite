@@ -3,7 +3,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
   UserCredential,
 } from 'firebase/auth';
 import { auth } from './firebase';
@@ -26,7 +25,7 @@ export class FirebaseFunctions {
   async createUser(
     email: string,
     password: string
-  ): Promise<UserCredential | undefined> {
+  ): Promise<UserCredential | null> {
     try {
       this.userCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -53,14 +52,14 @@ export class FirebaseFunctions {
             'Oeps! Er is iets verkeerd gegaan. Probeer het later nog een keer'
           );
       }
-      return undefined;
+      return null;
     }
   }
 
   async loginUser(
     email: string,
     password: string
-  ): Promise<UserCredential | undefined> {
+  ): Promise<UserCredential | null> {
     try {
       this.userCredentials = await signInWithEmailAndPassword(
         auth,
@@ -91,7 +90,7 @@ export class FirebaseFunctions {
           );
       }
     }
-    return undefined;
+    return null;
   }
 
   async logout(userId: string) {
@@ -110,10 +109,4 @@ export class FirebaseFunctions {
   }
 }
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    localStorage.setItem('userId', uid);
-  } else {
-  }
-});
+

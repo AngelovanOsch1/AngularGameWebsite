@@ -8,7 +8,6 @@ import {
 import { UserCredential } from 'firebase/auth';
 import { FirebaseFunctions } from '../firebase/firebase_functions';
 import { RepositoryService } from '../services/repository.service';
-import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -32,7 +31,7 @@ export class SignupComponent {
     });
   }
 
-  userCredentials?: UserCredential;
+  userCredentials?: UserCredential | null;
   signUpForm: FormGroup = new FormGroup(
     {
       username: new FormControl('', [Validators.required]),
@@ -104,6 +103,6 @@ export class SignupComponent {
           role: 'user',
           profilePhoto: '',
         });
-    } 
+    }
   }
 }
