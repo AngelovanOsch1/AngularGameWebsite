@@ -6,19 +6,19 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { UserCredential } from 'firebase/auth';
-import { FirebaseFunctions } from '../firebase/firebase_functions';
 import { RepositoryService } from '../services/repository.service';
+import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [RepositoryService, FirebaseFunctions],
+  providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class SignupComponent {
   constructor(
     private repositoryService: RepositoryService,
-    private firebaseFunctions: FirebaseFunctions
+    private firebaseFunctionsService: FirebaseFunctionsService
   ) {}
 
   ngOnInit() {
@@ -86,14 +86,13 @@ export class SignupComponent {
       return;
     }
 
-    this.userCredentials = await this.firebaseFunctions.createUser(
+    this.userCredentials = await this.firebaseFunctionsService.createUser(
       emailAddress,
       password
     );
 
     if (this.userCredentials) {
-      this.repositoryService
-        .getUsersCollection()
+      this.repositoryService.usersCollection
         .doc(this.userCredentials.user.uid)
         .set({
           username: username,

@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { FirebaseFunctions } from '../firebase/firebase_functions';
 import { UserCredential } from 'firebase/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
+import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [RepositoryService, FirebaseFunctions],
+  providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class LoginComponent {
   userCredentials?: UserCredential | null;
 
   constructor(
-    private firebaseFunctions: FirebaseFunctions,
+    private firebaseFunctionsService: FirebaseFunctionsService,
     private repositoryService: RepositoryService,
     private router: Router
   ) {}
@@ -45,14 +45,13 @@ export class LoginComponent {
       this.loginForm.controls['emailAddress'].value.trim();
     const password: string = this.loginForm.controls['password'].value.trim();
 
-    this.userCredentials = await this.firebaseFunctions.loginUser(
+    this.userCredentials = await this.firebaseFunctionsService.loginUser(
       emailAddress,
       password
     );
 
     if (this.userCredentials) {
-      this.repositoryService
-        .getUsersCollection()
+      this.repositoryService.usersCollection
         .doc(this.userCredentials?.user.uid)
         .update({
           isOnline: true,

@@ -4,14 +4,14 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
-import { FirebaseFunctions } from '../firebase/firebase_functions';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [RepositoryService, FirebaseFunctions],
+  providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class HeaderComponent {
   showHeader: boolean = true;
@@ -22,7 +22,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private repositoryService: RepositoryService,
-    private firebaseFunctionsService: FirebaseFunctions,
+    private firebaseFunctionsService: FirebaseFunctionsService,
     private afAuth: AngularFireAuth
   ) {
     this.router.events
@@ -42,8 +42,7 @@ export class HeaderComponent {
       if (user) {
         this.userId = user.uid;
         this.user = (
-          await this.repositoryService
-            .getUsersCollection()
+          await this.repositoryService.usersCollection
             .doc<User>(this.userId!)
             .get()
             .toPromise()
