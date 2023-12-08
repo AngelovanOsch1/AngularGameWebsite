@@ -8,17 +8,19 @@ import {
 import { UserCredential } from 'firebase/auth';
 import { RepositoryService } from '../services/repository.service';
 import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [RepositoryService, FirebaseFunctionsService],
+  providers: [RepositoryService, FirebaseFunctionsService, ToastService],
 })
 export class SignupComponent {
   constructor(
     private repositoryService: RepositoryService,
-    private firebaseFunctionsService: FirebaseFunctionsService
+    private firebaseFunctionsService: FirebaseFunctionsService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
@@ -83,6 +85,7 @@ export class SignupComponent {
     const newsletter: boolean = this.signUpForm.controls['newsletter'].value;
 
     if (password !== repeatPassword) {
+      this.toastService.show('Wachtwoorden komen niet overheen.');
       return;
     }
 

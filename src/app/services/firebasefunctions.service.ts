@@ -69,7 +69,6 @@ export class FirebaseFunctionsService {
       return this.userCredentials;
     } catch (e: any) {
       const error: string = e.code;
-      console.log(error);
 
       switch (error) {
         case 'auth/invalid-email':
