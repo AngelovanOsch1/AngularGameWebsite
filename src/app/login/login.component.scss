@@ -1,0 +1,125 @@
+@import '../../styles.scss';
+
+.container {
+  width: 75%;
+  height: 100vh;
+  margin: auto;
+  padding: 75px 0px 75px 0px;
+  background-color: rgb(71, 71, 71);
+
+  .top-row {
+    display: flex;
+    align-items: center;
+
+    .title-column {
+      margin: 0px 200px 0px 200px;
+
+      h1 {
+        color: #ffff;
+        font-size: 4em;
+      }
+
+      p {
+        color: #ffff;
+        font-size: 0.8em;
+        font-family: 'PoppinsItalic';
+      }
+    }
+
+    .line {
+      margin: 0px 140px 0px 0px;
+      background-color: #ffff;
+      height: 5px;
+      width: 200px;
+      border-radius: 5px;
+    }
+
+     h3 {
+        color: #ffff;
+        font-size: 2rem;
+      }
+  }
+
+  .login-container {
+    margin: 100px 0px 0px 0px;
+
+    form {
+      display: flex;
+      gap: 50px;
+
+      .input-field {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 30px;
+        background-color: #ffff;
+
+        label {
+          font-size: 1.5rem;
+          margin: 0px 0px 15px 0px;
+        }
+
+        input {
+          padding: 0px 0px 0px 20px;
+          font-size: 30px;
+          border: 2px solid #000; 
+          border-radius: 5px;
+        }
+
+        input::placeholder {
+            color: grey;
+            font-family: 'PoppinsRegular';
+            font-size: 15px;
+          }
+      }
+    }
+      .button-row {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        margin: 20px 0px 0px 0px;
+
+        p {
+          color: #ffff;
+          text-decoration: underline;
+          font-size: 0.8rem;
+        }
+
+        .button-column {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          button {
+            padding: 15px 30px 15px 30px;
+            background-color: $primary-color;
+            color: #ffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+          }
+
+          .checkbox-row {
+            display: flex;
+            gap: 10px;
+
+            input[type="checkbox"] {
+              appearance: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              width: 15px;
+              height: 15px;
+              border: 3px solid #fff;
+              outline: none;
+              cursor: pointer;
+            }
+
+            label {
+              color: #ffff;
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+  }
+}
