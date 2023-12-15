@@ -1,0 +1,17 @@
+*{
+    background: black;
+    color: #fff;
+}
+header {
+    background-color: rgba(255, 255, 255, 0.026);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 125px;
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        }
+}
