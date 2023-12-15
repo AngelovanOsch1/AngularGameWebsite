@@ -1,17 +1,66 @@
-*{
-    background: black;
-    color: #fff;
-}
+@import "../../styles.scss";
+
 header {
-    background-color: rgba(255, 255, 255, 0.026);
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.001);
+    backdrop-filter: blur(3px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 125px;
+    padding: 30px 125px;
+    width: 100%;
+    position: fixed;
     
     .logo {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 20px;
+        color: #fff;
+        text-decoration: none;
+        img{
+            width: 50px;
         }
+        h1{
+            font-weight: 900;
+            font-size: 40px;
+        }
+    }
+    nav{
+        display: flex;
+        gap: 25px;
+        a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            transition: 0.2s ease-in-out;
+            &:hover{
+                transform: scale(110%);
+                text-shadow: 2px 2px 10px $black;
+            }
+        }
+        button{
+            padding: 8px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 20px;
+            color: #fff;
+            background-color: $primary-color;
+            transition: 0.2s ease-in-out;
+            &.login{
+                box-shadow: 4px 4px 20px $primary-color;
+            }
+            &.signup{
+                background-color: transparent;
+                border: 2px solid #fff;
+                &:hover{
+                    background: #fff;
+                    color: $black;
+                }
+            }
+            &:hover {
+                cursor: pointer;
+                transform: scale(108%);
+            }
+        }
+    }
 }

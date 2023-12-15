@@ -10,10 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { LandingComponent } from './landing/landing.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ShopComponent } from './shop/shop.component';
+import { ForumsComponent } from './forums/forums.component';
+import { EventsComponent } from './events/events.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

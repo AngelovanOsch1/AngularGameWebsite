@@ -1,0 +1,13 @@
+section.landing{
+    height: 100vh;
+    background: url("../../assets/images/Landings-IMG.jpg");
+    background-size: cover;
+    position: relative;
+    
+    &::after{
+        content: '';
+        top: 0; left: 0; bottom: 0; right: 0;
+        position: absolute;
+        background: linear-gradient(to bottom right, #2b2d425f 10%, #00ffa26f 30%, #4055f4a9);
+    }
+}

@@ -1,11 +1,17 @@
 <header *ngIf="showHeader">
-  <div class="logo">
+  <a class="logo" href="/">
     <img src="../../assets/icons/sword-logo.png" alt="">
     <h1>FantasyQuest</h1>
-  </div>
+  </a>
   <nav>
-    <button *ngIf="!user?.isOnline" routerLink="/login">Login</button>
-    <button *ngIf="!user?.isOnline" routerLink="/signup">Signup</button>
+    <a href="/leaderboard" routerLink="/leaderboard">Leaderboard</a>
+    <a href="/shop" routerLink="/shop">Shop</a>
+    <a href="/forums" routerLink="/forums">Forums</a>
+    <a href="/events" routerLink="/events">Events</a>
+  </nav>
+  <nav>
+    <button class="signup" *ngIf="!user?.isOnline" routerLink="/signup">Sign-up</button>
+    <button class="login" *ngIf="!user?.isOnline" routerLink="/login">Login</button>
     <button *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
   </nav>
 </header>
