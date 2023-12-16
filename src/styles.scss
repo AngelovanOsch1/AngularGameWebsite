@@ -18,6 +18,7 @@
   src: url('./app/fonts/Poppins-Bold.ttf');
 } 
 
+$grey: #B6B6B6;
 $black: #2B2D42;
 $secondary-color: #00FFA3;
 $primary-color: #4056F4;
@@ -38,4 +39,85 @@ span {
 
 h1, h2, h3, h4, h5, label, button {
     font-family: 'PoppinsBold';
+}
+
+button.normal{
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  color: $black;
+  background-color: #fff;
+  transition: 0.2s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    transform: scale(108%);
+  }
+}
+button.weapon{
+  position: relative;
+  padding: 8px calc(15px + 30px) 8px 15px;
+  &::after{
+    content: '';
+    position: absolute;
+    right: 10px;
+    background-image: url("../src/assets/icons/dark-sword-svgrepo-com.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+  }
+  &:hover{
+    &::after{
+      background-image: url("../src/assets/icons/light-sword-svgrepo-com.svg");  
+    }  
+  }
+}
+button.download{
+  position: relative;
+  padding: 8px calc(15px + 30px) 8px 15px;
+  &::after{
+    content: '';
+    position: absolute;
+    right: 10px;
+    background-image: url("../src/assets/icons/white-download-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+  }
+}
+button.search{
+  position: relative;
+  padding: 8px calc(15px + 30px) 8px 15px;
+  &::after{
+    content: '';
+    position: absolute;
+    right: 10px;
+    background-image: url("../src/assets/icons/white-search-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+button.light{
+    color: $black;
+    background-color: #fff;
+    &:hover{
+      color: #fff;
+      background-color: $black;
+    }
+}
+button.dark{
+    color: #fff;
+    background-color: $black;
+    &:hover{
+      background-color: $primary-color;
+    }
+}
+button.primary-color{
+    color: #fff;
+    background-color: $primary-color;
 }

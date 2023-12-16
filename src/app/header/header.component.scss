@@ -31,7 +31,7 @@ header {
         a{
             text-decoration: none;
             color: #fff;
-            font-size: 20px;
+            font-size: 18px;
             transition: 0.2s ease-in-out;
             &:hover{
                 transform: scale(110%);
@@ -42,7 +42,7 @@ header {
             padding: 8px 25px;
             border-radius: 50px;
             border: none;
-            font-size: 20px;
+            font-size: 18px;
             color: #fff;
             background-color: $primary-color;
             transition: 0.2s ease-in-out;
