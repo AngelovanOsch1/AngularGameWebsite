@@ -15,10 +15,11 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ShopComponent } from './shop/shop.component';
 import { ForumsComponent } from './forums/forums.component';
 import { EventsComponent } from './events/events.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

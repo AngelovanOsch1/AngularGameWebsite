@@ -10,8 +10,8 @@
     <a href="/events" routerLink="/events">Events</a>
   </nav>
   <nav>
-    <button class="signup" *ngIf="!user?.isOnline" routerLink="/signup">Sign-up</button>
-    <button class="login" *ngIf="!user?.isOnline" routerLink="/login">Login</button>
+    <button class="signup rounded-corners" *ngIf="!user?.isOnline" routerLink="/signup">Sign-up</button>
+    <button class="login rounded-corners" *ngIf="!user?.isOnline" routerLink="/login">Login</button>
     <button *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
   </nav>
 </header>

@@ -48,7 +48,7 @@ export class HeaderComponent {
       0;
 
     // Adjust the scroll threshold (500px in this case)
-    this.isScrolled = scrollPosition >= 500;
+    this.isScrolled = scrollPosition >= 900;
   }
   
   async ngOnInit(): Promise<any> {

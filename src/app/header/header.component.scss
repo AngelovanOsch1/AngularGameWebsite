@@ -10,7 +10,7 @@ header {
     padding: 30px 125px;
     width: 100%;
     position: fixed;
-    transition: 0.4s ease-in-out;
+    transition: 0.2s ease-in-out;
     
     .logo {
         display: flex;
@@ -20,10 +20,12 @@ header {
         text-decoration: none;
         img{
             width: 50px;
+            transition: 0.2s ease-in-out;
         }
         h1{
             font-weight: 900;
             font-size: 40px;
+            transition: 0.2s ease-in-out;
         }
     }
     nav{
@@ -41,7 +43,6 @@ header {
         }
         button{
             padding: 8px 25px;
-            border-radius: 50px;
             border: none;
             font-size: 18px;
             color: #fff;
@@ -70,8 +71,16 @@ header {
         nav a, button{
             color: #fff;
         }
-        nav button.login{
+        nav button.login,
+        nav button.signup{
             box-shadow: none;
+            font-size: 16px;
+        }
+        a.logo img{
+            width: 35px;
+        }
+        a.logo h1{
+            font-size: 30px;
         }
     }
 }

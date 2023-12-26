@@ -60,36 +60,114 @@
             the top of the leaderboard in special challenges that await courageous heroes like you.</div>
         </a>
     </section>
-    <section class="about-us">
-        <div class="image-section">
-            <img src="../../assets/images/IMG-AboutMe-1.jpg" alt="">
-            <img src="../../assets/images/IMG-AboutMe-2.jpg" alt="">
-            <img src="../../assets/images/IMG-AboutMe-3.jpg" alt="">
-            <img src="../../assets/images/IMG-AboutMe-4.jpg" alt="">
-        </div>
-        <div class="readable-section">
-            <h1>What does <strong>fantasy quest</strong> offer for you?</h1>
-            <p class="info">Embark on an enchanting journey with FantasyQuest, a vibrant 2D platformer set in the magical realm of Fantasia. Explore
-            breathtaking landscapes, battle mythical creatures, and strive to restore balance to this captivating world.</p>
-            <p class="info">Unleash your hero's abilities with dynamic movements such as running, jumping, and crawling, adding an extra layer of
-            strategy to your adventure. Delve into the innovative Tracker System to monitor your progress, compare achievements, and
-            climb the leaderboard. Every move you make shapes your path to becoming the ultimate hero in this captivating world.</p>
-            <div class="USP">
-                <img src="../../assets/icons/USP-icon-2.svg" alt="">
-                <div class="text">
-                    <h2>Epic adventure</h2>
-                    <p>Dive into a rich narrative as the chosen hero, facing formidable bosses and collecting precious gemstones to thwart the
-                    malevolent sorcerer Morgrimm.</p>
+    <section class="below-the-fold">
+        <section class="about-us">
+            <div class="image-section">
+                <img src="../../assets/images/IMG-AboutMe-1.jpg" alt="">
+                <img src="../../assets/images/IMG-AboutMe-2.jpg" alt="">
+                <img src="../../assets/images/IMG-AboutMe-3.jpg" alt="">
+                <img src="../../assets/images/IMG-AboutMe-4.jpg" alt="">
+            </div>
+            <div class="readable-section">
+                <h1>What does <strong>fantasy quest</strong> offer for you?</h1>
+                <p class="info">Embark on an enchanting journey with FantasyQuest, a vibrant 2D platformer set in the magical
+                    realm of Fantasia. Explore
+                    breathtaking landscapes, battle mythical creatures, and strive to restore balance to this captivating world.
+                </p>
+                <p class="info">Unleash your hero's abilities with dynamic movements such as running, jumping, and crawling,
+                    adding an extra layer of
+                    strategy to your adventure. Delve into the innovative Tracker System to monitor your progress, compare
+                    achievements, and
+                    climb the leaderboard. Every move you make shapes your path to becoming the ultimate hero in this
+                    captivating world.</p>
+                <div class="USP">
+                    <img src="../../assets/icons/USP-icon-2.svg" alt="">
+                    <div class="text">
+                        <h2>Epic adventure</h2>
+                        <p>Dive into a rich narrative as the chosen hero, facing formidable bosses and collecting precious
+                            gemstones to thwart the
+                            malevolent sorcerer Morgrimm.</p>
+                    </div>
+                </div>
+                <div class="USP">
+                    <img src="../../assets/icons/USP-icon-1.svg" alt="">
+                    <div class="text">
+                        <h2>Innovative Tracker System</h2>
+                        <p>Monitor your progress, compare achievements, and climb the leaderboard with our Tracker System,
+                            ensuring every move
+                            counts in your quest to become the ultimate hero.</p>
+                    </div>
                 </div>
             </div>
-            <div class="USP">
-                <img src="../../assets/icons/USP-icon-1.svg" alt="">
-                <div class="text">
-                    <h2>Innovative Tracker System</h2>
-                    <p>Monitor your progress, compare achievements, and climb the leaderboard with our Tracker System, ensuring every move
-                    counts in your quest to become the ultimate hero.</p>
+        </section>
+        <section class="faq">
+            <div class="introduction-faq">
+                <div class="pre-title">FAQ</div>
+                <h1>Here we answer your most frequently asked questions</h1>
+                <p>Unlock the secrets of FantasyQuest with our FAQ section. Find quick answers to common queries about gameplay,
+                    troubleshooting, and more to ensure a seamless and heroic adventure in the magical realm of Fantasia. Can't
+                    find what
+                    you need? Contact our support team for personalized assistance!</p>
+                <button class="normal primary-color rounded-corners more-padding">Check more</button>
+            </div>
+            <div class="questions-container">
+                <div class="faq-item" [class.active]="activeIndex === 0" (click)="setActive(0)">
+                    <div class="question-container">
+                        <div class="number">01.</div>
+                        <div class="question">How do I start playing FantasyQuest?</div>
+                        <img src="../../assets/icons/FQ-arrows.svg" alt="">
+                    </div>
+                    <div class="answer-container">
+                        To begin your epic journey, simply download and install FantasyQuest from our official website or your preferred app
+                        store. Once installed, create an account, choose your hero, and dive into the enchanting world of Fantasia.
+                    </div>
+                </div>
+                <div class="faq-item" [class.active]="activeIndex === 1" (click)="setActive(1)">
+                    <div class="question-container">
+                        <div class="number">02.</div>
+                        <div class="question">Are there in-app purchases in FantasyQuest??</div>
+                        <img src="../../assets/icons/FQ-arrows.svg" alt="">
+                    </div>
+                    <div class="answer-container">
+                        Yes, FantasyQuest offers an in-game Shop where you can purchase exclusive upgrades, power-ups, and magical items to
+                        enhance your hero's abilities. However, the core game is fully accessible without any mandatory purchases.
+                    </div>
+                </div>
+                <div class="faq-item" [class.active]="activeIndex === 2" (click)="setActive(2)">
+                    <div class="question-container">
+                        <div class="number">03.</div>
+                        <div class="question">How can I track my progress in the game?</div>
+                        <img src="../../assets/icons/FQ-arrows.svg" alt="">
+                    </div>
+                    <div class="answer-container">
+                        Use the innovative Tracker System in FantasyQuest to monitor key statistics, including completion time, collected gems,
+                        and defeated creatures. Access the Leaderboard to compare achievements and showcase your skills among players worldwide.
+                    </div>
+                </div>
+                <div class="faq-item" [class.active]="activeIndex === 3" (click)="setActive(3)">
+                    <div class="question-container">
+                        <div class="number">04.</div>
+                        <div class="question">Is there a community forum for FantasyQuest players?</div>
+                        <img src="../../assets/icons/FQ-arrows.svg" alt="">
+                    </div>
+                    <div class="answer-container">
+                        Absolutely! Join our vibrant community on the Forums page, where heroes unite to share strategies, tips, and tales of
+                        adventure. Connect with fellow players, seek advice, and immerse yourself in the thriving world of Fantasia.                    
+                    </div>
+                </div>
+                <div class="faq-item" [class.active]="activeIndex === 4" (click)="setActive(4)">
+                    <div class="question-container">
+                        <div class="number">05.</div>
+                        <div class="question">Are there special events in FantasyQuest?</div>
+                        <img src="../../assets/icons/FQ-arrows.svg" alt="">
+                    </div>
+                    <div class="answer-container">
+                        Yes, FantasyQuest hosts exciting limited-time events. Participate to unleash your skills, earn unique rewards, and climb
+                        the leaderboard in special challenges. Keep an eye on the Events page for thrilling opportunities to enhance your gaming
+                        experience.
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
 </section>

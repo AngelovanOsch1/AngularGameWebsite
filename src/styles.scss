@@ -38,7 +38,7 @@ span {
     font-family: 'PoppinsItalic';
 }
 
-h1, h2, h3, h4, h5, label, button {
+h1, h2, h3, h4, h5, label, button, .pre-title, .question-container .number {
     font-family: 'PoppinsBold';
 }
 a {
@@ -124,4 +124,10 @@ button.dark{
 button.primary-color{
     color: #fff;
     background-color: $primary-color;
+}
+button.rounded-corners{
+  border-radius: 50px;
+}
+button.more-padding{
+  padding: 8px 30px;
 }
