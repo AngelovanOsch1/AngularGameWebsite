@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -18,9 +18,11 @@ export class HeaderComponent {
   userId?: string;
   user?: User | null;
   private destroy$: Subject<void> = new Subject<void>();
+  isScrolled: boolean = false;
 
   constructor(
     private router: Router,
+    private renderer: Renderer2,
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,
     private afAuth: AngularFireAuth
@@ -37,6 +39,18 @@ export class HeaderComponent {
       });
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    const scrollPosition =
+      window.scrollY ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    // Adjust the scroll threshold (500px in this case)
+    this.isScrolled = scrollPosition >= 500;
+  }
+  
   async ngOnInit(): Promise<any> {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {

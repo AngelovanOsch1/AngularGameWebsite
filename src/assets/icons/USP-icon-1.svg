@@ -1,0 +1,24 @@
+<svg width="135" height="114" viewBox="0 0 135 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_225_37)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M93.6745 91.6466C105.974 89.3334 113.973 77.9792 111.539 66.2863C109.106 54.5935 97.1626 46.9897 84.8627 49.303C72.5628 51.6162 64.5644 62.9704 66.9977 74.6633C69.431 86.3562 81.3746 93.9599 93.6745 91.6466ZM91.1568 79.5485C96.4283 78.557 99.8561 73.6911 98.8132 68.6797C97.7704 63.6684 92.6519 60.4098 87.3803 61.4012C82.1088 62.3926 78.681 67.2585 79.7239 72.2699C80.7668 77.2812 85.8853 80.5399 91.1568 79.5485Z" fill="#F3F3F3"/>
+<path d="M84.8633 49.303L83.6045 43.2539" stroke="#F3F3F3" stroke-width="10" stroke-linecap="round"/>
+<path d="M111.54 66.2864L117.903 65.0897" stroke="#F3F3F3" stroke-width="10" stroke-linecap="round"/>
+<path d="M94.9336 97.6957L93.6748 91.6466" stroke="#F3F3F3" stroke-width="10" stroke-linecap="round"/>
+<path d="M60.6348 75.86L66.9979 74.6633" stroke="#F3F3F3" stroke-width="10" stroke-linecap="round"/>
+</g>
+<g clip-path="url(#clip1_225_37)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M42.0561 67.3129C53.9415 71.109 66.8136 65.0268 70.8067 53.7279C74.7998 42.4291 68.4019 30.1922 56.5165 26.3961C44.6311 22.6 31.759 28.6823 27.7659 39.9811C23.7727 51.28 30.1707 63.5168 42.0561 67.3129ZM46.1876 55.6224C51.2815 57.2493 56.7979 54.6428 58.5093 49.8003C60.2207 44.9578 57.4788 39.7136 52.385 38.0866C47.2911 36.4597 41.7746 39.0663 40.0633 43.9088C38.3519 48.7513 41.0937 53.9955 46.1876 55.6224Z" fill="#E0E0E0"/>
+<path d="M56.5172 26.3962L58.583 20.5509" stroke="#E0E0E0" stroke-width="10" stroke-linecap="round"/>
+<path d="M70.8066 53.7279L76.9553 55.6917" stroke="#E0E0E0" stroke-width="10" stroke-linecap="round"/>
+<path d="M39.9909 73.1582L42.0566 67.313" stroke="#E0E0E0" stroke-width="10" stroke-linecap="round"/>
+<path d="M21.6172 38.0173L27.7659 39.9812" stroke="#E0E0E0" stroke-width="10" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_225_37">
+<rect width="77.696" height="74.1443" fill="white" transform="matrix(0.982771 -0.18483 0.203737 0.979026 43.5371 41.3605)"/>
+</clipPath>
+<clipPath id="clip1_225_37">
+<rect width="77.4563" height="74.3946" fill="white" transform="matrix(0.952593 0.304249 -0.333214 0.942851 24.7891 0)"/>
+</clipPath>
+</defs>
+</svg>

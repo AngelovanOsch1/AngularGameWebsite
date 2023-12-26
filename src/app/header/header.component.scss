@@ -10,6 +10,7 @@ header {
     padding: 30px 125px;
     width: 100%;
     position: fixed;
+    transition: 0.4s ease-in-out;
     
     .logo {
         display: flex;
@@ -61,6 +62,16 @@ header {
                 cursor: pointer;
                 transform: scale(108%);
             }
+        }
+    }
+    &.scrolled{
+        padding: 20px 125px;
+        background-color: rgb(43, 45, 66, 0.95) ;
+        nav a, button{
+            color: #fff;
+        }
+        nav button.login{
+            box-shadow: none;
         }
     }
 }
