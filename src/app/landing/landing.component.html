@@ -27,10 +27,18 @@
             <h1>Try out the statistics tracking system!</h1>
             <p class="slogan">Ascend the leaderboard in FantasyQuest with the Tracker System, shaping your journey to ultimate
                 hero.</p>
-            <div class="search-container">
-                <input class="search" type="text" placeholder='Search here ...'>
-                <button class="normal primary-color search">Search</button>
-            </div>
+                                <form [formGroup]='searchForm'>
+                                    <div class="search-container">
+                                        <input class="search" type="search" placeholder='Search here ...' formControlName='search' />
+                                        <button class="normal primary-color search">Search</button>
+                                        </div>
+                                </form>
+                                <div *ngFor="let user of filteredUsersList">
+                                    <img src='{{user.profilePhoto}}' />
+                                    <p>{{ user.username }}
+                                    </p>
+                                </div>
+
         </div>
         <a href="#page-previews" id='page-previews' class="scroll-down">Scroll down  <img src="../../assets/icons/white-down-arrow.svg" alt=""></a>
     </section>
