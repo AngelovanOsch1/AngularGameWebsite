@@ -110,10 +110,27 @@ section.landing{
                     background: #fff;
                     padding: 8px 15px;
                     font-size: 16px;
-                    border-radius: 3px;
+                    border-radius: 3px 3px 0px 0px;
                     outline: none;
                 }
             }
+
+            .users-found-container {
+                display: flex;
+                gap: 20px;
+                padding: 8px;
+                background-color: #fff;
+                width: 60%;
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                p {
+                    color: #000;
+                }
+            }
+
             }
             a.scroll-down{
                 display: flex;

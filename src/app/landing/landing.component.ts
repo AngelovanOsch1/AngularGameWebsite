@@ -14,7 +14,7 @@ export class LandingComponent {
   userObservable: Observable<User[]> | undefined;
   usersList: User[] = [];
 
-  filteredUsersList: { profilePhoto: string; username: string }[] = [];
+  filteredUsersList: User[] = [];
 
   activeIndex: number = 1;
 
@@ -32,13 +32,11 @@ export class LandingComponent {
         if (searchQuery.trim() === '') {
           this.filteredUsersList = [];
         } else {
-          this.filteredUsersList = this.usersList
-            .filter((user) => {
-              return user.username
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase());
-            })
-            .map(({ profilePhoto, username }) => ({ profilePhoto, username }));
+          this.filteredUsersList = this.usersList.filter((user) => {
+            return user.username
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
+          });
         }
       });
   }
@@ -46,6 +44,10 @@ export class LandingComponent {
   searchForm: FormGroup = new FormGroup({
     search: new FormControl(''),
   });
+
+  showUserProfile(userProfile: User) {
+    console.log(userProfile);
+  }
 
   setActive(index: number) {
     this.activeIndex = index;
