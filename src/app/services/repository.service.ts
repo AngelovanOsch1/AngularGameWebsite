@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { User } from '../interfaces/interfaces';
+import { Article, User } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class RepositoryService {
   forum: AngularFirestoreCollection<any>;
   forumPosts: AngularFirestoreCollection<any>;
   forumPostUserComments: AngularFirestoreCollection<any>;
-  shop: AngularFirestoreCollection<any>;
+  shop: AngularFirestoreCollection<Article>;
   shopArticles: AngularFirestoreCollection<any>;
   shopArticlesUserComments: AngularFirestoreCollection<any>;
   activities: AngularFirestoreCollection<any>;
