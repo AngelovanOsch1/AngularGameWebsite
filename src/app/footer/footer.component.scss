@@ -1,0 +1,100 @@
+@import "../../styles.scss";
+
+footer{
+  color: #fff;
+  background: $black;
+  padding: 75px 125px;
+  .above-the-line{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 100px 0;
+    .logo-section{
+        display: flex;
+        gap: 40px;
+        .logo{
+          background-color: $primary-color;
+          padding: 5px 10px;
+          border-radius: 5px;
+          width: fit-content;
+          height: fit-content;
+          img{ width: 40px; }
+        }
+        .text{
+          line-height: 1;
+          .logo-name{
+            color: #fff;
+            font-size: 30px;
+            font-weight: 900;
+          }
+          span.slogan{
+            line-height: 2;
+            opacity: 0.6;
+            color: $grey;
+          }
+        }
+    }
+    .page-links{
+      display: flex;
+      gap: 100px;
+      > *{
+        display: flex;
+        flex-direction: column;
+        strong{
+          color: $primary-color;
+          font-family: 'PoppinsBold';
+          padding: 0 0 10px 0;
+          font-size: 20px;
+        }
+        a{
+          color: #fff;
+          transition: 0.2s ease;
+          &:hover{ color: $grey;}
+        }
+      }
+    }
+  }
+  .under-the-line{
+    display: flex;
+    gap: 100px;
+    font-size: 12px;
+    border-top: 2px solid #fff;
+    padding: 20px 0 0 0;
+    .extra-links{
+      display: flex;
+      gap: 40px;
+      a{ 
+        color: #fff;
+        transition: 0.2s ease;
+        position: relative;
+        height: fit-content;
+        &:hover{ 
+          opacity: 0.7;
+        }
+        &:not(:last-child) {
+          position: relative;
+          &::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 7px;
+            height: 7px;
+            border-radius: 50px;
+            background-color: $primary-color;
+          }
+        }
+      }
+    }
+    .social-links{
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      a{
+        transition: 0.2s ease;
+        &:hover{opacity: 0.7;}
+      }
+    }
+  }
+}

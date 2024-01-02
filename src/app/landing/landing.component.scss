@@ -286,6 +286,7 @@ section.landing{
         section.faq{
             display: flex;
             gap: 60px;
+            min-height: 750px;
             > * {
                 width: 100%;
             }
