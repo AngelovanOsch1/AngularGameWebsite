@@ -17,10 +17,11 @@ import { ForumsComponent } from './forums/forums.component';
 import { EventsComponent } from './events/events.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './shop/article/article.component';
+import { NewsletterSectionComponent } from './newsletter-section/newsletter-section.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent, FooterComponent, ArticleComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent, FooterComponent, ArticleComponent, NewsletterSectionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
