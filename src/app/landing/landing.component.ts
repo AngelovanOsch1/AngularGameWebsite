@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-landing',
@@ -11,6 +12,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   providers: [RepositoryService],
 })
 export class LandingComponent implements OnInit {
+  user: User | undefined;
+
   userObservable: Observable<User[]> | undefined;
   usersList: User[] = [];
 
@@ -18,10 +21,26 @@ export class LandingComponent implements OnInit {
 
   activeIndex: number = 1;
 
-  constructor(private repositoryService: RepositoryService) {
+  constructor(
+    private repositoryService: RepositoryService,
+    private afAuth: AngularFireAuth
+  ) {
     this.userObservable = this.repositoryService.usersCollection.valueChanges();
   }
-  ngOnInit() {
+  async ngOnInit(): Promise<any> {
+    this.afAuth.authState.subscribe(async (user) => {
+      if (user) {
+        this.user = (
+          await this.repositoryService.usersCollection
+            .doc<User>(user.uid)
+            .get()
+            .toPromise()
+        )?.data();
+      } else {
+        this.user = undefined;
+      }
+    });
+
     this.userObservable?.subscribe((UserDoc: User[]) => {
       this.usersList = UserDoc;
     });

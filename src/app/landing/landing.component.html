@@ -180,4 +180,5 @@
         </section>
     </section>
 </section>
-<app-newsletter-section></app-newsletter-section>
+<div *ngIf="!user?.newsletter  && user"><app-newsletter-section></app-newsletter-section>
+</div>

@@ -52,14 +52,12 @@ export class HeaderComponent implements OnInit {
   async ngOnInit(): Promise<any> {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
-        this.userId = user.uid;
         this.user = (
           await this.repositoryService.usersCollection
-            .doc<User>(this.userId!)
+            .doc<User>(user.uid)
             .get()
             .toPromise()
         )?.data();
-        localStorage.setItem('userId', this.userId);
       } else {
         this.user = null;
       }
