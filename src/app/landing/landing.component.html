@@ -27,19 +27,36 @@
             <h1>Try out the statistics tracking system!</h1>
             <p class="slogan">Ascend the leaderboard in FantasyQuest with the Tracker System, shaping your journey to ultimate
                 hero.</p>
-                                <form [formGroup]='searchForm'>
-                                    <div class="search-container">
-                                        <input class="search" type="search" placeholder='Search here ...' formControlName='search' />
-                                        <button class="normal primary-color search">Search</button>
-                                        </div>
-                                                                        <div class='users-found-container' *ngFor="let userProfile of filteredUsersList" (click)="showUserProfile(userProfile)">
-                                                                        <img *ngIf="userProfile.profilePhoto" [src]="userProfile.profilePhoto" alt="User Profile Photo" />
-                                                                        <p>{{ userProfile.username }}
-                                                                            </p>
-                                                                        </div>
-
-                                </form>
-
+            <form [formGroup]='searchForm'>
+                <div class="search-container">
+                    <input class="search" type="search" placeholder='Search here ...' formControlName='search' />
+                    <button class="normal primary-color search">Search</button>
+                </div>
+                <div class='users-found-container' *ngFor="let userProfile of filteredUsersList" (click)="showUserProfile(userProfile)">
+                    <img *ngIf="userProfile.profilePhoto" [src]="userProfile.profilePhoto" alt="User Profile Photo" />
+                    <p>{{ userProfile.username }}</p>
+                </div>
+            </form>
+            <div class="game-stats">
+                <div class="stat-type-container">
+                    <div class="icon">
+                        <img src="../../assets/icons/persons-icon.svg" alt="Logo">
+                    </div>
+                    <div class="text">
+                        <div class="amount">50.000+</div>
+                        <div class="type">Registered users</div>
+                    </div>
+                </div>
+                <div class="stat-type-container">
+                    <div class="icon">
+                        <img src="../../assets/icons/persons-icon.svg" alt="Logo">
+                    </div>
+                    <div class="text">
+                        <div class="amount">3.700+</div>
+                        <div class="type">Active users</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <a href="#page-previews" id='page-previews' class="scroll-down">Scroll down  <img src="../../assets/icons/white-down-arrow.svg" alt=""></a>
     </section>

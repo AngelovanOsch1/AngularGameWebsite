@@ -8,15 +8,15 @@ section.newsletter-container{
   gap: 10px;
   background: url("../../assets/images/IMG-5.jpg");
   background-size: cover;
-  padding: 125px;
+  padding: 75px 125px;
   position: relative;
   z-index: 1;
   color: #fff;
+  text-align: center;
   > * {
-    max-width: 500px;
+    max-width: 600px;
     z-index: 4;
   }
-
   &::before{
     content: '';
     z-index: 2;
@@ -25,7 +25,26 @@ section.newsletter-container{
     background-color: rgb(43, 45, 66, 0.5);
     backdrop-filter: blur(5px);
   }
+  h1{
+    font-size: 35px;
+    margin: 0;
+  }
   p{
-    text-align: center;
+    margin: 0 0 30px 0;
+  }
+  form{
+    display: flex;
+    gap: 20px;
+    input{
+      border: none;
+      border-radius: 3px;
+      padding: 8px 15px;
+      outline: none;
+    }
+  }
+  .small-text{
+    color: $grey;
+    text-transform: uppercase;
+    font-size: 12px;
   }
 }

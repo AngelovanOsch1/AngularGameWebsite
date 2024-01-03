@@ -89,13 +89,14 @@ section.landing{
         }
         .track-statistics{
             width: 100%;
+            max-width: 700px;
             h1{
                 font-size: 28px;
                 font-weight: 900;
                 text-shadow: 4px 4px 20px $primary-color;
             }
             p.slogan{
-                line-height: 1.5;
+                line-height: 1;
                 font-size: 13px;
                 opacity: 0.6;
             }
@@ -114,7 +115,6 @@ section.landing{
                     outline: none;
                 }
             }
-
             .users-found-container {                            
                 position: absolute;
                 display: flex;
@@ -131,7 +131,27 @@ section.landing{
                     color: #000;
                 }
             }
-
+            .game-stats{
+                margin: 50px 0 0 0;
+                display: flex;
+                gap: 75px;
+                .stat-type-container{
+                    display: flex;
+                    align-items: center;
+                    gap: 25px;
+                    .text{
+                        .amount{
+                            font-family: 'PoppinsBold';
+                            font-size: 25px;
+                            text-shadow: 2px 2px 10px #fff;
+                        }
+                        .type{
+                            text-transform: uppercase;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
             }
             a.scroll-down{
                 display: flex;
