@@ -197,5 +197,6 @@
         </section>
     </section>
 </section>
-<div *ngIf="!user?.newsletter  && user"><app-newsletter-section></app-newsletter-section>
+<div *ngIf="(!user || (!user.isOnline && !user.newsletter))">
+    <app-newsletter-section></app-newsletter-section>
 </div>
