@@ -4,6 +4,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Article, User } from '../interfaces/interfaces';
+import { getDoc, doc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,12 @@ export class RepositoryService {
   activities: AngularFirestoreCollection<any>;
   gameHighscores: AngularFirestoreCollection<any>;
 
-  constructor(private firestore: AngularFirestore) {
+  user: User | undefined;
+
+  constructor(
+    private firestore: AngularFirestore,
+    private db: AngularFirestore
+  ) {
     this.usersCollection = this.firestore.collection('users');
     this.addresses = this.firestore.collection('addresses');
     this.purchaseHistory = this.firestore.collection('purchaseHistory');
@@ -38,5 +44,12 @@ export class RepositoryService {
     );
     this.activities = this.firestore.collection('activities');
     this.gameHighscores = this.firestore.collection('gameHighscores');
+  }
+
+  async getUserDoc(userId: string): Promise<User | undefined> {
+    this.user = (
+      await getDoc(doc(this.db.firestore, `users/${userId}`))
+    ).data() as User;
+    return this.user;
   }
 }

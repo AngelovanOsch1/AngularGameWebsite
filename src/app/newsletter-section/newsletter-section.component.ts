@@ -3,7 +3,7 @@ import {} from '@angular/forms';
 import { RepositoryService } from '../services/repository.service';
 import { ToastService } from '../services/toast.service';
 import { User } from '../interfaces/interfaces';
-import { getDoc, doc } from 'firebase/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-newsletter-section',
@@ -11,26 +11,32 @@ import { getDoc, doc } from 'firebase/firestore';
   styleUrls: ['./newsletter-section.component.scss'],
 })
 export class NewsletterSectionComponent implements OnInit {
-  userId: string | null = localStorage.getItem('userId');
   user: User | undefined;
+  userId: string | undefined;
 
-  ngOnInit(): void {
-    // this.user = (
-    //   await getDoc(
-    //     doc(
-    //       thi
-    //       organisations/${this.organisationId}/settings/general
-    //     )
-    //   )
-    // ).data() as User;
+  async ngOnInit(): Promise<any> {
+    this.afAuth.authState.subscribe(async (user) => {
+      if (user) {
+        this.userId = user.uid;
+        this.user = (
+          await this.repositoryService.usersCollection
+            .doc<User>(user.uid)
+            .get()
+            .toPromise()
+        )?.data();
+      } else {
+        this.user = undefined;
+      }
+    });
   }
   constructor(
     private repositoryService: RepositoryService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private afAuth: AngularFireAuth
   ) {}
 
   submitForm() {
-    this.repositoryService.usersCollection.doc(this.userId!).update({
+    this.repositoryService.usersCollection.doc(this.userId).update({
       newsletter: true,
     });
     this.toastService.show('Thank you for your interest in our newsletter!');

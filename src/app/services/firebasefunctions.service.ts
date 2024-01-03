@@ -95,7 +95,6 @@ export class FirebaseFunctionsService {
   async logout(userId: string) {
     try {
       await signOut(auth);
-      localStorage.removeItem('userId');
       this.repositoryService.usersCollection.doc(userId).update({
         isOnline: false,
       });
