@@ -15,7 +15,7 @@ section.landing{
         &::before{
             content: '';
             z-index: -2;
-            height: 150%;
+            height: 130%;
             background: url("../../assets/images/Landings-IMG.jpg");
             background-size: cover;
             top: 0; left: 0; bottom: 0; right: 0;
@@ -24,7 +24,7 @@ section.landing{
         &::after{
             content: '';
             z-index: -2;
-            height: 150%;
+            height: 130%;
             top: 0; left: 0; bottom: 0; right: 0;
             position: absolute;
             background: linear-gradient(to bottom right, #2b2d425f 10%, #4055f492 20%, #00ffa250 70%);
@@ -153,6 +153,7 @@ section.landing{
 
         min-height: 500px;
         background: url("../../assets/images/page-previews-background.png");
+        background-repeat: no-repeat;
         background-size: cover;
         a.box{
             display: flex;

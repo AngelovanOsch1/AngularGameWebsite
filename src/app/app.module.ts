@@ -18,14 +18,30 @@ import { EventsComponent } from './events/events.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleComponent } from './shop/article/article.component';
 import { NewsletterSectionComponent } from './newsletter-section/newsletter-section.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { WarningComponentComponent } from './helper-components/warning-component/warning-component.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, HeaderComponent, LandingComponent, LeaderboardComponent, ShopComponent, ForumsComponent, EventsComponent, FooterComponent, ArticleComponent, NewsletterSectionComponent],
+  declarations: [
+    AppComponent,
+    SignupComponent,
+    LoginComponent,
+    HeaderComponent,
+    LandingComponent,
+    LeaderboardComponent,
+    ShopComponent,
+    ForumsComponent,
+    EventsComponent,
+    FooterComponent,
+    ArticleComponent,
+    NewsletterSectionComponent,
+    WarningComponentComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatSnackBarModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAYffvUNsu0hA40k3eP2O0zdNCnvrQGym8',

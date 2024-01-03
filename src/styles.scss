@@ -16,7 +16,9 @@
 @font-face {
   font-family: 'PoppinsBold';
   src: url('./app/fonts/Poppins-Bold.ttf');
-} 
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 $grey: #B6B6B6;
 $black: #2B2D42;

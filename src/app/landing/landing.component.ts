@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./landing.component.scss'],
   providers: [RepositoryService],
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
   userObservable: Observable<User[]> | undefined;
   usersList: User[] = [];
 

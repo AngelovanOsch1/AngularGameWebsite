@@ -1,4 +1,4 @@
-import { Component, HostListener, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -13,7 +13,7 @@ import { FirebaseFunctionsService } from '../services/firebasefunctions.service'
   styleUrls: ['./header.component.scss'],
   providers: [RepositoryService, FirebaseFunctionsService],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   showHeader: boolean = true;
   userId?: string;
   user?: User | null;
@@ -22,7 +22,6 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    private renderer: Renderer2,
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,
     private afAuth: AngularFireAuth
@@ -40,17 +39,16 @@ export class HeaderComponent {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event) {
+  onScroll() {
     const scrollPosition =
       window.scrollY ||
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
 
-    // Adjust the scroll threshold (500px in this case)
     this.isScrolled = scrollPosition >= 900;
   }
-  
+
   async ngOnInit(): Promise<any> {
     this.afAuth.authState.subscribe(async (user) => {
       if (user) {
@@ -61,6 +59,7 @@ export class HeaderComponent {
             .get()
             .toPromise()
         )?.data();
+        localStorage.setItem('userId', this.userId);
       } else {
         this.user = null;
       }
