@@ -1,7 +1,84 @@
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+@import "../../styles.scss";
+
+section.shop{
+  overflow-x: hidden;
+  section.hero{
+    background: url("../../assets/images/Shop-IMG.jpg");
+    background-size: cover;
+    background-position: bottom;
+    height: calc(100svh - 300px);
+  }
+  section.filter-tabs{
+    display: flex;
+    gap: 50px;
+    margin: 50px 0;
+    > * {
+      width: 100%;
+    }
+    .tab{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s ease;
+      .filter-name{
+        font-family: 'PoppinsBold';
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+      &:hover{
+        cursor: pointer;
+        transform: scale(105%);
+      }
+    }
+  }
+  .shop-container{
+    &--header{
+      margin: 100px 0 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .info-filter-container{
+        display: flex;
+        .amount{
+          padding: 0 20px 0 0;
+          height: fit-content;
+          border-right: 1px solid $black;
+        }
+        .filter-dropdown{
+          padding: 0 0 0 20px;
+          :first-child{
+            margin: 0 10px 0 0;
+          }
+        }
+      }
+    }
+    &--main{
+      margin: 0 0 100px 0;
+      display: flex;
+      gap: 100px;
+      .catagories-filter-container{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        min-width: 400px;
+        .filter{
+          border: 2px solid $black;
+          padding: 20px;
+          overflow: hidden;
+          height: fit-content;
+          .filter-type{
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+            font-family: 'PoppinsBold';
+          }
+          .hidden-container{
+            max-height: 0px;
+            visibility: hidden;
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,11 @@
+@import "../../styles.scss";
+
+section.leaderboard{
+  overflow-x: hidden;
+  section.hero{
+    background: url("../../assets/images/Leaderboard-IMG.jpg");
+    background-size: cover;
+    background-position: center;
+    height: calc(100svh - 300px);
+  }
+}

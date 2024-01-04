@@ -1,5 +1,191 @@
-<div class='column' *ngFor="let article of articlesList" (click)="showArticle(article)">
-  <h1>{{article.productName}}</h1>
-  <img [src]="article.image" height='150' width='150' />
-</div>
+<section class="page shop">
+  <section class="hero">
+    <h1>Welcome to the FantasyQuest shop!</h1>
+    <p>Your one-stop destination for exclusive upgrades and powerful items. Enhance your hero's abilities with magical gear,
+    discover unique power-ups, and equip yourself for the challenges that lie ahead. Dive into the world of Fantasia and
+    elevate your adventure with the treasures and enhancements available in our Shop.</p>
+    <a href="/shop/#scroll-down" id='scroll-down' class="scroll-down">Scroll down <img src="../../assets/icons/white-down-arrow.svg" alt=""></a>
+  </section>
+  <section class="filter-tabs">
+    <a class="tab">
+      <img src="../../assets/images/filter-tab-1.jpg" alt="">
+      <div class="filter-name">CLOTHES COLLECTION</div>
+    </a>
+    <a class="tab">
+      <img src="../../assets/images/filter-tab-2.jpg" alt="">
+      <div class="filter-name">Gaming Accessoires</div>
+    </a>
+    <a class="tab">
+      <img src="../../assets/images/filter-tab-3.jpg" alt="">
+      <div class="filter-name">Home Essentials</div>
+    </a>
+    <a class="tab">
+      <img src="../../assets/images/filter-tab-4.jpg" alt="">
+      <div class="filter-name">Efficiency Essentials</div>
+    </a>
+  </section>
+  <section class="shop-container">
+    <div class="shop-container--header">
+      <h1>CATEGORIES</h1>
+      <div class="info-filter-container">
+        <div class="amount">47 items</div>
+        <div class="filter-dropdown">
+          <label for="filter">Sort by:</label>
+          <select name="filter" id="filter">
+            <option value="Price high to low">Price high>low</option>
+            <option value="Price low to high">Price low>high</option>
+            <option value="Stock high to low">Stock high>low</option>
+            <option value="Stock low to high">Stock low>high</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="shop-container--main">
+      <div class="catagories-filter-container">
+        <div class="filter">
+          <div class="filter-type">
+            <input type="checkbox">
+            <div class="filter-name">Clothes collection</div>
+            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+          </div>
+          <div class="hidden-container">
+            <div class="detailed-filters gender">
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Men</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Women</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Children</div>
+              </div>
+            </div>
+            <div class="detailed-filters">
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Pants</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Shoes</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Cap</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Wrist wear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter-type">
+            <input type="checkbox">
+            <div class="filter-name">Gaming accessoires</div>
+            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+          </div>
+          <div class="hidden-container">
+            <div class="detailed-filters">
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Pants</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Shoes</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Cap</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Wrist wear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter-type">
+            <input type="checkbox">
+            <div class="filter-name">Home essentials</div>
+            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+          </div>
+          <div class="hidden-container">
+            <div class="detailed-filters">
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Pants</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Shoes</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Cap</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Wrist wear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter-type">
+            <input type="checkbox">
+            <div class="filter-name">Efficiency essentials</div>
+            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+          </div>
+          <div class="hidden-container">
+            <div class="detailed-filters">
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Pants</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Shoes</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Cap</div>
+              </div>
+              <div class="detail-filter">
+                <input type="checkbox">
+                <div class="detail-filter-name">Wrist wear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='column' *ngFor="let article of articlesList" (click)="showArticle(article)">
+        <h1>{{article.productName}}</h1>
+        <img [src]="article.image" height='150' width='150' />
+      </div>
+    </div>
+  </section>
+</section>
 
