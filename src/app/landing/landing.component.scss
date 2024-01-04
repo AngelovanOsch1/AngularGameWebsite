@@ -18,7 +18,7 @@ section.landing{
             background-size: cover;
             top: 0; left: 0; bottom: 0; right: 0;
             position: absolute;
-            animation: scaleInAndOutAnimation 30s infinite alternate;
+            animation: scaleInAndOutAnimation 45s infinite alternate;
             transform-origin: center;
         }
         &::after{
