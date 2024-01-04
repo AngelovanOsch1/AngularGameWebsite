@@ -136,6 +136,24 @@ button.more-padding{
   padding: 8px 30px;
 }
 
-// Newsletter section
-
-
+// ANIMATIONS
+@keyframes scaleInAndOutAnimation {
+      0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(1.2);
+      }
+      35%{
+        transform: scale(1.5) + rotate(5deg) + translate3d(200px, 10%, 1em);
+      }
+      50% {
+        transform: scale(1);
+      }
+      75%{
+        transform: scale(1.5) + rotate(-5deg) + translate3d(-200px, -10%, 1em);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }

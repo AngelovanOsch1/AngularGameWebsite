@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-warning-component',
   templateUrl: './warning-component.component.html',
-  styleUrls: ['./warning-component.component.sass'],
+  styleUrls: ['./warning-component.component.scss'],
 })
 export class WarningComponentComponent {
   text: String | undefined;

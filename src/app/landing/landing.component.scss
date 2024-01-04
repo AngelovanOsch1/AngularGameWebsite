@@ -1,6 +1,7 @@
 @import "../../styles.scss";
 
 section.landing{
+    overflow-x: hidden;
     > * {
         padding: 0 125px;
         color: #fff;
@@ -20,6 +21,8 @@ section.landing{
             background-size: cover;
             top: 0; left: 0; bottom: 0; right: 0;
             position: absolute;
+            animation: scaleInAndOutAnimation 30s infinite alternate;
+            transform-origin: center;
         }
         &::after{
             content: '';
@@ -222,12 +225,14 @@ section.landing{
         }
     }
     section.below-the-fold{
+        z-index: 10;
+        position: relative;
+        background-color: #fff;
         color: $black;
         > * {
-            margin: 150px 0 150px 0;
+            padding: 150px 0 150px 0;
         }
         section.about-us{
-            background: #fff;
             display: flex;
             gap: 60px;
             > * {
