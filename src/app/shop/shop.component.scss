@@ -38,6 +38,7 @@ section.shop{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: $black;
       .info-filter-container{
         display: flex;
         .amount{
@@ -62,6 +63,7 @@ section.shop{
         flex-direction: column;
         gap: 10px;
         min-width: 400px;
+        color: $black;
         .filter{
           border: 2px solid $black;
           overflow: hidden;
@@ -71,38 +73,59 @@ section.shop{
             gap: 20px;
             font-size: 20px;
             padding: 20px;
-            font-family: 'PoppinsBold';
-            img{transition: 0.5s ease;}
+            .filter-name{
+              font-size: 18px;
+              font-family: "PoppinsBold";
+            }
+            img{
+              margin-left: auto;
+              transition: 0.5s ease;
+            }
           }
           .hidden-container{
             max-height: 0px;
             transition: 0.5s ease;
-            padding: 0 20px;
+            padding: 0 30px;
             .detailed-filters{
-              margin: 0 0 0 6px;
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
               padding: 0 20px;
               border-left: 2px solid $black;
               transition: 0.5s all ease;
               .detail-filter{
+                font-size: 1rem;
                 display: flex;
-                gap: 10px;
+                gap: 15px;
               }
             }
           }
           &.active{
             .hidden-container{
-              padding: 0 20px 20px 20px;
+              padding: 0 20px 20px 30px;
               max-height: 500px;
               .detailed-filters{
-                margin: 10px 0 10px 6px;
+                margin: 10px 0 10px 0px;
                 &:nth-child(2){
-                  margin: 20px 0 10px 6px;
+                  margin: 20px 0 10px 0px;
                 }
               }
             }
             .filter-type img{
               transform: rotate(90deg);
             }
+          }
+        }
+      }
+      .shop-index{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        grid-gap: 50px;
+        .product{
+          background-color: red;
+          height: fit-content;
+          img{
+            width: 100%;
           }
         }
       }
