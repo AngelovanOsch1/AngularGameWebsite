@@ -47,9 +47,8 @@ export class RepositoryService {
   }
 
   async getUserDoc(userId: string): Promise<User | undefined> {
-    this.user = (
+    return (
       await getDoc(doc(this.db.firestore, `users/${userId}`))
     ).data() as User;
-    return this.user;
   }
 }

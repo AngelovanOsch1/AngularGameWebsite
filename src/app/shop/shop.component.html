@@ -19,10 +19,6 @@
       <img src="../../assets/images/filter-tab-3.jpg" alt="">
       <div class="filter-name">Home Essentials</div>
     </a>
-    <a class="tab">
-      <img src="../../assets/images/filter-tab-4.jpg" alt="">
-      <div class="filter-name">Efficiency Essentials</div>
-    </a>
   </section>
   <section class="shop-container">
     <div class="shop-container--header">
@@ -44,10 +40,6 @@
       <div class="catagories-filter-container">
         <div class="filter" [class.active]="isFilterActive(1)">
           <div class="filter-type">
-            <div class="fq-checkbox">
-              <input type="checkbox" (change)="updateFilterClass(1)" checked>
-              <span class="fq-checkbox-background"></span>
-            </div>
             <div class="filter-name">Clothes collection</div>
             <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
           </div>
@@ -116,10 +108,6 @@
         </div>
         <div class="filter" [class.active]="isFilterActive(2)">
           <div class="filter-type">
-            <div class="fq-checkbox">
-              <input type="checkbox" (change)="updateFilterClass(2)">
-              <span class="fq-checkbox-background"></span>
-            </div>
             <div class="filter-name">Gaming accessoires</div>
             <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
           </div>
@@ -165,60 +153,7 @@
         </div>
         <div class="filter" [class.active]="isFilterActive(3)">
           <div class="filter-type">
-            <div class="fq-checkbox">
-              <input type="checkbox" (change)="updateFilterClass(3)">
-              <span class="fq-checkbox-background"></span>
-            </div>
             <div class="filter-name">Home essentials</div>
-            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
-          </div>
-          <div class="hidden-container">
-            <div class="detailed-filters">
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">T-Shirts/Hoodies</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Pants</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Shoes</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Cap</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Wrist wear</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="filter" [class.active]="isFilterActive(4)">
-          <div class="filter-type">
-            <div class="fq-checkbox">
-              <input type="checkbox" (change)="updateFilterClass(4)">
-              <span class="fq-checkbox-background"></span>
-            </div>
-            <div class="filter-name">Efficiency essentials</div>
             <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
           </div>
           <div class="hidden-container">
