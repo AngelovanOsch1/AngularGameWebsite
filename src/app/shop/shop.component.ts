@@ -30,7 +30,6 @@ export class ShopComponent implements OnInit {
     private dataSharingService: DataSharingService
   ) {
     this.shopObservable = this.repositoryService.shop.valueChanges();
-    this.updateFilterClass(1);
   }
   ngOnInit() {
     this.shopObservable?.subscribe((articleDoc: Article[]) => {
@@ -41,14 +40,6 @@ export class ShopComponent implements OnInit {
   showArticle(article: Article) {
     this.dataSharingService.setSharedData(article);
     this.router.navigate(['/article']);
-  }
-
-  updateFilterClass(index: number) {
-    if (this.activeFilters.has(index)) {
-      this.activeFilters.delete(index);
-    } else {
-      this.activeFilters.add(index);
-    }
   }
 
   isFilterActive(index: number): boolean {
