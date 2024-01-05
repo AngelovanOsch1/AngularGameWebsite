@@ -60,22 +60,49 @@ section.shop{
       .catagories-filter-container{
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 10px;
         min-width: 400px;
         .filter{
           border: 2px solid $black;
-          padding: 20px;
           overflow: hidden;
           height: fit-content;
           .filter-type{
             display: flex;
             gap: 20px;
             font-size: 20px;
+            padding: 20px;
             font-family: 'PoppinsBold';
+            img{transition: 0.5s ease;}
           }
           .hidden-container{
             max-height: 0px;
-            visibility: hidden;
+            transition: 0.5s ease;
+            padding: 0 20px;
+            .detailed-filters{
+              margin: 0 0 0 6px;
+              padding: 0 20px;
+              border-left: 2px solid $black;
+              transition: 0.5s all ease;
+              .detail-filter{
+                display: flex;
+                gap: 10px;
+              }
+            }
+          }
+          &.active{
+            .hidden-container{
+              padding: 0 20px 20px 20px;
+              max-height: 500px;
+              .detailed-filters{
+                margin: 10px 0 10px 6px;
+                &:nth-child(2){
+                  margin: 20px 0 10px 6px;
+                }
+              }
+            }
+            .filter-type img{
+              transform: rotate(90deg);
+            }
           }
         }
       }

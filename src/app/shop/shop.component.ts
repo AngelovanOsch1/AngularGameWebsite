@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../services/data-sharing.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
@@ -14,6 +15,14 @@ import { DataSharingService } from '../services/data-sharing.service';
 export class ShopComponent implements OnInit {
   shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
+  activeFilters: Set<number> = new Set<number>();
+  
+  filters: string[] = [
+    'Clothes collection',
+    'Gaming accessories',
+    'Home essentials',
+    'Efficiency essentials',
+  ];
 
   constructor(
     private repositoryService: RepositoryService,
@@ -21,6 +30,7 @@ export class ShopComponent implements OnInit {
     private dataSharingService: DataSharingService
   ) {
     this.shopObservable = this.repositoryService.shop.valueChanges();
+    this.updateFilterClass(1);
   }
   ngOnInit() {
     this.shopObservable?.subscribe((articleDoc: Article[]) => {
@@ -31,5 +41,17 @@ export class ShopComponent implements OnInit {
   showArticle(article: Article) {
     this.dataSharingService.setSharedData(article);
     this.router.navigate(['/article']);
+  }
+
+  updateFilterClass(index: number) {
+    if (this.activeFilters.has(index)) {
+      this.activeFilters.delete(index);
+    } else {
+      this.activeFilters.add(index);
+    }
+  }
+
+  isFilterActive(index: number): boolean {
+    return this.activeFilters.has(index);
   }
 }
