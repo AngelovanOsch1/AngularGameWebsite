@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../services/data-sharing.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shop',
