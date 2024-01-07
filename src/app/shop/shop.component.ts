@@ -15,14 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class ShopComponent implements OnInit {
   shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
-  activeFilters: Set<number> = new Set<number>();
-  
-  filters: string[] = [
-    'Clothes collection',
-    'Gaming accessories',
-    'Home essentials',
-    'Efficiency essentials',
-  ];
+  activeIndices: Set<number> = new Set<number>();
 
   constructor(
     private repositoryService: RepositoryService,
@@ -42,7 +35,15 @@ export class ShopComponent implements OnInit {
     this.router.navigate(['/article']);
   }
 
-  isFilterActive(index: number): boolean {
-    return this.activeFilters.has(index);
+  toggleActive(index: number) {
+    if (this.activeIndices.has(index)) {
+      this.activeIndices.delete(index); 
+    } else {
+      this.activeIndices.add(index);
+    }
+  }
+
+  isActive(index: number): boolean {
+    return this.activeIndices.has(index);
   }
 }

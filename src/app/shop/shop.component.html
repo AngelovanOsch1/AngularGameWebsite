@@ -38,35 +38,43 @@
     </div>
     <div class="shop-container--main">
       <div class="catagories-filter-container">
-        <div class="filter">
+        <div class="filter active gender">
           <div class="filter-type">
-            <div class="filter-name">Clothes collection</div>
-            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+            <div class="filter-name">Gender</div>
+            <img src="../../assets/icons/gender-mark-1-svgrepo-com.svg" alt="FQ arrows long">
           </div>
           <div class="hidden-container">
             <div class="detailed-filters gender">
               <div class="detail-filter">
-                <div class="fq-checkbox small">
+                <div class="fq-checkbox small gender">
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
                 <div class="detail-filter-name">Men</div>
               </div>
               <div class="detail-filter">
-                <div class="fq-checkbox small">
+                <div class="fq-checkbox small gender">
                   <input type="checkbox">
-                    <span class="fq-checkbox-background"></span>
-                  </div>
+                  <span class="fq-checkbox-background"></span>
+                </div>
                 <div class="detail-filter-name">Women</div>
               </div>
               <div class="detail-filter">
-                <div class="fq-checkbox small">
+                <div class="fq-checkbox small gender">
                   <input type="checkbox">
-                    <span class="fq-checkbox-background"></span>
-                  </div>
-                  <div class="detail-filter-name">Children</div>
+                  <span class="fq-checkbox-background"></span>
+                </div>
+                <div class="detail-filter-name">Children</div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="filter" [class.active]="isActive(1)">
+          <div class="filter-type" (click)="toggleActive(1)">
+            <div class="filter-name">Clothes collection</div>
+            <img src="../../assets/icons/FQ-arrows.svg" alt="FQ arrows long">
+          </div>
+          <div class="hidden-container">
             <div class="detailed-filters">
               <div class="detail-filter">
                 <div class="fq-checkbox small">
@@ -106,10 +114,10 @@
             </div>
           </div>
         </div>
-        <div class="filter" [class.active]="isFilterActive(2)">
-          <div class="filter-type">
+        <div class="filter" [class.active]="isActive(2)">
+          <div class="filter-type" (click)="toggleActive(2)">
             <div class="filter-name">Gaming accessoires</div>
-            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+            <img src="../../assets/icons/FQ-arrows.svg" alt="FQ arrows long">
           </div>
           <div class="hidden-container">
             <div class="detailed-filters">
@@ -118,43 +126,29 @@
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+                <div class="detail-filter-name">Mouse</div>
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">Pants</div>
+                <div class="detail-filter-name">Keyboard</div>
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">Shoes</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Cap</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Wrist wear</div>
+                <div class="detail-filter-name">Headset</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="filter" [class.active]="isFilterActive(3)">
-          <div class="filter-type">
-            <div class="filter-name">Home essentials</div>
-            <img src="../../assets/icons/FQ-arrows-long.svg" alt="FQ arrows long">
+        <div class="filter" [class.active]="isActive(3)">
+          <div class="filter-type" (click)="toggleActive(3)">
+            <div class="filter-name">Home basics</div>
+            <img src="../../assets/icons/FQ-arrows.svg" alt="FQ arrows long">
           </div>
           <div class="hidden-container">
             <div class="detailed-filters">
@@ -163,35 +157,21 @@
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">T-Shirts/Hoodies</div>
+                <div class="detail-filter-name">Candles</div>
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">Pants</div>
+                <div class="detail-filter-name">Vase</div>
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
                   <input type="checkbox">
                   <span class="fq-checkbox-background"></span>
                 </div>
-                <div class="detail-filter-name">Shoes</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Cap</div>
-              </div>
-              <div class="detail-filter">
-                <div class="fq-checkbox small">
-                  <input type="checkbox">
-                  <span class="fq-checkbox-background"></span>
-                </div>
-                <div class="detail-filter-name">Wrist wear</div>
+                <div class="detail-filter-name">Lights</div>
               </div>
             </div>
           </div>

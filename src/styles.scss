@@ -179,6 +179,7 @@ section.hero{
     margin: 0 0 20px 0;
   }
 }
+
 .fq-checkbox {
   position: relative;
   width: 22px;
@@ -191,6 +192,14 @@ section.hero{
   &.small{
     width: 16px;
     height: 16px;
+  }
+  &.gender{
+    border: 2px solid $primary-color;
+    input{
+      &:checked + span {
+        background: $primary-color;
+      }
+    }
   }
   input {
     opacity: 0; 

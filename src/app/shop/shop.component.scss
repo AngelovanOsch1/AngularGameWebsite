@@ -73,11 +73,18 @@ section.shop{
             gap: 20px;
             font-size: 20px;
             padding: 20px;
+            background-color: $black;
+            color: #fff;
+            &:hover{
+              cursor: pointer;
+            }
             .filter-name{
               font-size: 18px;
               font-family: "PoppinsBold";
             }
             img{
+              width: 20px;
+              height: 20px;
               margin-left: auto;
               transition: 0.5s ease;
             }
@@ -85,7 +92,7 @@ section.shop{
           .hidden-container{
             max-height: 0px;
             transition: 0.5s ease;
-            padding: 0 30px;
+            padding: 0 20px;
             .detailed-filters{
               display: flex;
               flex-direction: column;
@@ -102,20 +109,36 @@ section.shop{
           }
           &.active{
             .hidden-container{
-              padding: 0 20px 20px 30px;
+              padding: 0 20px 20px 20px;
               max-height: 500px;
               .detailed-filters{
-                margin: 10px 0 10px 0px;
+                margin: 20px 0 0 0px;
                 &:nth-child(2){
                   margin: 20px 0 10px 0px;
                 }
               }
             }
             .filter-type img{
-              transform: rotate(90deg);
+              transform: rotate(-90deg);
+            }
+          }
+          &.gender{
+            border: 2px solid $primary-color;
+            .filter-type{
+              background: $primary-color;
+              &:hover{
+                cursor: default;
+              }
+            }
+            .hidden-container{
+              .detailed-filters{
+                border-left: 2px solid $primary-color;
+                color: $primary-color;
+              }
             }
           }
         }
+        
       }
       .shop-index{
         display: grid;
