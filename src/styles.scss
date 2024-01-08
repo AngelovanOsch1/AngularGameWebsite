@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, label, button, .pre-title, .question-container .number {
 a {
   text-decoration: none;
 }
+::selection{
+  background: $primary-color;
+  color: #fff;
+}
 
 button.normal{
   padding: 8px 15px;
