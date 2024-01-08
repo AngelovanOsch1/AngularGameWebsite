@@ -20,6 +20,7 @@
       <div class="filter-name">Home Basics</div>
     </a>
   </section>
+  <form [formGroup]='shopForm'>
   <section class="shop-container">
     <div class="shop-container--header">
       <h1>CATEGORIES</h1>
@@ -85,7 +86,7 @@
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
-                  <input type="checkbox">
+                  <input type='checkbox' formControlName='hoodies'>
                   <span class="fq-checkbox-background"></span>
                 </div>
                 <div class="detail-filter-name">Hoodies</div>
@@ -106,14 +107,14 @@
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
-                  <input type="checkbox">
+                  <input type='checkbox' formControlName='caps'>
                   <span class="fq-checkbox-background"></span>
                 </div>
                 <div class="detail-filter-name">Caps</div>
               </div>
               <div class="detail-filter">
                 <div class="fq-checkbox small">
-                  <input type="checkbox">
+                  <input type='checkbox' formControlName='caps'>
                   <span class="fq-checkbox-background"></span>
                 </div>
                 <div class="detail-filter-name">Wristwears</div>
@@ -192,5 +193,6 @@
       </div>
     </div>
   </section>
+  </form>
 </section>
 

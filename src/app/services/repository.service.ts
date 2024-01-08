@@ -5,6 +5,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Article, User } from '../interfaces/interfaces';
 import { getDoc, doc } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -50,5 +51,9 @@ export class RepositoryService {
     return (
       await getDoc(doc(this.db.firestore, `users/${userId}`))
     ).data() as User;
+  }
+
+  shopDoc(): Observable<any> {
+    return this.db.doc('/shop').valueChanges();
   }
 }
