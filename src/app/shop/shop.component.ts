@@ -17,8 +17,9 @@ export class ShopComponent implements OnInit {
   articlesList: Article[] = [];
   capsList: Article[] = [];
   hoodiesList: Article[] = [];
-
-  articlesListTest: Article[] = [];
+  menList: Article[] = [];
+  womenList: Article[] = [];
+  childrenList: Article[] = [];
 
   article: Article | undefined;
   activeIndices: Set<number> = new Set<number>();
@@ -33,12 +34,12 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.shopObservable?.subscribe((articleDoc: Article[]) => {
       this.articlesList = articleDoc;
-      this.articlesList.forEach((doc) => {
-        switch (doc.product) {
+      this.articlesList.forEach((articleDoc: Article) => {
+        switch (articleDoc.product) {
           case 'cap':
             this.shopForm.controls['caps'].valueChanges.subscribe((val) => {
               if (val) {
-                this.capsList.push(doc);
+                this.capsList.push(articleDoc);
               } else {
                 this.capsList = [];
               }
@@ -47,7 +48,7 @@ export class ShopComponent implements OnInit {
           case 'hoodie':
             this.shopForm.controls['hoodies'].valueChanges.subscribe((val) => {
               if (val) {
-                this.hoodiesList.push(doc);
+                this.hoodiesList.push(articleDoc);
               } else {
                 this.hoodiesList = [];
               }
@@ -65,6 +66,9 @@ export class ShopComponent implements OnInit {
   shopForm: FormGroup = new FormGroup({
     caps: new FormControl(false),
     hoodies: new FormControl(false),
+    men: new FormControl(false),
+    women: new FormControl(false),
+    unisex: new FormControl(false),
   });
 
   showArticle(article: Article) {
