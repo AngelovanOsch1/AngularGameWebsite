@@ -188,7 +188,7 @@
       <div class="shop-index">
         <div class='product' *ngFor="let article of articlesList" (click)="showArticle(article)">
           <h1>{{article.productName}}</h1>
-          <h1>{{article.category}}</h1>
+          <h1>{{article.productCategory}}</h1>
           <h1>{{article.price}}</h1>
           <h1>{{article.targetAudience}}</h1>
           <img [src]="article.image" height='150' width='150' />
