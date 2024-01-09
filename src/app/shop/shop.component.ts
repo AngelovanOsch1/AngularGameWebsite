@@ -5,6 +5,7 @@ import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../services/data-sharing.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Category } from '../enums/enums';
 
 @Component({
   selector: 'app-shop',
@@ -30,8 +31,9 @@ export class ShopComponent implements OnInit {
   candlesList: Article[] = [];
   vasesList: Article[] = [];
   lightsList: Article[] = [];
-
   article: Article | undefined;
+  category = Category;
+
   activeIndices: Set<number> = new Set<number>();
 
   constructor(
@@ -49,7 +51,6 @@ export class ShopComponent implements OnInit {
           case 'men':
             this.shopForm.controls['men'].valueChanges.subscribe((val) => {
               if (val) {
-                console.log(val);
                 this.menList.push(articleDoc);
               } else {
                 this.menList = [];
@@ -233,6 +234,28 @@ export class ShopComponent implements OnInit {
     lights: new FormControl(false),
   });
 
+  handleCardClickAndFilter(category: Category) {
+    switch (category) {
+      case 'clothesCollection':
+        this.shopForm.controls['tshirts'].setValue(true);
+        this.shopForm.controls['hoodies'].setValue(true);
+        this.shopForm.controls['pants'].setValue(true);
+        this.shopForm.controls['shoes'].setValue(true);
+        this.shopForm.controls['caps'].setValue(true);
+        this.shopForm.controls['wristwears'].setValue(true);
+        break;
+      case 'gamingAccessory':
+        this.shopForm.controls['mice'].setValue(true);
+        this.shopForm.controls['keyboards'].setValue(true);
+        this.shopForm.controls['headsets'].setValue(true);
+        break;
+      case 'homeBasic':
+        this.shopForm.controls['candles'].setValue(true);
+        this.shopForm.controls['vases'].setValue(true);
+        this.shopForm.controls['lights'].setValue(true);
+        break;
+    }
+  }
   showArticle(article: Article) {
     this.dataSharingService.setSharedData(article);
     this.router.navigate(['/article']);
