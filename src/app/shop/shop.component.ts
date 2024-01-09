@@ -15,11 +15,21 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ShopComponent implements OnInit {
   shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
-  capsList: Article[] = [];
-  hoodiesList: Article[] = [];
   menList: Article[] = [];
   womenList: Article[] = [];
-  childrenList: Article[] = [];
+  unisexList: Article[] = [];
+  tshirtList: Article[] = [];
+  hoodiesList: Article[] = [];
+  pantsList: Article[] = [];
+  shoesList: Article[] = [];
+  capsList: Article[] = [];
+  wristwearsList: Article[] = [];
+  miceList: Article[] = [];
+  keyboardsList: Article[] = [];
+  headsetsList: Article[] = [];
+  candlesList: Article[] = [];
+  vasesList: Article[] = [];
+  lightsList: Article[] = [];
 
   article: Article | undefined;
   activeIndices: Set<number> = new Set<number>();
@@ -36,12 +46,12 @@ export class ShopComponent implements OnInit {
       this.articlesList = articleDoc;
       this.articlesList.forEach((articleDoc: Article) => {
         switch (articleDoc.product) {
-          case 'cap':
-            this.shopForm.controls['caps'].valueChanges.subscribe((val) => {
+          case 'tshirt':
+            this.shopForm.controls['tshirt'].valueChanges.subscribe((val) => {
               if (val) {
-                this.capsList.push(articleDoc);
+                this.tshirtList.push(articleDoc);
               } else {
-                this.capsList = [];
+                this.tshirtList = [];
               }
             });
             break;
@@ -54,21 +64,138 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
+          case 'pants':
+            this.shopForm.controls['pants'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.pantsList.push(articleDoc);
+              } else {
+                this.pantsList = [];
+              }
+            });
+            break;
+          case 'shoes':
+            this.shopForm.controls['shoes'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.shoesList.push(articleDoc);
+              } else {
+                this.shoesList = [];
+              }
+            });
+            break;
+          case 'cap':
+            this.shopForm.controls['caps'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.capsList.push(articleDoc);
+              } else {
+                this.capsList = [];
+              }
+            });
+            break;
+          case 'wristwears':
+            this.shopForm.controls['wristwears'].valueChanges.subscribe(
+              (val) => {
+                if (val) {
+                  this.wristwearsList.push(articleDoc);
+                } else {
+                  this.wristwearsList = [];
+                }
+              }
+            );
+            break;
+          case 'mice':
+            this.shopForm.controls['mice'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.miceList.push(articleDoc);
+              } else {
+                this.miceList = [];
+              }
+            });
+            break;
+          case 'keyboards':
+            this.shopForm.controls['keyboards'].valueChanges.subscribe(
+              (val) => {
+                if (val) {
+                  this.keyboardsList.push(articleDoc);
+                } else {
+                  this.keyboardsList = [];
+                }
+              }
+            );
+            break;
+          case 'headsets':
+            this.shopForm.controls['headsets'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.headsetsList.push(articleDoc);
+              } else {
+                this.headsetsList = [];
+              }
+            });
+            break;
+          case 'candles':
+            this.shopForm.controls['candles'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.candlesList.push(articleDoc);
+              } else {
+                this.candlesList = [];
+              }
+            });
+            break;
+          case 'vases':
+            this.shopForm.controls['vases'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.vasesList.push(articleDoc);
+              } else {
+                this.vasesList = [];
+              }
+            });
+            break;
+          case 'lights':
+            this.shopForm.controls['lights'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.lightsList.push(articleDoc);
+              } else {
+                this.lightsList = [];
+              }
+            });
+            break;
         }
       });
     });
 
     this.shopForm.valueChanges.subscribe(() => {
-      this.articlesList = [...this.capsList, ...this.hoodiesList];
+      this.articlesList = [
+        ...this.tshirtList,
+        ...this.hoodiesList,
+        ...this.pantsList,
+        ...this.shoesList,
+        ...this.capsList,
+        ...this.wristwearsList,
+        ...this.miceList,
+        ...this.keyboardsList,
+        ...this.headsetsList,
+        ...this.candlesList,
+        ...this.vasesList,
+        ...this.lightsList,
+      ];
     });
   }
 
   shopForm: FormGroup = new FormGroup({
-    caps: new FormControl(false),
-    hoodies: new FormControl(false),
     men: new FormControl(false),
     women: new FormControl(false),
     unisex: new FormControl(false),
+    tshirt: new FormControl(false),
+    hoodies: new FormControl(false),
+    pants: new FormControl(false),
+    shoes: new FormControl(false),
+    caps: new FormControl(false),
+    wristwears: new FormControl(false),
+    mice: new FormControl(false),
+    keyboards: new FormControl(false),
+    headsets: new FormControl(false),
+    candles: new FormControl(false),
+    vases: new FormControl(false),
+    lights: new FormControl(false),
   });
 
   showArticle(article: Article) {
