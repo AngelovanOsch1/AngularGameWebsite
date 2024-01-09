@@ -163,14 +163,13 @@ section.shop{
             gap: 30px;
             font-size: 1.125rem;
             text-transform: capitalize;
-            .type{}
-            .gender{
+            .type{
               position: relative;
 
               &::after{
                 content: "";
                 position: absolute;
-                left: -20px;
+                right: -20px;
                 top: 0;
                 bottom: 0;
                 margin: auto;
@@ -180,6 +179,7 @@ section.shop{
                 background-color: #4056F4;
               }
             }
+            .gender{}
           }
           p{
             font-size: 0.75rem;

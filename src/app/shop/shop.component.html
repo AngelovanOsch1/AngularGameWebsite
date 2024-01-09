@@ -190,8 +190,8 @@
           <img [src]="article.image" />
           <div class="title">{{article.productName}}</div>
           <div class="types-container">
-            <div class="type">{{article.productCategory}} test</div>
-            <div class="gender">{{article.targetAudience}}</div>
+            <div class="type" *ngIf="article?.productCategory">{{article.productCategory}}</div>
+            <div class="gender" *ngIf="article?.targetAudience">{{article.targetAudience}}</div>
           </div>
           <p>{{article.description}} - Please do not read this, cuz if you do read this you will waste valuable seconds of your life. Expect no return for the waste. Thanks if you did read this but, ur still wasting ur time.</p>
           <div class="bottom-container">
