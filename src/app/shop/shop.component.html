@@ -25,7 +25,7 @@
     <div class="shop-container--header">
       <h1>CATEGORIES</h1>
       <div class="info-filter-container">
-        <div class="amount">47 items</div>
+        <div class="amount">{{articlesList.length}} items</div>
         <div class="filter-dropdown">
           <label for="filter">Sort by:</label>
           <select name="filter" id="filter">
@@ -199,7 +199,7 @@
             <button class='normal primary-color'><img src="../../assets/icons/shop-basket-icon.svg" alt="shop-basket-icon"></button>
           </div>
         </div>
-        <div class='product' *ngFor="let article of articlesList" (click)="showArticle(article)">
+        <!-- <div class='product' *ngFor="let article of articlesList" (click)="showArticle(article)">
           <img [src]="article.image" />
           <div class="title">{{article.productName}}</div>
           <div class="types-container">
@@ -268,7 +268,7 @@
             <div class="price">€{{article.price}}</div>
             <button class='normal primary-color'><img src="../../assets/icons/shop-basket-icon.svg" alt="shop-basket-icon"></button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
