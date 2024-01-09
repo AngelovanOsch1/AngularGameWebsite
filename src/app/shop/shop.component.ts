@@ -64,7 +64,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'pants':
+          case 'pant':
             this.shopForm.controls['pants'].valueChanges.subscribe((val) => {
               if (val) {
                 this.pantsList.push(articleDoc);
@@ -73,7 +73,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'shoes':
+          case 'shoe':
             this.shopForm.controls['shoes'].valueChanges.subscribe((val) => {
               if (val) {
                 this.shoesList.push(articleDoc);
@@ -91,7 +91,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'wristwears':
+          case 'wristwear':
             this.shopForm.controls['wristwears'].valueChanges.subscribe(
               (val) => {
                 if (val) {
@@ -102,7 +102,7 @@ export class ShopComponent implements OnInit {
               }
             );
             break;
-          case 'mice':
+          case 'mouse':
             this.shopForm.controls['mice'].valueChanges.subscribe((val) => {
               if (val) {
                 this.miceList.push(articleDoc);
@@ -111,7 +111,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'keyboards':
+          case 'keyboard':
             this.shopForm.controls['keyboards'].valueChanges.subscribe(
               (val) => {
                 if (val) {
@@ -122,7 +122,7 @@ export class ShopComponent implements OnInit {
               }
             );
             break;
-          case 'headsets':
+          case 'headset':
             this.shopForm.controls['headsets'].valueChanges.subscribe((val) => {
               if (val) {
                 this.headsetsList.push(articleDoc);
@@ -131,7 +131,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'candles':
+          case 'candle':
             this.shopForm.controls['candles'].valueChanges.subscribe((val) => {
               if (val) {
                 this.candlesList.push(articleDoc);
@@ -140,7 +140,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'vases':
+          case 'vase':
             this.shopForm.controls['vases'].valueChanges.subscribe((val) => {
               if (val) {
                 this.vasesList.push(articleDoc);
@@ -149,7 +149,7 @@ export class ShopComponent implements OnInit {
               }
             });
             break;
-          case 'lights':
+          case 'light':
             this.shopForm.controls['lights'].valueChanges.subscribe((val) => {
               if (val) {
                 this.lightsList.push(articleDoc);
@@ -184,7 +184,7 @@ export class ShopComponent implements OnInit {
     men: new FormControl(false),
     women: new FormControl(false),
     unisex: new FormControl(false),
-    tshirt: new FormControl(false),
+    tshirts: new FormControl(false),
     hoodies: new FormControl(false),
     pants: new FormControl(false),
     shoes: new FormControl(false),
