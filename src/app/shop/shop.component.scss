@@ -145,10 +145,69 @@ section.shop{
         grid-template-columns: repeat(4, 1fr); 
         grid-gap: 50px;
         .product{
-          background-color: red;
+          width: 100%;
           height: fit-content;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          transition: 0.3s ease;
           img{
             width: 100%;
+          }
+          .title{
+            font-size: 1.5625rem;
+            text-transform: capitalize;
+          }
+          .types-container{
+            display: flex;
+            gap: 30px;
+            font-size: 1.125rem;
+            text-transform: capitalize;
+            .type{}
+            .gender{
+              position: relative;
+
+              &::after{
+                content: "";
+                position: absolute;
+                left: -20px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 7px;
+                height: 7px;
+                border-radius: 50px;
+                background-color: #4056F4;
+              }
+            }
+          }
+          p{
+            font-size: 0.75rem;
+          }
+          .bottom-container{
+            display: flex;
+            gap: 20px;
+            .price{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 1.125rem;
+              color: #fff;
+              background-color: $black;
+              padding: 0 20px;
+              border-radius: 3px;
+            }
+            button{
+              img{
+                width: 30px;
+                height: 25px;
+              }
+            }
+          }
+          &:hover{
+            cursor: pointer;
+            background-color: #e5e8ff;
+            transform: scale(105%);
           }
         }
       }
