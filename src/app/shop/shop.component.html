@@ -7,25 +7,18 @@
     <a href="/shop/#scroll-down" id='scroll-down' class="scroll-down">Scroll down <img src="../../assets/icons/white-down-arrow.svg" alt=""></a>
   </section>
   <section class="filter-tabs">
-    <button (click)="handleCardClickAndFilter(category.CLOTHESCOLLECTION)">
-    <a class="tab">
+    <div class="tab" (click)="handleCardClickAndFilter(category.CLOTHESCOLLECTION)">
       <img src="../../assets/images/filter-tab-1.jpg" alt="">
       <div class="filter-name">Clothes collection</div>
-    </a>
-    </button>
-    <button (click)="handleCardClickAndFilter(category.GAMINGACCESSORY)">
-
-    <a class="tab">
+    </div>
+    <div class="tab" (click)="handleCardClickAndFilter(category.GAMINGACCESSORY)">
       <img src="../../assets/images/filter-tab-2.jpg" alt="">
       <div class="filter-name">Gaming Accessories</div>
-    </a>
-        </button>
-        <button (click)="handleCardClickAndFilter(category.HOMEBASIC)">
-    <a class="tab">
+    </div>
+    <div class="tab" (click)="handleCardClickAndFilter(category.HOMEBASIC)">
       <img src="../../assets/images/filter-tab-3.jpg" alt="">
       <div class="filter-name">Home Basics</div>
-    </a>
-        </button>
+    </div>
   </section>
   <form [formGroup]='shopForm'>
   <section class="shop-container">

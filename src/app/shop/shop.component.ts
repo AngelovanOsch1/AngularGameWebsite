@@ -16,23 +16,9 @@ import { Category } from '../enums/enums';
 export class ShopComponent implements OnInit {
   shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
-  articlesListTest: Article[] = [];
-
   menList: Article[] = [];
   womenList: Article[] = [];
   unisexList: Article[] = [];
-  tshirtList: Article[] = [];
-  hoodiesList: Article[] = [];
-  pantsList: Article[] = [];
-  shoesList: Article[] = [];
-  capsList: Article[] = [];
-  wristwearsList: Article[] = [];
-  miceList: Article[] = [];
-  keyboardsList: Article[] = [];
-  headsetsList: Article[] = [];
-  candlesList: Article[] = [];
-  vasesList: Article[] = [];
-  lightsList: Article[] = [];
   article: Article | undefined;
   category = Category;
 
@@ -49,145 +35,31 @@ export class ShopComponent implements OnInit {
     this.shopObservable?.subscribe((articleDoc: Article[]) => {
       this.articlesList = articleDoc;
       this.articlesList.forEach((articleDoc: Article) => {
-        // switch (articleDoc.targetAudience) {
-        //   case 'men':
-        //     this.shopForm.controls['men'].valueChanges.subscribe((val) => {
-        //       if (val) {
-        //         this.menList.push(articleDoc);
-        //       } else {
-        //         this.menList = [];
-        //       }
-        //     });
-        //     break;
-        //   case 'women':
-        //     this.shopForm.controls['women'].valueChanges.subscribe((val) => {
-        //       if (val) {
-        //         this.womenList.push(articleDoc);
-        //       } else {
-        //         this.womenList = [];
-        //       }
-        //     });
-        //     break;
-        //   case 'unisex':
-        //     this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
-        //       if (val) {
-        //         this.unisexList.push(articleDoc);
-        //       } else {
-        //         this.unisexList = [];
-        //       }
-        //     });
-        //     break;
-        // }
-        switch (articleDoc.product) {
-          case 'tshirt':
-            this.shopForm.controls['tshirt'].valueChanges.subscribe((val) => {
+        switch (articleDoc.targetAudience) {
+          case 'men':
+            this.shopForm.controls['men'].valueChanges.subscribe((val) => {
               if (val) {
-                this.tshirtList.push(articleDoc);
+                this.menList.push(articleDoc);
               } else {
-                this.tshirtList = [];
+                this.menList = [];
               }
             });
             break;
-          case 'hoodie':
-            this.shopForm.controls['hoodies'].valueChanges.subscribe((val) => {
+          case 'women':
+            this.shopForm.controls['women'].valueChanges.subscribe((val) => {
               if (val) {
-                this.hoodiesList.push(articleDoc);
+                this.womenList.push(articleDoc);
               } else {
-                this.hoodiesList = [];
+                this.womenList = [];
               }
             });
             break;
-          case 'pant':
-            this.shopForm.controls['pants'].valueChanges.subscribe((val) => {
+          case 'unisex':
+            this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
               if (val) {
-                this.pantsList.push(articleDoc);
+                this.unisexList.push(articleDoc);
               } else {
-                this.pantsList = [];
-              }
-            });
-            break;
-          case 'shoe':
-            this.shopForm.controls['shoes'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.shoesList.push(articleDoc);
-              } else {
-                this.shoesList = [];
-              }
-            });
-            break;
-          case 'cap':
-            this.shopForm.controls['caps'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.capsList.push(articleDoc);
-              } else {
-                this.capsList = [];
-              }
-            });
-            break;
-          case 'wristwear':
-            this.shopForm.controls['wristwears'].valueChanges.subscribe(
-              (val) => {
-                if (val) {
-                  this.wristwearsList.push(articleDoc);
-                } else {
-                  this.wristwearsList = [];
-                }
-              }
-            );
-            break;
-          case 'mouse':
-            this.shopForm.controls['mice'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.miceList.push(articleDoc);
-              } else {
-                this.miceList = [];
-              }
-            });
-            break;
-          case 'keyboard':
-            this.shopForm.controls['keyboards'].valueChanges.subscribe(
-              (val) => {
-                if (val) {
-                  this.keyboardsList.push(articleDoc);
-                } else {
-                  this.keyboardsList = [];
-                }
-              }
-            );
-            break;
-          case 'headset':
-            this.shopForm.controls['headsets'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.headsetsList.push(articleDoc);
-              } else {
-                this.headsetsList = [];
-              }
-            });
-            break;
-          case 'candle':
-            this.shopForm.controls['candles'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.candlesList.push(articleDoc);
-              } else {
-                this.candlesList = [];
-              }
-            });
-            break;
-          case 'vase':
-            this.shopForm.controls['vases'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.vasesList.push(articleDoc);
-              } else {
-                this.vasesList = [];
-              }
-            });
-            break;
-          case 'light':
-            this.shopForm.controls['lights'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.lightsList.push(articleDoc);
-              } else {
-                this.lightsList = [];
+                this.unisexList = [];
               }
             });
             break;
@@ -200,56 +72,7 @@ export class ShopComponent implements OnInit {
         ...this.menList,
         ...this.womenList,
         ...this.unisexList,
-        ...this.tshirtList,
-        ...this.hoodiesList,
-        ...this.pantsList,
-        ...this.shoesList,
-        ...this.capsList,
-        ...this.wristwearsList,
-        ...this.miceList,
-        ...this.keyboardsList,
-        ...this.headsetsList,
-        ...this.candlesList,
-        ...this.vasesList,
-        ...this.lightsList,
       ];
-
-      // this.articlesListTest.forEach((articleDoc: Article) => {
-      //   switch (articleDoc.targetAudience) {
-      //     case 'men':
-      //       this.shopForm.controls['men'].valueChanges.subscribe((val) => {
-      //         if (val) {
-      //           this.menList.push(articleDoc);
-      //         } else {
-      //           this.menList = [];
-      //         }
-      //       });
-      //       break;
-      //     case 'women':
-      //       this.shopForm.controls['women'].valueChanges.subscribe((val) => {
-      //         if (val) {
-      //           this.womenList.push(articleDoc);
-      //         } else {
-      //           this.womenList = [];
-      //         }
-      //       });
-      //       break;
-      //     case 'unisex':
-      //       this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
-      //         if (val) {
-      //           this.unisexList.push(articleDoc);
-      //         } else {
-      //           this.unisexList = [];
-      //         }
-      //       });
-      //       break;
-      //   }
-      // });
-      // this.articlesList = [
-      //   ...this.menList,
-      //   ...this.womenList,
-      //   ...this.unisexList,
-      // ];
       const ArticlesSet = new Set<Article>(this.articlesList);
       this.articlesList = [...ArticlesSet];
     });
