@@ -1,43 +1,63 @@
 @import '../../styles.scss';
 
 .container {
-  width: 75%;
-  height: 100vh;
-  margin: auto;
-  padding: 75px 0px 75px 0px;
-  background-color: rgb(71, 71, 71);
+  padding: 75px 200px;
+  min-height: 100svh;
+  position: relative;
+  &::before {
+    content: '';
+    z-index: -2;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: url("../../assets/images/Login-IMG.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  &::after{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(to bottom right,#4055f492 20%, #00ffa250 50%);
+  }
 
   .top-row {
     display: flex;
     align-items: center;
+    gap: 50px;
+
+    img{
+      width: 125px;
+      height: 125px;
+    }
 
     .title-column {
-      margin: 0px 200px 0px 200px;
-
       h1 {
         color: #ffff;
-        font-size: 4em;
+        font-size: 4rem;
+        line-height: normal;
       }
 
       p {
         color: #ffff;
-        font-size: 0.8em;
+        font-size: 0.8rem;
         font-family: 'PoppinsItalic';
       }
     }
 
     .line {
-      margin: 0px 140px 0px 0px;
       background-color: #ffff;
       height: 5px;
-      width: 200px;
+      width: 100%;
+      margin: 0 50px 0 50px;
       border-radius: 5px;
     }
 
-     h3 {
-        color: #ffff;
-        font-size: 2rem;
-      }
+    h3 {
+      margin: 2px 0 0 0;
+      color: #ffff;
+      font-size: 2rem;
+    }
   }
 
   .login-container {
@@ -53,24 +73,6 @@
         flex: 1;
         padding: 30px;
         background-color: #ffff;
-
-        label {
-          font-size: 1.5rem;
-          margin: 0px 0px 15px 0px;
-        }
-
-        input {
-          padding: 0px 0px 0px 20px;
-          font-size: 30px;
-          border: 2px solid #000; 
-          border-radius: 5px;
-        }
-
-        input::placeholder {
-            color: grey;
-            font-family: 'PoppinsRegular';
-            font-size: 15px;
-          }
       }
     }
       .button-row {
@@ -90,29 +92,10 @@
           flex-direction: column;
           gap: 20px;
 
-          button {
-            padding: 15px 30px 15px 30px;
-            background-color: $primary-color;
-            color: #ffff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-          }
-
           .checkbox-row {
             display: flex;
             gap: 10px;
 
-            input[type="checkbox"] {
-              appearance: none;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              width: 15px;
-              height: 15px;
-              border: 3px solid #fff;
-              outline: none;
-              cursor: pointer;
-            }
 
             label {
               color: #ffff;

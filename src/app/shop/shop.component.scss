@@ -150,6 +150,7 @@ section.shop{
           display: flex;
           flex-direction: column;
           gap: 5px;
+          padding: 0 20px 20px 20px;
           transition: 0.3s ease;
           img{
             width: 100%;
@@ -207,7 +208,7 @@ section.shop{
           &:hover{
             cursor: pointer;
             background-color: #e5e8ff;
-            transform: scale(105%);
+            transform: scale(103%);
           }
         }
       }
