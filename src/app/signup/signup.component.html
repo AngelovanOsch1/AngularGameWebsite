@@ -1,20 +1,48 @@
-<form [formGroup]='signUpForm'>
-  <label>username</label>
-  <input formControlName='username' />
-  <div class="loan-form__get-error">{{getError('username')}}</div>
-  <label>email</label>
-  <input formControlName='emailAddress' />
-  <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
-  <label>password</label>
-  <input formControlName='password' />
-    <div class="loan-form__get-error">{{getError('password')}}</div>
-
-  <label>repeat password</label>
-  <input formControlName='repeatPassword' />
-    <div class="loan-form__get-error">{{getError('repeatPassword')}}</div>
-    <div *ngIf="signUpForm.hasError('passwordsNotMatch')">
-      Passwords do not match.
+<div class='container signup'>
+  <div class="black-background">
+    <svg viewBox="0 0 890 814" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M813.946 720.283C808.588 714.899 807.962 706.387 812.227 700.089C930.271 525.818 912.551 286.218 759.025 131.594C602.657 -25.8942 358.809 -41.5068 185.082 84.672C178.427 89.5071 169.138 88.5774 163.834 82.2703C146.012 61.0781 128.714 40.025 112.572 19.6405C106.814 12.3681 96.0445 11.7085 89.5134 18.2856L20.4343 87.8579C13.8812 94.4593 14.5668 105.35 21.8545 111.118C41.9956 127.054 62.8652 144.038 83.8964 161.53C90.3287 166.879 91.2837 176.424 86.3382 183.19C-41.7011 358.392 -27.0489 606.194 130.376 764.713C283.393 918.826 520.201 937.079 693.077 819.498C699.327 815.246 707.734 815.892 713.067 821.268L737.798 846.175C739.774 848.164 742.247 849.578 744.959 850.257L870.566 881.761C875.177 882.917 879.297 878.608 877.964 874.016L842.525 751.738C841.794 749.24 840.453 746.96 838.621 745.117L813.946 720.283ZM589.037 467.962C584.216 476.367 572.843 477.433 566.026 470.568L378.373 281.572C372.367 275.519 372.367 265.71 378.373 259.657L435.867 201.752C441.877 195.698 441.877 185.889 435.867 179.837L413.475 157.281C404.04 147.781 410.342 132.224 423.58 133.885C565.956 151.758 673.261 321.217 589.037 467.962ZM385.104 132.831H385.085L302.416 216.119C296.191 222.389 286.021 222.132 280.126 215.546C275.56 210.442 270.937 205.269 266.269 200.035C260.427 193.482 261.169 183.311 268.217 178.098C306.764 149.588 346.635 135.545 385.094 132.853L385.104 132.831ZM182.474 267.597C187.695 260.487 197.972 259.356 204.571 265.192C209.253 269.33 213.881 273.433 218.449 277.493C225.09 283.401 225.397 293.724 219.133 300.033L143.778 375.949C137.772 382.002 137.772 391.814 143.78 397.864L181.613 435.965C187.622 442.018 197.366 442.018 203.374 435.965L256.047 382.894C262.055 376.842 271.798 376.838 277.808 382.892L687.936 795.957C694.783 802.853 693.514 814.453 685.252 819.538C345.038 1028.78 -73.483 616.194 182.474 267.597Z"
+        fill="white" fill-opacity="0.01" />
+    </svg>
+  </div>
+  <div class='top-row'>
+    <img src='../../assets/icons/white-FQ-logo.svg'>
+    <div class='title-column'>
+      <h1>FantasyQuest</h1>
+      <p>the place to track your statistics</p>
     </div>
-    <input type='checkbox' formControlName='newsletter'>
-  <button (click)='submitForm()'>submit</button>
-</form>
+    <div class='line'></div>
+    <h3>Signup</h3>
+  </div>
+  <div class='signup-container'>
+    <form [formGroup]='signUpForm'>
+      <label>username</label>
+      <input formControlName='username' />
+      <div class="loan-form__get-error">{{getError('username')}}</div>
+      <label>email</label>
+      <input formControlName='emailAddress' />
+      <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
+      <label>password</label>
+      <input formControlName='password' />
+      <div class="loan-form__get-error">{{getError('password')}}</div>
+    
+      <label>repeat password</label>
+      <input formControlName='repeatPassword' />
+      <div class="loan-form__get-error">{{getError('repeatPassword')}}</div>
+      <div *ngIf="signUpForm.hasError('passwordsNotMatch')">
+        Passwords do not match.
+      </div>
+      <input type='checkbox' formControlName='newsletter'>
+      <button (click)='submitForm()'>submit</button>
+    </form>
+  </div>
+  <footer class="login-footer">
+    <div class="copyright-text">© 2023 FantasyQuest. All Rights Reserved.</div>
+    <div class="extra-links">
+      <a href="">Privacybeleid</a>
+      <a href="">Sitemap</a>
+      <a href="">Player support</a>
+    </div>
+  </footer>
+</div>

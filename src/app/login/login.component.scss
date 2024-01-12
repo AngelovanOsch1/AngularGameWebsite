@@ -1,27 +1,8 @@
 @import '../../styles.scss';
 
 .container {
-  overflow: hidden;
-  padding: 75px 200px;
-  height: 100vh;
-  position: relative;
   &::before {
-    content: '';
-    z-index: -3;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
     background: url("../../assets/images/Login-IMG.jpg");
-    background-size: cover;
-    background-position: center;
-    animation: scaleInAndOutAnimation_LOGIN 30s infinite alternate;
-    transform-origin: center;
-  }
-  &::after{
-    content: '';
-    z-index: -2;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    background: linear-gradient(to bottom right,#4055f492 20%, #00ffa250 50%);
   }
   .black-background{
     position: absolute;

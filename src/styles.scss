@@ -253,6 +253,49 @@ section.hero{
   }
 }
 
+.container.signup,
+.container.login {
+  overflow: hidden;
+  padding: 75px 200px;
+  height: 100vh;
+  position: relative;
+  &::before {
+      content: '';
+      z-index: -3;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+      animation: scaleInAndOutAnimation_LOGIN 30s infinite alternate;
+      transform-origin: center;
+  } 
+  &::after {
+      content: '';
+      z-index: -2;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom right, #4055f492 20%, #00ffa250 50%);
+  }
+    .black-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: $black;
+      margin-left: auto;
+      min-width: 1000px;
+      width: 60%;
+      clip-path: polygon(44% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: -1;
+    }
+}
 // LOGIN / SIGNUP - Pages
 footer.login-footer,
 footer.signup-footer {
