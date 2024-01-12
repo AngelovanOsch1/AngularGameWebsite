@@ -1,0 +1,12 @@
+@import "../../styles.scss";
+
+section.events {
+    overflow-x: hidden;
+
+    section.hero {
+        background: url("https://lh5.googleusercontent.com/6g02_cx4aWc_swuEjG4-98rmvWfEdbAoziCZBhTN955tjBntWcCpmVlIjRr10asq6_QCPpPf-tPx3fMTo1V5Kzxtlv5hDPoueQgCPa-8B1YRT_M8HbaHoJQ2kwxh");
+        background-size: cover;
+        background-position: center;
+        height: calc(100svh - 300px);
+    }
+}

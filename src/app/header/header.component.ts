@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
       document.body.scrollTop ||
       0;
 
-    this.isScrolled = scrollPosition >= 900;
+    this.isScrolled = scrollPosition >= 750;
   }
 
   async ngOnInit(): Promise<any> {
