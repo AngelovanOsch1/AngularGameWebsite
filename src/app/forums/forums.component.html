@@ -2,4 +2,40 @@
   <section class="hero">
     Forums page!
   </section>
+  <div class="forums-container">
+    <h2>Forums</h2>
+  
+    <div class="forum-list">
+      <div *ngFor="let forum of forums; let i = index" class="forum-item">
+        <div class="forum-info">
+          <h3>{{ forum.title }}</h3>
+          <p>{{ forum.description }}</p>
+          <p>Posted on: {{ forum.postedOn }}</p>
+        </div>
+  
+        <div class="forum-actions">
+          <button (click)="editForum(i)" class="button edit-button">Edit</button>
+          <button class="button-common delete-button" (click)="removeForum(i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="add-forum" [class.editing]="editing">
+      <h3>{{ editing ? 'Edit Forum Post' : 'Add a New Forum Post' }}</h3>
+      <form (ngSubmit)="editing ? updateForum() : addForum()" #forumForm="ngForm">
+        <label for="newTitle">Title:</label>
+        <input id="newTitle" [(ngModel)]="newForum.title" name="newTitle" required>
+  
+        <label for="newDescription">Description:</label>
+        <textarea id="newDescription" [(ngModel)]="newForum.description" name="newDescription" required></textarea>
+  
+        <button type="submit" [disabled]="!forumForm.valid">
+          {{ editing ? 'Update Forum Post' : 'Add Forum Post' }}
+        </button>
+        <button type="button" (click)="cancel()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+
 </section>
