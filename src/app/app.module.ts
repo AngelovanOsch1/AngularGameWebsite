@@ -20,6 +20,7 @@ import { ArticleComponent } from './shop/article/article.component';
 import { NewsletterSectionComponent } from './newsletter-section/newsletter-section.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { WarningComponentComponent } from './helper-components/warning-component/warning-component.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { WarningComponentComponent } from './helper-components/warning-component
     ReactiveFormsModule,
     MatDialogModule,
     MatSnackBarModule,
+    FormsModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAYffvUNsu0hA40k3eP2O0zdNCnvrQGym8',
       authDomain: 'angulargamewebsite.firebaseapp.com',
