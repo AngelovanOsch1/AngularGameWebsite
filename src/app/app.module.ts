@@ -21,6 +21,7 @@ import { NewsletterSectionComponent } from './newsletter-section/newsletter-sect
 import { MatDialogModule } from '@angular/material/dialog';
 import { WarningComponentComponent } from './helper-components/warning-component/warning-component.component';
 import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     ArticleComponent,
     NewsletterSectionComponent,
     WarningComponentComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
