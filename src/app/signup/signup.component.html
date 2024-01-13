@@ -21,25 +21,25 @@
         <div class="input-field">
           <label>username</label>
           <input formControlName='username' />
-          <div class="loan-form__get-error">{{getError('username')}}</div>
+          <div *ngIf="getError('username')" class="loan-form__get-error">{{getError('username')}}</div>
         </div>
         <div class="input-field">
           <label>email</label>
           <input formControlName='emailAddress' />
-          <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
+          <div *ngIf="getError('emailAddress')" class="loan-form__get-error">{{getError('emailAddress')}}</div>
         </div>
       </div>
       <div class="row row-2">
         <div class="input-field">
           <label>password</label>
           <input formControlName='password' />
-          <div class="loan-form__get-error">{{getError('password')}}</div>
+          <div *ngIf="getError('password')" class="loan-form__get-error">{{getError('password')}}</div>
         </div>
         <div class="input-field">
           <label>repeat password</label>
           <input formControlName='repeatPassword' />
-          <div class="loan-form__get-error">{{getError('repeatPassword')}}</div>
-          <div *ngIf="signUpForm.hasError('passwordsNotMatch')">
+          <div *ngIf="getError('repeatPassword')" class="loan-form__get-error">{{getError('repeatPassword')}}</div>
+          <div class="loan-form__get-error" *ngIf="signUpForm.hasError('passwordsNotMatch')">
             Passwords do not match.
           </div>
         </div>
