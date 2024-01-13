@@ -21,7 +21,7 @@ export class ShopComponent implements OnInit {
   unisexList: Article[] = [];
   article: Article | undefined;
   category = Category;
-  activeIndex: Set<number> = new Set<number>();
+  activeIndex: number | undefined;
   constructor(
     private repositoryService: RepositoryService,
     private router: Router,
@@ -116,8 +116,8 @@ export class ShopComponent implements OnInit {
   handleCardClickAndFilter(category: Category) {
     switch (category) {
       case 'clothesCollection':
-        if (this.activeIndex.has(1)) {
-          this.activeIndex.delete(1);
+        if (this.activeIndex === 1) {
+          this.activeIndex = undefined;
           this.shopForm.controls['tshirts'].setValue(false);
           this.shopForm.controls['hoodies'].setValue(false);
           this.shopForm.controls['pants'].setValue(false);
@@ -125,7 +125,7 @@ export class ShopComponent implements OnInit {
           this.shopForm.controls['caps'].setValue(false);
           this.shopForm.controls['wristwears'].setValue(false);
         } else {
-          this.activeIndex.add(1);
+          this.activeIndex = 1;
           this.shopForm.controls['tshirts'].setValue(true);
           this.shopForm.controls['hoodies'].setValue(true);
           this.shopForm.controls['pants'].setValue(true);
@@ -135,26 +135,26 @@ export class ShopComponent implements OnInit {
         }
         break;
       case 'gamingAccessory':
-        if (this.activeIndex.has(2)) {
-          this.activeIndex.delete(2);
+        if (this.activeIndex === 2) {
+          this.activeIndex = undefined;
           this.shopForm.controls['mice'].setValue(false);
           this.shopForm.controls['keyboards'].setValue(false);
           this.shopForm.controls['headsets'].setValue(false);
         } else {
-          this.activeIndex.add(2);
+          this.activeIndex = 2;
           this.shopForm.controls['mice'].setValue(true);
           this.shopForm.controls['keyboards'].setValue(true);
           this.shopForm.controls['headsets'].setValue(true);
         }
         break;
       case 'homeBasic':
-        if (this.activeIndex.has(3)) {
-          this.activeIndex.delete(3);
+        if (this.activeIndex === 3) {
+          this.activeIndex = undefined;
           this.shopForm.controls['candles'].setValue(false);
           this.shopForm.controls['vases'].setValue(false);
           this.shopForm.controls['lights'].setValue(false);
         } else {
-          this.activeIndex.add(3);
+          this.activeIndex = 3;
           this.shopForm.controls['candles'].setValue(true);
           this.shopForm.controls['vases'].setValue(true);
           this.shopForm.controls['lights'].setValue(true);
@@ -168,14 +168,14 @@ export class ShopComponent implements OnInit {
   }
 
   toggleActive(index: number) {
-    if (this.activeIndex.has(index)) {
-      this.activeIndex.delete(index);
+    if (this.activeIndex === index) {
+      this.activeIndex = undefined;
     } else {
-      this.activeIndex.add(index);
+      this.activeIndex = index;
     }
   }
 
   isActive(index: number): boolean {
-    return this.activeIndex.has(index);
+    return this.activeIndex === index;
   }
 }
