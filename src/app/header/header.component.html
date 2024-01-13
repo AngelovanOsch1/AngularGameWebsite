@@ -13,5 +13,6 @@
     <button class="signup rounded-corners" *ngIf="!user?.isOnline" routerLink="/signup">Sign-up</button>
     <button class="login rounded-corners" *ngIf="!user?.isOnline" routerLink="/login">Login</button>
     <button *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
+    <button *ngIf="isOnShopPage()">user is on shop page</button>
   </nav>
 </header>

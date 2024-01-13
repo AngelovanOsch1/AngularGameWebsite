@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from '../interfaces/interfaces';
@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private route: ActivatedRoute
   ) {
     this.router.events
       .pipe(
@@ -62,6 +63,10 @@ export class HeaderComponent implements OnInit {
         this.user = null;
       }
     });
+  }
+
+  isOnShopPage(): boolean {
+    return this.router.url.includes('/shop');
   }
 
   logout() {
