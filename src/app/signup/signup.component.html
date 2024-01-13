@@ -17,25 +17,45 @@
   </div>
   <div class='signup-container'>
     <form [formGroup]='signUpForm'>
-      <label>username</label>
-      <input formControlName='username' />
-      <div class="loan-form__get-error">{{getError('username')}}</div>
-      <label>email</label>
-      <input formControlName='emailAddress' />
-      <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
-      <label>password</label>
-      <input formControlName='password' />
-      <div class="loan-form__get-error">{{getError('password')}}</div>
-    
-      <label>repeat password</label>
-      <input formControlName='repeatPassword' />
-      <div class="loan-form__get-error">{{getError('repeatPassword')}}</div>
-      <div *ngIf="signUpForm.hasError('passwordsNotMatch')">
-        Passwords do not match.
+      <div class="row row-1">
+        <div class="input-field">
+          <label>username</label>
+          <input formControlName='username' />
+          <div *ngIf="getError('username')" class="loan-form__get-error">{{getError('username')}}</div>
+        </div>
+        <div class="input-field">
+          <label>email</label>
+          <input formControlName='emailAddress' />
+          <div *ngIf="getError('emailAddress')" class="loan-form__get-error">{{getError('emailAddress')}}</div>
+        </div>
       </div>
-      <input type='checkbox' formControlName='newsletter'>
-      <button (click)='submitForm()'>submit</button>
+      <div class="row row-2">
+        <div class="input-field">
+          <label>password</label>
+          <input formControlName='password' />
+          <div *ngIf="getError('password')" class="loan-form__get-error">{{getError('password')}}</div>
+        </div>
+        <div class="input-field">
+          <label>repeat password</label>
+          <input formControlName='repeatPassword' />
+          <div *ngIf="getError('repeatPassword')" class="loan-form__get-error">{{getError('repeatPassword')}}</div>
+          <div class="loan-form__get-error" *ngIf="signUpForm.hasError('passwordsNotMatch')">
+            Passwords do not match.
+          </div>
+        </div>
+      </div>
     </form>
+    <div class="button-row">
+      <div class="extra-content">
+        <a href="/login">I already have an account</a>
+        <div class="fq-checkbox light small">
+          <input type='checkbox' formControlName='newsletter'>
+          <span class="fq-checkbox-background"></span>
+          <label>I am interested in getting a weekly newsletter to keep me informed about the game.</label>
+        </div>
+      </div>
+      <button (click)='submitForm()' class='normal primary-color big weapon glowing'>Sign up</button>
+    </div>
   </div>
   <footer class="login-footer">
     <div class="copyright-text">© 2023 FantasyQuest. All Rights Reserved.</div>
