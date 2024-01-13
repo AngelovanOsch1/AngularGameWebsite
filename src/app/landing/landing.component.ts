@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -28,14 +28,15 @@ export class LandingComponent implements OnInit {
     this.userObservable = this.repositoryService.usersCollection.valueChanges();
   }
   async ngOnInit(): Promise<any> {
-    this.afAuth.authState.subscribe(async (user) => {
+    this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.user = (
-          await this.repositoryService.usersCollection
-            .doc<User>(user.uid)
-            .get()
-            .toPromise()
-        )?.data();
+        this.repositoryService.usersCollection
+          .doc<User>(user.uid)
+          .get()
+          .pipe(take(1))
+          .subscribe((snapshot) => {
+            this.user = snapshot?.data();
+          });
       } else {
         this.user = undefined;
       }

@@ -6,6 +6,7 @@ import { User } from '../interfaces/interfaces';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-newsletter-section',
@@ -17,15 +18,15 @@ export class NewsletterSectionComponent implements OnInit {
   userId: string | undefined;
 
   async ngOnInit(): Promise<any> {
-    this.afAuth.authState.subscribe(async (user) => {
+    this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userId = user.uid;
-        this.user = (
-          await this.repositoryService.usersCollection
-            .doc<User>(user.uid)
-            .get()
-            .toPromise()
-        )?.data();
+        this.repositoryService.usersCollection
+          .doc<User>(user.uid)
+          .get()
+          .pipe(take(1))
+          .subscribe((snapshot) => {
+            this.user = snapshot?.data();
+          });
       } else {
         this.user = undefined;
       }

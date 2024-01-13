@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter, take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
@@ -50,15 +50,16 @@ export class HeaderComponent implements OnInit {
     this.isScrolled = scrollPosition >= 750;
   }
 
-  async ngOnInit(): Promise<any> {
-    this.afAuth.authState.subscribe(async (user) => {
+  ngOnInit(): void {
+    this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.user = (
-          await this.repositoryService.usersCollection
-            .doc<User>(user.uid)
-            .get()
-            .toPromise()
-        )?.data();
+        this.repositoryService.usersCollection
+          .doc<User>(user.uid)
+          .get()
+          .pipe(take(1))
+          .subscribe((snapshot) => {
+            this.user = snapshot?.data();
+          });
       } else {
         this.user = null;
       }
