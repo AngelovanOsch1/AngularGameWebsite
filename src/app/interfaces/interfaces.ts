@@ -8,6 +8,7 @@ export interface User {
 }
 
 export interface Article {
+  id?: string;
   productName: string;
   productCategory: string;
   product: string;
@@ -16,6 +17,12 @@ export interface Article {
   stock: number;
   description: string;
   image: string;
+}
+
+export interface Comment {
+  id?: string;
+  userComment: string;
+  image?: string;
   likes: string[];
   dislikes: string[];
 }

@@ -4,8 +4,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map, take } from 'rxjs';
-import { Article, User } from 'src/app/interfaces/interfaces';
+import { map, take, tap } from 'rxjs';
+import { Article, Comment, User } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { arrayRemove } from 'firebase/firestore';
 
@@ -18,8 +18,7 @@ import { arrayRemove } from 'firebase/firestore';
 export class ArticleComponent implements OnInit {
   articleId: string | undefined;
   user: User | undefined;
-  commentsObservable: Observable<any[]> | undefined;
-  commentsList: any[] | undefined;
+  commentsList: Comment[] | undefined;
   article: Article | undefined;
   file?: File;
   image: string | undefined;
@@ -40,6 +39,7 @@ export class ArticleComponent implements OnInit {
       .valueChanges()
       .subscribe((val) => {
         this.article = val;
+        console.log('val', val);
       });
 
     this.afAuth.authState.subscribe((user) => {
@@ -56,22 +56,22 @@ export class ArticleComponent implements OnInit {
       }
     });
 
-    this.commentsObservable = this.commentsObservable = this.firestore
+    this.firestore
       .collection(`shop/${this.articleId}/comments`)
       .snapshotChanges()
       .pipe(
         map((actions) =>
-          actions.map((a: any) => {
-            const data = a.payload.doc.data() as any;
+          actions.map((a) => {
+            const data = a.payload.doc.data() as Comment;
             const id = a.payload.doc.id;
-            return { id, ...data };
+            return { id, ...data } as Comment;
           })
-        )
-      );
-
-    this.commentsObservable.subscribe((comments: any[]) => {
-      this.commentsList = comments;
-    });
+        ),
+        tap((comments: Comment[]) => {
+          this.commentsList = comments;
+        })
+      )
+      .subscribe();
   }
 
   commentForm: FormGroup = new FormGroup({
@@ -98,7 +98,7 @@ export class ArticleComponent implements OnInit {
     this.image = await this.storage.ref(filePath).getDownloadURL().toPromise();
   }
 
-  async like(comment: any) {
+  async like(comment: Comment) {
     if (comment.likes.includes(this.user!.username)) {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)
@@ -124,7 +124,7 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  async dislike(comment: any) {
+  async dislike(comment: Comment) {
     if (comment.dislikes.includes(this.user!.username)) {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)

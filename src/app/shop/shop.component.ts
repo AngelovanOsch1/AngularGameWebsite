@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../interfaces/interfaces';
-import { Observable, map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -18,10 +18,8 @@ interface Post {
   providers: [RepositoryService],
 })
 export class ShopComponent implements OnInit {
-  shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
   articlesListTest: Article[] = [];
-
   menList: Article[] = [];
   womenList: Article[] = [];
   unisexList: Article[] = [];
@@ -29,15 +27,12 @@ export class ShopComponent implements OnInit {
   postsTest: Post[] = [];
   article: Article | undefined;
   category = Category;
-  // activeIndex: number | undefined;
   activeIndex: Set<number> = new Set();
   currentPage: number | undefined;
   constructor(
     private repositoryService: RepositoryService,
     private router: Router
-  ) {
-    this.shopObservable = this.repositoryService.shop.valueChanges();
-  }
+  ) {}
   ngOnInit() {
     for (let i = 1; i <= 15; i++) {
       const post: Post = {
@@ -50,51 +45,57 @@ export class ShopComponent implements OnInit {
 
     this.changePage(1);
 
-    this.shopObservable = this.repositoryService.shop.snapshotChanges().pipe(
-      map((actions) =>
-        actions.map((a) => {
-          const data = a.payload.doc.data() as Article;
-          const id = a.payload.doc.id;
-          return { id, ...data };
+    this.repositoryService.shop
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as Article;
+            const id = a.payload.doc.id;
+            return { id, ...data } as Article;
+          })
+        ),
+        tap((article: Article[]) => {
+          this.articlesList = article;
+          this.articlesList.sort((a, b) => b.stock - a.stock);
+          this.articlesList.forEach((articleDoc: Article) => {
+            switch (articleDoc.targetAudience) {
+              case 'men':
+                this.shopForm.controls['men'].valueChanges.subscribe((val) => {
+                  if (val) {
+                    this.articlesList.push(articleDoc);
+                  } else {
+                    this.articlesList = [];
+                  }
+                });
+                break;
+              case 'women':
+                this.shopForm.controls['women'].valueChanges.subscribe(
+                  (val) => {
+                    if (val) {
+                      this.articlesList.push(articleDoc);
+                    } else {
+                      this.articlesList = [];
+                    }
+                  }
+                );
+                break;
+              case 'unisex':
+                this.shopForm.controls['unisex'].valueChanges.subscribe(
+                  (val) => {
+                    if (val) {
+                      this.articlesList.push(articleDoc);
+                    } else {
+                      this.articlesList = [];
+                    }
+                  }
+                );
+                break;
+            }
+          });
         })
       )
-    );
-
-    this.shopObservable?.subscribe((articleDoc: Article[]) => {
-      this.articlesList = articleDoc;
-      this.articlesList.sort((a, b) => b.stock - a.stock);
-      this.articlesList.forEach((articleDoc: Article) => {
-        switch (articleDoc.targetAudience) {
-          case 'men':
-            this.shopForm.controls['men'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.articlesList.push(articleDoc);
-              } else {
-                this.articlesList = [];
-              }
-            });
-            break;
-          case 'women':
-            this.shopForm.controls['women'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.articlesList.push(articleDoc);
-              } else {
-                this.articlesList = [];
-              }
-            });
-            break;
-          case 'unisex':
-            this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
-              if (val) {
-                this.articlesList.push(articleDoc);
-              } else {
-                this.articlesList = [];
-              }
-            });
-            break;
-        }
-      });
-    });
+      .subscribe();
 
     this.shopForm.controls['sortByFilter'].valueChanges.subscribe((val) => {
       switch (val) {
@@ -192,8 +193,8 @@ export class ShopComponent implements OnInit {
         break;
     }
   }
-  showArticle(article: any) {
-    const encodedId = btoa(article.id);
+  showArticle(article: Article) {
+    const encodedId = btoa(article.id ?? '');
     this.router.navigate(['article', encodedId]);
   }
 
