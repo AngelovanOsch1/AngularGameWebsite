@@ -16,4 +16,6 @@ export interface Article {
   stock: number;
   description: string;
   image: string;
+  likes: string[];
+  dislikes: string[];
 }

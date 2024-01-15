@@ -2,4 +2,13 @@
   <h1>{{article?.productName}}</h1>
   <img [src]="article?.image" height='150' width='150' />
   <h1>{{article?.description}}</h1>
+  <form [formGroup]='commentForm'>
+    <textarea formControlName='userComment'></textarea>
+    <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+    <img *ngIf="image" [src]='article?.image' />
+    <button (click)="like()">like:</button>
+    <p>{{article?.likes?.length}}</p>
+    <button (click)="dislike()">dislike:</button>
+    <p>{{article?.dislikes?.length}}</p>
+  </form>
 </div>

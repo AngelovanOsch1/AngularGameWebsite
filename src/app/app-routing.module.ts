@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'article', component: ArticleComponent },
+  { path: 'article/:id', component: ArticleComponent },
   { path: 'forums', component: ForumsComponent },
   { path: 'events', component: EventsComponent },
 ];

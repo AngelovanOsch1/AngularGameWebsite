@@ -16,12 +16,13 @@ import { ShopComponent } from './shop/shop.component';
 import { ForumsComponent } from './forums/forums.component';
 import { EventsComponent } from './events/events.component';
 import { FooterComponent } from './footer/footer.component';
-import { ArticleComponent } from './shop/article/article.component';
 import { NewsletterSectionComponent } from './newsletter-section/newsletter-section.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { WarningComponentComponent } from './helper-components/warning-component/warning-component.component';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ArticleComponent } from './shop/article/article.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,13 @@ import { PaginationComponent } from './pagination/pagination.component';
     ForumsComponent,
     EventsComponent,
     FooterComponent,
-    ArticleComponent,
     NewsletterSectionComponent,
     WarningComponentComponent,
+    ArticleComponent,
     PaginationComponent,
   ],
   imports: [
+    AngularFireStorageModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

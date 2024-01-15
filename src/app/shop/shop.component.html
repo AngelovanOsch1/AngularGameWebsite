@@ -186,10 +186,10 @@
         </div>
       </div>
       <div class="shop-index">
-                <div class='product' *ngFor="let post of postsTest">
+                <!-- <div class='product' *ngFor="let post of postsTest">
                   <div>{{post.id}}</div>
                   <div>{{post.title}}</div>
-                </div>
+                </div> -->
 
         <div class='product' *ngFor="let article of articlesList" (click)="showArticle(article)">
           <img [src]="article.image" />

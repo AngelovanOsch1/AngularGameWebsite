@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../interfaces/interfaces';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
-import { DataSharingService } from '../services/data-sharing.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Category } from '../enums/enums';
 
@@ -21,6 +20,8 @@ interface Post {
 export class ShopComponent implements OnInit {
   shopObservable: Observable<Article[]> | undefined;
   articlesList: Article[] = [];
+  articlesListTest: Article[] = [];
+
   menList: Article[] = [];
   womenList: Article[] = [];
   unisexList: Article[] = [];
@@ -33,8 +34,7 @@ export class ShopComponent implements OnInit {
   currentPage: number | undefined;
   constructor(
     private repositoryService: RepositoryService,
-    private router: Router,
-    private dataSharingService: DataSharingService
+    private router: Router
   ) {
     this.shopObservable = this.repositoryService.shop.valueChanges();
   }
@@ -50,41 +50,51 @@ export class ShopComponent implements OnInit {
 
     this.changePage(1);
 
-    // this.shopObservable?.subscribe((articleDoc: Article[]) => {
-    //   this.articlesList = articleDoc;
-    //   this.articlesList.sort((a, b) => b.stock - a.stock);
-    //   this.articlesList.forEach((articleDoc: Article) => {
-    //     switch (articleDoc.targetAudience) {
-    //       case 'men':
-    //         this.shopForm.controls['men'].valueChanges.subscribe((val) => {
-    //           if (val) {
-    //             this.articlesList.push(articleDoc);
-    //           } else {
-    //             this.articlesList = [];
-    //           }
-    //         });
-    //         break;
-    //       case 'women':
-    //         this.shopForm.controls['women'].valueChanges.subscribe((val) => {
-    //           if (val) {
-    //             this.articlesList.push(articleDoc);
-    //           } else {
-    //             this.articlesList = [];
-    //           }
-    //         });
-    //         break;
-    //       case 'unisex':
-    //         this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
-    //           if (val) {
-    //             this.articlesList.push(articleDoc);
-    //           } else {
-    //             this.articlesList = [];
-    //           }
-    //         });
-    //         break;
-    //     }
-    //   });
-    // });
+    this.shopObservable = this.repositoryService.shop.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.doc.data() as Article;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+
+    this.shopObservable?.subscribe((articleDoc: Article[]) => {
+      this.articlesList = articleDoc;
+      this.articlesList.sort((a, b) => b.stock - a.stock);
+      this.articlesList.forEach((articleDoc: Article) => {
+        switch (articleDoc.targetAudience) {
+          case 'men':
+            this.shopForm.controls['men'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.articlesList.push(articleDoc);
+              } else {
+                this.articlesList = [];
+              }
+            });
+            break;
+          case 'women':
+            this.shopForm.controls['women'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.articlesList.push(articleDoc);
+              } else {
+                this.articlesList = [];
+              }
+            });
+            break;
+          case 'unisex':
+            this.shopForm.controls['unisex'].valueChanges.subscribe((val) => {
+              if (val) {
+                this.articlesList.push(articleDoc);
+              } else {
+                this.articlesList = [];
+              }
+            });
+            break;
+        }
+      });
+    });
 
     this.shopForm.controls['sortByFilter'].valueChanges.subscribe((val) => {
       switch (val) {
@@ -182,9 +192,9 @@ export class ShopComponent implements OnInit {
         break;
     }
   }
-  showArticle(article: Article) {
-    this.dataSharingService.setSharedData(article);
-    this.router.navigate(['/article']);
+  showArticle(article: any) {
+    const encodedId = btoa(article.id);
+    this.router.navigate(['article', encodedId]);
   }
 
   toggleActive(index: number) {
