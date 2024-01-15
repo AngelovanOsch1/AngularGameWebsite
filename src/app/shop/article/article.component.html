@@ -6,9 +6,13 @@
     <textarea formControlName='userComment'></textarea>
     <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
     <img *ngIf="image" [src]='article?.image' />
-    <button (click)="like()">like:</button>
-    <p>{{article?.likes?.length}}</p>
-    <button (click)="dislike()">dislike:</button>
-    <p>{{article?.dislikes?.length}}</p>
-  </form>
+    <button (click)="submitComment()">submit comment</button>
+    </form>
+    <div *ngFor="let comment of commentsList">
+      <p>{{comment.userComment}}</p>
+      <button (click)="like(comment)">like:</button>
+      <p>{{comment?.likes?.length}}</p>
+      <button (click)="dislike(comment)">dislike:</button>
+      <p>{{comment?.dislikes?.length}}</p>
+    </div>
 </div>

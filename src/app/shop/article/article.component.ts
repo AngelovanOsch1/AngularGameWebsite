@@ -4,10 +4,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { Article, User } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
-import { FieldValue, arrayRemove, doc, updateDoc } from 'firebase/firestore';
+import { arrayRemove } from 'firebase/firestore';
 
 @Component({
   selector: 'app-article',
@@ -16,8 +16,10 @@ import { FieldValue, arrayRemove, doc, updateDoc } from 'firebase/firestore';
   providers: [RepositoryService],
 })
 export class ArticleComponent implements OnInit {
-  decodedId: string | undefined;
+  articleId: string | undefined;
   user: User | undefined;
+  commentsObservable: Observable<any[]> | undefined;
+  commentsList: any[] | undefined;
   article: Article | undefined;
   file?: File;
   image: string | undefined;
@@ -27,15 +29,14 @@ export class ArticleComponent implements OnInit {
     private repositoryService: RepositoryService,
     private firestore: AngularFirestore,
     private storage: AngularFireStorage,
-    private afAuth: AngularFireAuth,
-    private db: AngularFirestore
+    private afAuth: AngularFireAuth
   ) {}
 
   ngOnInit() {
     const encodedId = this.route.snapshot.params['id'];
-    this.decodedId = atob(encodedId);
+    this.articleId = atob(encodedId);
     this.firestore
-      .doc<Article>(`shop/${this.decodedId}`)
+      .doc<Article>(`shop/${this.articleId}`)
       .valueChanges()
       .subscribe((val) => {
         this.article = val;
@@ -54,6 +55,23 @@ export class ArticleComponent implements OnInit {
         this.user = undefined;
       }
     });
+
+    this.commentsObservable = this.commentsObservable = this.firestore
+      .collection(`shop/${this.articleId}/comments`)
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a: any) => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+
+    this.commentsObservable.subscribe((comments: any[]) => {
+      this.commentsList = comments;
+    });
   }
 
   commentForm: FormGroup = new FormGroup({
@@ -61,53 +79,70 @@ export class ArticleComponent implements OnInit {
     userCommentPhoto: new FormControl(null),
   });
 
+  async submitComment() {
+    const userComment = this.commentForm.controls['userComment'].value;
+    try {
+      this.firestore.collection(`shop/${this.articleId}/comments`).add({
+        userComment: userComment,
+        likes: [],
+        dislikes: [],
+      });
+      this.commentForm.reset();
+    } catch (e: any) {}
+  }
+
   async onFileSelected(event: any) {
     this.file = event.target.files[0];
-    const documentId = this.firestore.createId();
     const filePath = `test6/${this.file?.name}`;
     await this.storage.upload(filePath, this.file);
     this.image = await this.storage.ref(filePath).getDownloadURL().toPromise();
   }
 
-  async like() {
-    if (this.article?.likes.includes(this.user!.username)) {
-      await this.firestore
-        .collection('shop')
-        .doc(this.decodedId)
+  async like(comment: any) {
+    if (comment.likes.includes(this.user!.username)) {
+      this.firestore
+        .collection(`shop/${this.articleId}/comments`)
+        .doc(comment.id)
         .update({
           likes: arrayRemove(this.user!.username),
         });
     } else {
-      if (this.article?.dislikes.includes(this.user!.username)) {
-        await this.firestore
-          .collection('shop')
-          .doc(this.decodedId)
+      if (comment.dislikes.includes(this.user!.username)) {
+        this.firestore
+          .collection(`shop/${this.articleId}/comments`)
+          .doc(comment.id)
           .update({
             dislikes: arrayRemove(this.user!.username),
           });
       }
-      await this.repositoryService.shop.doc(this.decodedId).update({
-        likes: [this.user!.username],
-      });
+      this.firestore
+        .collection(`shop/${this.articleId}/comments`)
+        .doc(comment.id)
+        .update({
+          likes: [this.user!.username],
+        });
     }
   }
 
-  async dislike() {
-    if (this.article?.dislikes.includes(this.user!.username)) {
-      await this.firestore
-        .collection('shop')
-        .doc(this.decodedId)
+  async dislike(comment: any) {
+    if (comment.dislikes.includes(this.user!.username)) {
+      this.firestore
+        .collection(`shop/${this.articleId}/comments`)
+        .doc(comment.id)
         .update({
           dislikes: arrayRemove(this.user!.username),
         });
     } else {
-      await this.repositoryService.shop.doc(this.decodedId).update({
-        dislikes: [this.user!.username],
-      });
-      if (this.article?.likes.includes(this.user!.username)) {
-        await this.firestore
-          .collection('shop')
-          .doc(this.decodedId)
+      this.firestore
+        .collection(`shop/${this.articleId}/comments`)
+        .doc(comment.id)
+        .update({
+          dislikes: [this.user!.username],
+        });
+      if (comment.likes.includes(this.user!.username)) {
+        this.firestore
+          .collection(`shop/${this.articleId}/comments`)
+          .doc(comment.id)
           .update({
             likes: arrayRemove(this.user!.username),
           });
