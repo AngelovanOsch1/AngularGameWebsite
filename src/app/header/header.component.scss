@@ -48,6 +48,14 @@ header {
             color: #fff;
             background-color: $primary-color;
             transition: 0.2s ease-in-out;
+            &.shop-basket{
+                background-color: transparent;
+                padding: 0 0 0 15px;
+                img{ width: 40px; }
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
             &.login{
                 box-shadow: 4px 4px 20px $primary-color;
             }

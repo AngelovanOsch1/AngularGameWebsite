@@ -36,7 +36,7 @@
       </div>
       <div class='input-field'>
         <label>password</label>
-        <input formControlName='password' placeholder='Type your password ...' />
+        <input type="password" formControlName='password' placeholder='Type your password ...' />
         <div *ngIf="getError('emailAddress')" class="loan-form__get-error">
           {{ getError('emailAddress') }}
         </div>

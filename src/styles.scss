@@ -145,6 +145,28 @@ button.primary-color{
     color: #fff;
     background-color: $primary-color;
 }
+button.red {
+  color: #fff;
+  background-color: $error-red !important;
+
+  &:hover {
+    box-shadow: 5px 5px 25px $error-red;
+  }
+}
+button.logout{
+    position: relative;
+    padding: 8px 25px 8px 55px !important;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 20px;
+      background-image: url("../src/assets/icons/logout-icon.svg");
+      background-size: cover;
+      width: 26px;
+      height: 26px;
+    }
+}
 button.rounded-corners{
   border-radius: 50px;
 }

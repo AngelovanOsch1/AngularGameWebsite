@@ -12,7 +12,7 @@
   <nav>
     <button class="signup rounded-corners" *ngIf="!user?.isOnline" routerLink="/signup">Sign-up</button>
     <button class="login rounded-corners" *ngIf="!user?.isOnline" routerLink="/login">Login</button>
-    <button *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
-    <button *ngIf="isOnShopPage()">user is on shop page</button>
+    <button class="logout normal red rounded-corners" *ngIf="user?.isOnline" (click)='logout()'>Logout</button>
+    <button class="shop-basket" *ngIf="isOnShopPage()"><img src="../../assets/icons/shop-basket-icon.svg" alt="shop basket"></button>
   </nav>
 </header>

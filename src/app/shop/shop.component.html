@@ -12,11 +12,11 @@
       <div class="filter-name">Clothes collection</div>
     </div>
     <div class="tab" (click)="handleCardClickAndFilter(category.GAMINGACCESSORY)">
-      <img src="../../assets/images/filter-tab-2.jpg" alt="">
+      <img src="../../assets/images/filter-tab-3.jpg" alt="">
       <div class="filter-name">Gaming Accessories</div>
     </div>
     <div class="tab" (click)="handleCardClickAndFilter(category.HOMEBASIC)">
-      <img src="../../assets/images/filter-tab-3.jpg" alt="">
+      <img src="../../assets/images/filter-tab-2.jpg" alt="">
       <div class="filter-name">Home Basics</div>
     </div>
   </section>
@@ -197,7 +197,7 @@
           <div class="types-container">
             <div class="type" *ngIf="article?.productCategory">{{article.productCategory}}</div>
             <div class="gender" *ngIf="article?.targetAudience">{{article.targetAudience}}</div>
-            <div class="gender" *ngIf="article?.stock">{{article.stock}}</div>
+            <div class="stock" *ngIf="article?.stock">{{article.stock}}</div>
           </div>
           <p>{{article.description}} - Please do not read this, cuz if you do read this you will waste valuable seconds of your life. Expect no return for the waste. Thanks if you did read this but, ur still wasting ur time.</p>
           <div class="bottom-container">

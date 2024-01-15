@@ -32,12 +32,12 @@
       <div class="row row-2">
         <div class="input-field">
           <label>password</label>
-          <input formControlName='password' />
+          <input type="password" formControlName='password' />
           <div *ngIf="getError('password')" class="loan-form__get-error">{{getError('password')}}</div>
         </div>
         <div class="input-field">
           <label>repeat password</label>
-          <input formControlName='repeatPassword' />
+          <input type="password" formControlName='repeatPassword' />
           <div *ngIf="getError('repeatPassword')" class="loan-form__get-error">{{getError('repeatPassword')}}</div>
           <div class="loan-form__get-error" *ngIf="signUpForm.hasError('passwordsNotMatch')">
             Passwords do not match.
