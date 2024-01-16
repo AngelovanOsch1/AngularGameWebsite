@@ -2,7 +2,7 @@ export interface User {
   emailAddress: string;
   isOnline: boolean;
   newsletter: boolean;
-  profilePhoto: string;
+  profilePhoto?: string;
   role: string;
   username: string;
 }

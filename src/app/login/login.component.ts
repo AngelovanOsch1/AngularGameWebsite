@@ -13,7 +13,6 @@ import { FirebaseFunctionsService } from '../services/firebasefunctions.service'
 })
 export class LoginComponent {
   userCredentials?: UserCredential | null;
-
   constructor(
     private firebaseFunctionsService: FirebaseFunctionsService,
     private repositoryService: RepositoryService,

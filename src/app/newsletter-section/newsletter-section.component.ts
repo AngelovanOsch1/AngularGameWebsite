@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {} from '@angular/forms';
 import { RepositoryService } from '../services/repository.service';
 import { ToastService } from '../services/toast.service';
 import { User } from '../interfaces/interfaces';
@@ -16,7 +15,6 @@ import { take } from 'rxjs';
 export class NewsletterSectionComponent implements OnInit {
   user: User | undefined;
   userId: string | undefined;
-
   async ngOnInit(): Promise<any> {
     this.afAuth.authState.subscribe((user) => {
       if (user) {

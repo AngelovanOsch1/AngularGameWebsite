@@ -13,7 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ShopComponent } from './shop/shop.component';
-import { ForumsComponent } from './forums/forums.component';
 import { EventsComponent } from './events/events.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsletterSectionComponent } from './newsletter-section/newsletter-section.component';
@@ -33,7 +32,6 @@ import { ArticleComponent } from './shop/article/article.component';
     LandingComponent,
     LeaderboardComponent,
     ShopComponent,
-    ForumsComponent,
     EventsComponent,
     FooterComponent,
     NewsletterSectionComponent,

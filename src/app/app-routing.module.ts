@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LeaderboardComponent } from '../app/leaderboard/leaderboard.component';
 import { ShopComponent } from '../app/shop/shop.component';
-import { ForumsComponent } from '../app/forums/forums.component';
 import { EventsComponent } from '../app/events/events.component';
 import { LandingComponent } from '../app/landing/landing.component';
 import { ArticleComponent } from './shop/article/article.component';
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'article/:id', component: ArticleComponent },
-  { path: 'forums', component: ForumsComponent },
   { path: 'events', component: EventsComponent },
 ];
 

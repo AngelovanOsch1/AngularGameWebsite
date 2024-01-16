@@ -14,7 +14,7 @@ import { auth } from '../firebase/firebase';
   providedIn: 'root',
 })
 export class FirebaseFunctionsService {
-  userCredentials?: UserCredential;
+  userCredentials: UserCredential | undefined;
 
   constructor(
     private toastService: ToastService,

@@ -18,9 +18,9 @@ import { arrayRemove } from 'firebase/firestore';
 export class ArticleComponent implements OnInit {
   articleId: string | undefined;
   user: User | undefined;
-  commentsList: Comment[] | undefined;
+  commentsList: Comment[] = [];
   article: Article | undefined;
-  file?: File;
+  file: File | undefined;
   image: string | undefined;
 
   constructor(
@@ -31,7 +31,7 @@ export class ArticleComponent implements OnInit {
     private afAuth: AngularFireAuth
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const encodedId = this.route.snapshot.params['id'];
     this.articleId = atob(encodedId);
     this.firestore
@@ -39,7 +39,6 @@ export class ArticleComponent implements OnInit {
       .valueChanges()
       .subscribe((val) => {
         this.article = val;
-        console.log('val', val);
       });
 
     this.afAuth.authState.subscribe((user) => {
@@ -125,6 +124,8 @@ export class ArticleComponent implements OnInit {
   }
 
   async dislike(comment: Comment) {
+    console.log(this.user);
+
     if (comment.dislikes.includes(this.user!.username)) {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)

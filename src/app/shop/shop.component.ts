@@ -33,7 +33,7 @@ export class ShopComponent implements OnInit {
     private repositoryService: RepositoryService,
     private router: Router
   ) {}
-  ngOnInit() {
+  ngOnInit(): void {
     for (let i = 1; i <= 15; i++) {
       const post: Post = {
         id: i,
@@ -144,7 +144,7 @@ export class ShopComponent implements OnInit {
     lights: new FormControl(false),
   });
 
-  handleCardClickAndFilter(category: Category) {
+  handleCardClickAndFilter(category: Category): void {
     switch (category) {
       case 'clothesCollection':
         if (this.activeIndex.has(1)) {
@@ -193,12 +193,12 @@ export class ShopComponent implements OnInit {
         break;
     }
   }
-  showArticle(article: Article) {
+  showArticle(article: Article): void {
     const encodedId = btoa(article.id ?? '');
     this.router.navigate(['article', encodedId]);
   }
 
-  toggleActive(index: number) {
+  toggleActive(index: number): void {
     if (this.activeIndex.has(index)) {
       this.activeIndex.delete(index);
     } else {

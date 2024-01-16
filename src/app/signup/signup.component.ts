@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -16,14 +16,14 @@ import { ToastService } from '../services/toast.service';
   styleUrls: ['./signup.component.scss'],
   providers: [RepositoryService, FirebaseFunctionsService, ToastService],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   constructor(
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,
     private toastService: ToastService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.signUpForm.controls['newsletter'].valueChanges.subscribe((val) => {
       if (val) {
         this.signUpForm.controls['newsletter'].setValue(true);
