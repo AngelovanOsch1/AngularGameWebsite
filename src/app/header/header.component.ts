@@ -1,31 +1,31 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { filter, take, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
+import { UserAuthService } from '../services/user-auth-service.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [RepositoryService, FirebaseFunctionsService],
+  providers: [RepositoryService, FirebaseFunctionsService, UserAuthService],
 })
 export class HeaderComponent implements OnInit {
   showHeader: boolean = true;
-  userId?: string;
-  user?: User | null;
+  user: User | undefined;
   private destroy$: Subject<void> = new Subject<void>();
   isScrolled: boolean = false;
 
   constructor(
-    private router: Router,
-    private repositoryService: RepositoryService,
-    private firebaseFunctionsService: FirebaseFunctionsService,
     private afAuth: AngularFireAuth,
-    private route: ActivatedRoute
+    private repositoryService: RepositoryService,
+    private userAuthService: UserAuthService,
+    private router: Router,
+    private firebaseFunctionsService: FirebaseFunctionsService
   ) {
     this.router.events
       .pipe(
@@ -46,11 +46,11 @@ export class HeaderComponent implements OnInit {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-
     this.isScrolled = scrollPosition >= 750;
   }
 
   ngOnInit(): void {
+    // this.user = await this.userAuthService.getLoggedInUser();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection
@@ -58,10 +58,13 @@ export class HeaderComponent implements OnInit {
           .get()
           .pipe(take(1))
           .subscribe((snapshot) => {
-            this.user = snapshot?.data();
+            const data = snapshot?.data() as User;
+            const id = snapshot.id;
+            this.user = { id, ...data } as User;
+            console.log(this.user);
           });
       } else {
-        this.user = null;
+        this.user = undefined;
       }
     });
   }
@@ -71,6 +74,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.firebaseFunctionsService.logout(this.userId!);
+    this.firebaseFunctionsService.logout(this.user!.id ?? '');
   }
 }

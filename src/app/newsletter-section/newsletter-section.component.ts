@@ -6,16 +6,27 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
 import { take } from 'rxjs';
+import { UserAuthService } from '../services/user-auth-service.service';
 
 @Component({
   selector: 'app-newsletter-section',
   templateUrl: './newsletter-section.component.html',
   styleUrls: ['./newsletter-section.component.scss'],
+  providers: [UserAuthService],
 })
 export class NewsletterSectionComponent implements OnInit {
   user: User | undefined;
   userId: string | undefined;
+  constructor(
+    private userAuthService: UserAuthService,
+    private repositoryService: RepositoryService,
+    private toastService: ToastService,
+    private afAuth: AngularFireAuth,
+    private dialog: MatDialog
+  ) {}
+
   async ngOnInit(): Promise<any> {
+    // this.user = await this.userAuthService.getLoggedInUser();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection
@@ -23,20 +34,16 @@ export class NewsletterSectionComponent implements OnInit {
           .get()
           .pipe(take(1))
           .subscribe((snapshot) => {
-            this.user = snapshot?.data();
+            const data = snapshot?.data() as User;
+            const id = snapshot.id;
+            this.user = { id, ...data } as User;
+            console.log(this.user);
           });
       } else {
         this.user = undefined;
       }
     });
   }
-  constructor(
-    private repositoryService: RepositoryService,
-    private toastService: ToastService,
-    private afAuth: AngularFireAuth,
-    private dialog: MatDialog
-  ) {}
-
   submitNewsletterForm() {
     if (!this.user?.isOnline) {
       this.dialog.open(WarningComponentComponent, {

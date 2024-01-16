@@ -3,13 +3,14 @@ import { Observable, take } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { UserAuthService } from '../services/user-auth-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
-  providers: [RepositoryService],
+  providers: [RepositoryService, UserAuthService],
 })
 export class LandingComponent implements OnInit {
   user: User | undefined;
@@ -22,12 +23,15 @@ export class LandingComponent implements OnInit {
   activeIndex: number = 1;
 
   constructor(
-    private repositoryService: RepositoryService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+
+    private userAuthService: UserAuthService,
+    private repositoryService: RepositoryService
   ) {
     this.userObservable = this.repositoryService.usersCollection.valueChanges();
   }
   async ngOnInit(): Promise<any> {
+    // this.user = await this.userAuthService.getLoggedInUser();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection
@@ -35,7 +39,10 @@ export class LandingComponent implements OnInit {
           .get()
           .pipe(take(1))
           .subscribe((snapshot) => {
-            this.user = snapshot?.data();
+            const data = snapshot?.data() as User;
+            const id = snapshot.id;
+            this.user = { id, ...data } as User;
+            console.log(this.user);
           });
       } else {
         this.user = undefined;

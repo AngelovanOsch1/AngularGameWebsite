@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -8,12 +7,14 @@ import { map, take, tap } from 'rxjs';
 import { Article, Comment, User } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { arrayRemove } from 'firebase/firestore';
+import { UserAuthService } from 'src/app/services/user-auth-service.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss'],
-  providers: [RepositoryService],
+  providers: [RepositoryService, UserAuthService],
 })
 export class ArticleComponent implements OnInit {
   articleId: string | undefined;
@@ -24,14 +25,32 @@ export class ArticleComponent implements OnInit {
   image: string | undefined;
 
   constructor(
-    private route: ActivatedRoute,
+    private afAuth: AngularFireAuth,
+    private userAuthService: UserAuthService,
     private repositoryService: RepositoryService,
+    private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage,
-    private afAuth: AngularFireAuth
+    private storage: AngularFireStorage
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<any> {
+    // this.user = await this.userAuthService.getLoggedInUser();
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.repositoryService.usersCollection
+          .doc<User>(user.uid)
+          .get()
+          .pipe(take(1))
+          .subscribe((snapshot) => {
+            const data = snapshot?.data() as User;
+            const id = snapshot.id;
+            this.user = { id, ...data } as User;
+            console.log(this.user);
+          });
+      } else {
+        this.user = undefined;
+      }
+    });
     const encodedId = this.route.snapshot.params['id'];
     this.articleId = atob(encodedId);
     this.firestore
@@ -40,20 +59,6 @@ export class ArticleComponent implements OnInit {
       .subscribe((val) => {
         this.article = val;
       });
-
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.repositoryService.usersCollection
-          .doc<User>(user.uid)
-          .get()
-          .pipe(take(1))
-          .subscribe((snapshot) => {
-            this.user = snapshot?.data();
-          });
-      } else {
-        this.user = undefined;
-      }
-    });
 
     this.firestore
       .collection(`shop/${this.articleId}/comments`)

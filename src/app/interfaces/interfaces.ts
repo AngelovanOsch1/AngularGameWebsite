@@ -1,4 +1,5 @@
 export interface User {
+  id?: string;
   emailAddress: string;
   isOnline: boolean;
   newsletter: boolean;
