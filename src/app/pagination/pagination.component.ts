@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -16,12 +9,24 @@ export class PaginationComponent {
   @Input() currentPage?: number;
   @Input() limit?: number;
   @Input() total?: number;
-  pageCount: number | undefined;
   @Output() changePage = new EventEmitter<number>();
+
+  pageCount: number | undefined;
 
   get pages(): number[] {
     this.pageCount = Math.ceil(this.total! / this.limit!);
-    return Array.from({ length: this.pageCount }, (_, index) => index + 1);
+    const visiblePages = 3;
+
+    const startPage = Math.max(
+      1,
+      this.currentPage! - Math.floor(visiblePages / 2)
+    );
+    const endPage = Math.min(this.pageCount, startPage + visiblePages - 1);
+
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, index) => startPage + index
+    );
   }
 
   nextStep() {
