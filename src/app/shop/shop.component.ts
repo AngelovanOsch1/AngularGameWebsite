@@ -34,7 +34,7 @@ export class ShopComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    for (let i = 1; i <= 15; i++) {
+    for (let i = 1; i <= 30; i++) {
       const post: Post = {
         id: i,
         title: `Post ${i}`,

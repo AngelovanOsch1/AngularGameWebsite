@@ -1,8 +1,8 @@
 <ul class="pagination">
+  <button *ngIf="currentPage! > 1" (click)="previousStep()" class="previous">Previous</button>
   <li *ngFor="let page of pages" [ngClass]="{ 'page-item': true, active: currentPage === page }"
     (click)="changePage.emit(page)">
     <span class="page-link">{{ page }}</span>
   </li>
-  <div class="button-divider">...</div>
-  <button class="next">Next</button>
+  <button *ngIf="currentPage! < pageCount!" (click)="nextStep()" class="next">Next</button>
 </ul>
