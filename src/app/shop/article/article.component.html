@@ -10,7 +10,7 @@
     </form>
     <div *ngFor="let comment of commentsList">
       <p>{{comment.userComment}}</p>
-      <button (click)="like(comment)">like:</button>
+      <button (click)="like(comment)">likes:</button>
       <p>{{comment?.likes?.length}}</p>
       <button (click)="dislike(comment)">dislike:</button>
       <p>{{comment?.dislikes?.length}}</p>
