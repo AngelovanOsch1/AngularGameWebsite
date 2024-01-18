@@ -1,54 +1,110 @@
-.pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 0.25rem;
+@import "../../styles.scss";
+
+.pagination{
+  display: flex;
+  gap: 10px;
+
+  .page-link,
+  button {
+    padding: 0.5rem 0.9rem;
+    font-family: 'PoppinsBold';
+    color: $black;
+    text-decoration: none;
+    background-color: #fff;
+    border: 2px solid $black;
+    transition: 0.2s ease;
+    &:hover {
+      cursor: pointer;
+      transform: scale(105%);
+      color: #fff;
+      background-color: $primary-color;
+      border: 2px solid $primary-color;
+    }
+  }
+  button{
+    position: relative;
+    &.next{
+      padding: 0.5rem 2.8rem 0.5rem 0.9rem;
+      &::after {
+        content: '';
+        position: absolute;
+        margin: auto;
+        right: 12px;
+        width: 25px;
+        height: 18px;
+        background-image: url("../../assets/icons/FQ-arrows-long.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      &:hover{
+        &::after {
+          filter: brightness(1000%);
+        }
+      }
+    }
+  }
+  .button-divider{
+    margin-top: auto;
+    font-size: 1.5rem;
+  }
+  .page-item {
+    display: flex;
+    &.active{
+      .page-link{
+        background-color: $black;
+        color: #fff;
+        &:hover {
+          color: #fff;
+          background-color: $black;
+          border: 2px solid $black;
+        }
+      }
+    }
+  }
 }
-.page-item {
-  display: inline;
-}
-.page-item:first-child .page-link {
-  margin-left: 0;
-  border-bottom-left-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
-}
-.page-item:last-child .page-link {
-  border-bottom-right-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-.page-item.active .page-link,
-.page-item.active .page-link:focus,
-.page-item.active .page-link:hover {
-  z-index: 2;
-  color: #fff;
-  cursor: default;
-  background-color: #5cb85c;
-  border-color: #5cb85c;
-}
-.page-item.disabled .page-link,
-.page-item.disabled .page-link:focus,
-.page-item.disabled .page-link:hover {
-  color: #818a91;
-  pointer-events: none;
-  cursor: not-allowed;
-  background-color: #fff;
-  border-color: #ddd;
-}
-.page-link {
-  position: relative;
-  float: left;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  color: #5cb85c;
-  text-decoration: none;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-.page-link:focus,
-.page-link:hover {
-  color: #3d8b3d;
-  background-color: #eceeef;
-  border-color: #ddd;
-}
+
+// .pagination {
+//   display: inline-block;
+//   padding-left: 0;
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+//   border-radius: 0.25rem;
+// }
+// .page-item {
+//   display: inline;
+// }
+// .page-item.active .page-link,
+// .page-item.active .page-link:focus,
+// .page-item.active .page-link:hover {
+//   z-index: 2;
+//   color: #fff;
+//   cursor: default;
+//   background-color: $primary-color;
+//   border-color: $primary-color;
+// }
+// .page-item.disabled .page-link,
+// .page-item.disabled .page-link:focus,
+// .page-item.disabled .page-link:hover {
+//   color: $primary-color;
+//   pointer-events: none;
+//   cursor: not-allowed;
+//   background-color: #fff;
+//   border-color: $primary-color;
+// }
+// .page-link {
+//   position: relative;
+//   float: left;
+//   padding: 0.5rem 0.75rem;
+//   margin-left: -1px;
+//   color: $primary-color;
+//   text-decoration: none;
+//   background-color: #fff;
+//   border: 1px solid $primary-color;
+//   cursor: pointer;
+// }
+// .page-link:focus,
+// .page-link:hover {
+//   color: #fff;
+//   background-color: $primary-color;
+//   border-color: $primary-color;
+// }
