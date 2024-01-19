@@ -2,8 +2,8 @@
   Hello, the chat is open!
 
   <div *ngFor="let friendRequest of friendRequestsList">
-    <button>Accept</button>
-    <button>Deny</button>
+    <button (click)="acceptFriendRequest(friendRequest)">Accept</button>
+    <button (click)="denyFriendRequest(friendRequest)">Deny</button>
   </div>
 </div>
 

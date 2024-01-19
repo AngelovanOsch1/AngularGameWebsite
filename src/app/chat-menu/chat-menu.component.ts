@@ -74,4 +74,26 @@ export class ChatMenuComponent implements OnInit {
   openChat() {
     this.isChatOpen ? (this.isChatOpen = false) : (this.isChatOpen = true);
   }
+
+  acceptFriendRequest(friendRequests: any) {
+    const relationshipsCollection = this.firestore.collection(
+      `users/${friendRequests.sentBy}/relationships`
+    );
+
+    const documentId = 'your_document_id'; // Replace with the actual ID or use a dynamic method to generate an ID
+
+    // Use set with merge: true to update the document or create it if it doesn't exist
+    relationshipsCollection
+      .doc(documentId)
+      .update({
+        friendList: ['test12356'],
+      })
+      .then(() => {
+        console.log('Document updated or created successfully!');
+      })
+      .catch((error) => {
+        console.error('Error updating or creating document:', error);
+      });
+  }
+  denyFriendRequest(friendRequests: any) {}
 }

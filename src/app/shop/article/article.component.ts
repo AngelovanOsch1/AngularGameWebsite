@@ -6,10 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take, tap } from 'rxjs';
 import { Article, Comment, User } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
-import { arrayRemove } from 'firebase/firestore';
+import { arrayRemove, arrayUnion } from 'firebase/firestore';
 import { UserAuthService } from 'src/app/services/user-auth-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -110,6 +109,12 @@ export class ArticleComponent implements OnInit {
           likes: arrayRemove(this.user!.username),
         });
     } else {
+      this.firestore
+        .collection(`shop/${this.articleId}/comments`)
+        .doc(comment.id)
+        .update({
+          likes: arrayUnion(this.user!.username),
+        });
       if (comment.dislikes.includes(this.user!.username)) {
         this.firestore
           .collection(`shop/${this.articleId}/comments`)
@@ -118,12 +123,6 @@ export class ArticleComponent implements OnInit {
             dislikes: arrayRemove(this.user!.username),
           });
       }
-      this.firestore
-        .collection(`shop/${this.articleId}/comments`)
-        .doc(comment.id)
-        .update({
-          likes: [this.user!.username],
-        });
     }
   }
 
@@ -140,7 +139,7 @@ export class ArticleComponent implements OnInit {
         .collection(`shop/${this.articleId}/comments`)
         .doc(comment.id)
         .update({
-          dislikes: [this.user!.username],
+          dislikes: arrayUnion(this.user!.username),
         });
       if (comment.likes.includes(this.user!.username)) {
         this.firestore
