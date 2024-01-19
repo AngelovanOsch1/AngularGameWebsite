@@ -187,13 +187,10 @@
       </div>
       <div class="shop-index-container">
         <div class="shop-index">
-          <!-- <div class='product' *ngFor="let post of postsTest">
-                          <div>{{post.id}}</div>
-                          <div>{{post.title}}</div>
-                        </div> -->
-        
           <div class='product' *ngFor="let article of articlesListTest" (click)="showArticle(article)">
-            <img [src]="article.image" />
+            <div class="image-container">
+              <img class="main-image" [src]="article.image" />
+            </div>
             <div class="title">{{article.productName}}</div>
             <div class="types-container">
               <div class="type" *ngIf="article?.productCategory">{{article.productCategory}}</div>
