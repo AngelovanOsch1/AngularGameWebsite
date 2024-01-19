@@ -90,9 +90,13 @@
     align-items: center;
     margin: 0 0 0 50px;
     font-size: 1rem;
-    gap: 2px;
+    gap: 5px;
      > * {
       height: fit-content;
+    }
+    strong{
+      color: $primary-color;
+      -webkit-text-stroke: 0.5px $primary-color;
     }
   }
 }

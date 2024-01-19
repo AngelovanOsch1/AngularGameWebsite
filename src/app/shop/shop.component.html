@@ -28,12 +28,18 @@
         <div class="amount">{{articlesList.length}} items</div>
         <div class="filter-dropdown">
           <label for="filter">Sort by:</label>
-          <select name="filter" id="filter" formControlName="sortByFilter">
-            <option [value]="'sortOnHighPrice'">Price high>low</option>
-            <option [value]="'sortOnLowPrice'">Price low>high</option>
-            <option [value]="'sortOnHighStock'">Stock high>low</option>
-            <option [value]="'sortOnLowStock'">Stock low>high</option>
-          </select>
+          <div class="filters-container" [class.open]="isDropdownOpen">
+            <div class="custom-dropdown" (click)="toggleDropdown()">
+              {{ selectedOption }}
+            </div>
+            <ul class="options-list">
+              <li [value]="'sortOnHighPrice'" (click)="selectOption('Price high>low')">Price high>low</li>
+              <li [value]="'sortOnLowPrice'" (click)="selectOption('Price low>high')">Price low>high</li>
+              <li [value]="'sortOnHighStock'" (click)="selectOption('Stock high>low')">Stock high>low</li>
+              <li [value]="'sortOnLowStock'" (click)="selectOption('Stock low>high')">Stock low>high</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
