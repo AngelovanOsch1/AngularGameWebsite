@@ -32,14 +32,13 @@
             <div class="custom-dropdown" (click)="toggleDropdown()">
               {{ selectedOption }}
             </div>
-            <ul class="options-list">
-              <li [value]="'sortOnHighPrice'" (click)="selectOption('Price high>low')">Price high>low</li>
-              <li [value]="'sortOnLowPrice'" (click)="selectOption('Price low>high')">Price low>high</li>
-              <li [value]="'sortOnHighStock'" (click)="selectOption('Stock high>low')">Stock high>low</li>
-              <li [value]="'sortOnLowStock'" (click)="selectOption('Stock low>high')">Stock low>high</li>
-            </ul>
+            <select class="options-list" formControlName='sortByFilter'>
+              <option [value]="'sortOnHighPrice'" (click)="selectOption('Price high>low')">Price high>low</option>
+              <option [value]="'sortOnLowPrice'" (click)="selectOption('Price low>high')">Price low>high</option>
+              <option [value]="'sortOnHighStock'" (click)="selectOption('Stock high>low')">Stock high>low</option>
+              <option [value]="'sortOnLowStock'" (click)="selectOption('Stock low>high')">Stock low>high</option>
+            </select>
           </div>
-
         </div>
       </div>
     </div>

@@ -57,20 +57,20 @@ export class ShopComponent implements OnInit {
       .subscribe();
 
     this.shopForm.controls['sortByFilter'].valueChanges.subscribe((val) => {
-      switch (val) {
-        case 'sortOnLowPrice':
-          this.articlesList.sort((a, b) => a.price - b.price);
-          break;
-        case 'sortOnHighPrice':
-          this.articlesList.sort((a, b) => b.price - a.price);
-          break;
-        case 'sortOnLowStock':
-          this.articlesList.sort((a, b) => a.stock - b.stock);
-          break;
-        case 'sortOnHighStock':
-          this.articlesList.sort((a, b) => b.stock - a.stock);
-          break;
-      }
+    switch (val) {
+      case 'sortOnLowPrice':
+        this.articlesListTest.sort((a, b) => a.price - b.price);
+        break;
+      case 'sortOnHighPrice':
+        this.articlesListTest.sort((a, b) => b.price - a.price);
+        break;
+      case 'sortOnLowStock':
+        this.articlesListTest.sort((a, b) => a.stock - b.stock);
+        break;
+      case 'sortOnHighStock':
+        this.articlesListTest.sort((a, b) => b.stock - a.stock);
+        break;
+    }
     });
   }
   shopForm: FormGroup = new FormGroup({
@@ -157,7 +157,7 @@ export class ShopComponent implements OnInit {
   getStockClass(stock: number): string {
     if (stock < 10 && stock > 0) {
       return 'low-on-stock';
-    } else if (stock <= 0) {
+    } else if (stock === 0) {
       return 'out-of-stock';
     } else {
       return ''; 
