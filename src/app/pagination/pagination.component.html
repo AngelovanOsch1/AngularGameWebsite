@@ -9,8 +9,8 @@
   <button *ngIf="currentPage! < pageCount!" (click)="nextStep()" class="next">Next</button>
   <div class="pages-indicator">
     Page
-    <div class="current-page-number">{{currentPage}}</div>
+    <strong class="current-page-number">{{currentPage}}</strong>
     of
-    <div class="current-page-number">{{pageCount}}</div>
+    <strong class="current-page-number">{{pageCount}}</strong>
   </div>
 </ul>

@@ -29,6 +29,8 @@ export class ShopComponent implements OnInit {
   category = Category;
   activeIndex: Set<number> = new Set();
   currentPage: number | undefined;
+  isDropdownOpen = false;
+  selectedOption = 'Stock high>low';
   constructor(
     private repositoryService: RepositoryService,
     private router: Router
@@ -71,7 +73,6 @@ export class ShopComponent implements OnInit {
       }
     });
   }
-
   shopForm: FormGroup = new FormGroup({
     sortByFilter: new FormControl('sortOnHighStock'),
     men: new FormControl(false),
@@ -90,7 +91,6 @@ export class ShopComponent implements OnInit {
     vases: new FormControl(false),
     lights: new FormControl(false),
   });
-
   handleCardClickAndFilter(category: Category): void {
     switch (category) {
       case 'clothesCollection':
@@ -168,5 +168,12 @@ export class ShopComponent implements OnInit {
     const startIndex = (this.currentPage - 1) * 12;
     const endIndex = startIndex + 12;
     this.articlesListTest = this.articlesList.slice(startIndex, endIndex);
+  }
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  selectOption(option: string) {
+    this.selectedOption = option;
+    this.isDropdownOpen = false;
   }
 }
