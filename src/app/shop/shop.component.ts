@@ -34,17 +34,6 @@ export class ShopComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    for (let i = 1; i <= 50; i++) {
-      const post: Post = {
-        id: i,
-        title: `Post ${i}`,
-        content: `This is the content of Post ${i}. Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-      };
-      this.posts.push(post);
-    }
-
-    this.changePage(1);
-
     this.repositoryService.shop
       .snapshotChanges()
       .pipe(
@@ -56,43 +45,11 @@ export class ShopComponent implements OnInit {
           })
         ),
         tap((article: Article[]) => {
-          this.articlesList = article;
-          this.articlesList.sort((a, b) => b.stock - a.stock);
-          this.articlesList.forEach((articleDoc: Article) => {
-            switch (articleDoc.targetAudience) {
-              case 'men':
-                this.shopForm.controls['men'].valueChanges.subscribe((val) => {
-                  if (val) {
-                    this.articlesList.push(articleDoc);
-                  } else {
-                    this.articlesList = [];
-                  }
-                });
-                break;
-              case 'women':
-                this.shopForm.controls['women'].valueChanges.subscribe(
-                  (val) => {
-                    if (val) {
-                      this.articlesList.push(articleDoc);
-                    } else {
-                      this.articlesList = [];
-                    }
-                  }
-                );
-                break;
-              case 'unisex':
-                this.shopForm.controls['unisex'].valueChanges.subscribe(
-                  (val) => {
-                    if (val) {
-                      this.articlesList.push(articleDoc);
-                    } else {
-                      this.articlesList = [];
-                    }
-                  }
-                );
-                break;
-            }
+          article.forEach((articleDoc: Article) => {
+            this.articlesList.push(articleDoc);
           });
+          this.articlesList.sort((a, b) => b.stock - a.stock);
+          this.changePage(1);
         })
       )
       .subscribe();
@@ -113,16 +70,6 @@ export class ShopComponent implements OnInit {
           break;
       }
     });
-
-    // this.shopForm.valueChanges.subscribe(() => {
-    //   this.articlesList = [
-    //     ...this.menList,
-    //     ...this.womenList,
-    //     ...this.unisexList,
-    //   ];
-    //   const ArticlesSet = new Set<Article>(this.articlesList);
-    //   this.articlesList = [...ArticlesSet];
-    // });
   }
 
   shopForm: FormGroup = new FormGroup({
@@ -214,6 +161,6 @@ export class ShopComponent implements OnInit {
     this.currentPage = page;
     const startIndex = (this.currentPage - 1) * 12;
     const endIndex = startIndex + 12;
-    this.postsTest = this.posts.slice(startIndex, endIndex);
+    this.articlesListTest = this.articlesList.slice(startIndex, endIndex);
   }
 }

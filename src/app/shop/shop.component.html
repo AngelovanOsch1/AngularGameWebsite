@@ -187,12 +187,12 @@
       </div>
       <div class="shop-index-container">
         <div class="shop-index">
-          <div class='product' *ngFor="let post of postsTest">
+          <!-- <div class='product' *ngFor="let post of postsTest">
                           <div>{{post.id}}</div>
                           <div>{{post.title}}</div>
-                        </div>
+                        </div> -->
         
-          <!-- <div class='product' *ngFor="let article of articlesList" (click)="showArticle(article)">
+          <div class='product' *ngFor="let article of articlesListTest" (click)="showArticle(article)">
             <img [src]="article.image" />
             <div class="title">{{article.productName}}</div>
             <div class="types-container">
@@ -200,18 +200,19 @@
               <div class="gender" *ngIf="article?.targetAudience">{{article.targetAudience}}</div>
               <div class="stock" *ngIf="article?.stock">{{article.stock}}</div>
             </div>
-            <p>{{article.description}} - Please do not read this, cuz if you do read this you will waste valuable seconds of
-              your life. Expect no return for the waste. Thanks if you did read this but, ur still wasting ur time.</p>
+            <p>{{article.description}}</p>
             <div class="bottom-container">
               <div class="price">€{{article.price}}</div>
               <button class='normal primary-color'><img src="../../assets/icons/shop-basket-icon.svg"
                   alt="shop-basket-icon"></button>
             </div>
-          </div> -->
+          </div>
         </div>
-                <app-pagination [currentPage]="currentPage" [limit]="12" [total]="posts.length" (changePage)="changePage($event)">
+        <div class='pagination-menu'>
+          <app-pagination [currentPage]="currentPage" [limit]="12" [total]="articlesList.length"
+            (changePage)="changePage($event)">
         </app-pagination>
-
+</div>
       </div>
     </div>
     
