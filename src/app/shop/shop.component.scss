@@ -146,7 +146,7 @@ section.shop{
         gap: 50px;
         .shop-index {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             grid-gap: 50px;
         
             .product {
@@ -161,19 +161,68 @@ section.shop{
               img {
                 width: 100%;
               }
-        
+              .image-container{
+                height: 200px;
+                position: relative;
+                overflow: hidden;
+                img{
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  object-position: center;
+                }
+                .indicator{
+                  display: none;
+                  position: absolute;
+                }
+                .low-on-stock-warning{
+                  right: 0;
+                  top: 0;
+                  padding: 12px 20px 12px 50px;
+                  color: #fff;
+                  background-color: #E8B500;
+                  &::before{
+                    content: '';
+                    position: absolute;
+                    top:0; bottom: 0; left: 15px;
+                    margin: auto;
+                    width: 20px; height: 20px;
+                    background-image: url("../../assets/icons/white-error-warning-icon.svg");
+                    background-size: contain;
+                  }
+                }
+                .out-of-stock-warning{
+                  justify-content: center;
+                  align-items: center;
+                  flex-direction: column;
+                  gap: 20px;
+                  top: 0; right: 0; bottom: 0; left: 0;
+                  background-color: #ffffffe1;
+                  backdrop-filter: blur(5px);
+                  border: 3px dashed $error-red;
+                  padding: 50px 20px;
+                  img{
+                    width: fit-content;
+                    background-size: contain;
+                  }
+                  .text{
+                    color: $error-red;
+                    font-size: 1.5rem;
+                  }
+                }
+              }
               .title {
                 font-size: 1.5625rem;
                 text-transform: capitalize;
-              }
-        
+              } 
               .types-container {
                 display: flex;
                 gap: 30px;
                 font-size: 1.125rem;
                 text-transform: capitalize;
         
-                .type {
+                .type,
+                .gender{
                   position: relative;
         
                   &::after {
@@ -190,14 +239,12 @@ section.shop{
                   }
                 }
               }
-        
               p {
                 font-size: 0.75rem;
               }
-        
               .bottom-container {
                 display: flex;
-                gap: 20px;
+                gap: 10px;
         
                 .price {
                   display: flex;
@@ -206,7 +253,7 @@ section.shop{
                   font-size: 1.125rem;
                   color: #fff;
                   background-color: $black;
-                  padding: 0 20px;
+                  padding: 0 15px;
                   border-radius: 3px;
                 }
         
@@ -217,11 +264,23 @@ section.shop{
                   }
                 }
               }
-        
+              &.low-on-stock{
+                .image-container{
+                  .low-on-stock-warning{
+                    display: block;
+                  }
+                }
+              }
+              &.out-of-stock{
+                .image-container {
+                    .out-of-stock-warning {
+                      display: flex;
+                    }
+                  }
+              }
               &:hover {
                 cursor: pointer;
-                background-color: #e5e8ff;
-                transform: scale(103%);
+                transform: scale(105%) + rotate(-1deg);
               }
             }
         }
