@@ -26,9 +26,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const encodedId = this.route.snapshot.params['id'];
-    const userId = atob(encodedId);
+    const userProfileId = atob(encodedId);
     this.firestore
-      .doc<User>(`users/${userId}`)
+      .doc<User>(`users/${userProfileId}`)
       .get()
       .pipe(take(1))
       .subscribe((snapshot) => {

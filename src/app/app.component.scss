@@ -1,0 +1,28 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.main-container {
+  flex: 1;
+}
+
+app-chat-menu {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: #f0f0f0;
+  border-left: 1px solid #ccc;
+  max-height: 100%;
+  overflow-y: auto;
+}
+

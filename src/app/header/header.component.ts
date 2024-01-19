@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit {
             const data = snapshot?.data() as User;
             const id = snapshot.id;
             this.user = { id, ...data } as User;
-            console.log(this.user);
           });
       } else {
         this.user = undefined;

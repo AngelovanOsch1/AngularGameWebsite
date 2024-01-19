@@ -1,0 +1,10 @@
+<div *ngIf="isChatOpen">
+  Hello, the chat is open!
+
+  <div *ngFor="let friendRequest of friendRequestsList">
+    <button>Accept</button>
+    <button>Deny</button>
+  </div>
+</div>
+
+<button (click)="openChat()">CHAT MENU</button>

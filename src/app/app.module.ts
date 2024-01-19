@@ -23,6 +23,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ArticleComponent } from './shop/article/article.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ChatMenuComponent } from './chat-menu/chat-menu.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ArticleComponent,
     PaginationComponent,
     UserProfileComponent,
+    ChatMenuComponent,
   ],
   imports: [
     AngularFireStorageModule,

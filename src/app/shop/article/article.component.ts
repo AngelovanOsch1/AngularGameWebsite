@@ -45,7 +45,6 @@ export class ArticleComponent implements OnInit {
             const data = snapshot?.data() as User;
             const id = snapshot.id;
             this.user = { id, ...data } as User;
-            console.log(this.user);
           });
       } else {
         this.user = undefined;
@@ -129,8 +128,6 @@ export class ArticleComponent implements OnInit {
   }
 
   async dislike(comment: Comment) {
-    console.log(this.user);
-
     if (comment.dislikes.includes(this.user!.username)) {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)
