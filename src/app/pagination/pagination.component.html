@@ -7,4 +7,10 @@
   </li>
   <div *ngIf="currentPage! < pageCount!" class="button-divider">...</div>
   <button *ngIf="currentPage! < pageCount!" (click)="nextStep()" class="next">Next</button>
+  <div class="pages-indicator">
+    Page
+    <div class="current-page-number">{{currentPage}}</div>
+    of
+    <div class="current-page-number">{{pageCount}}</div>
+  </div>
 </ul>

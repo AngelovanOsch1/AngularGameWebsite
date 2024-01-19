@@ -144,7 +144,6 @@ export class ShopComponent implements OnInit {
     const encodedId = btoa(article.id ?? '');
     this.router.navigate(['article', encodedId]);
   }
-
   toggleActive(index: number): void {
     if (this.activeIndex.has(index)) {
       this.activeIndex.delete(index);
@@ -152,11 +151,18 @@ export class ShopComponent implements OnInit {
       this.activeIndex.add(index);
     }
   }
-
   isActive(index: number): boolean {
     return this.activeIndex.has(index);
   }
-
+  getStockClass(stock: number): string {
+    if (stock < 10 && stock > 0) {
+      return 'low-on-stock';
+    } else if (stock <= 0) {
+      return 'out-of-stock';
+    } else {
+      return ''; 
+    }
+  }
   changePage(page: number): void {
     this.currentPage = page;
     const startIndex = (this.currentPage - 1) * 12;

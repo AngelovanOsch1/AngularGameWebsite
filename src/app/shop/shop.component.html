@@ -187,9 +187,16 @@
       </div>
       <div class="shop-index-container">
         <div class="shop-index">
-          <div class='product' *ngFor="let article of articlesListTest" (click)="showArticle(article)">
+          <div class='product' *ngFor="let article of articlesListTest" (click)="showArticle(article)" [ngClass]="getStockClass(article.stock)">
             <div class="image-container">
-              <img class="main-image" [src]="article.image" />
+              <img class="main-image" [src]="article.image" alt="{{article.productName}}"/>
+              <div class="indicator low-on-stock-warning">
+                <div class="text">Low on stock!</div>
+              </div>
+              <div class="indicator out-of-stock-warning">
+                <img src="../../assets/icons/error-warning-icon.svg" alt="error icon">
+                <div class="text">Out of stock!</div>
+              </div>
             </div>
             <div class="title">{{article.productName}}</div>
             <div class="types-container">

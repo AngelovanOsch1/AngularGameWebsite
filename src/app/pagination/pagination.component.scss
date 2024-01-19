@@ -24,8 +24,11 @@
   }
   button{
     position: relative;
-    &.next{
+    &.next,
+    &.previous{
       padding: 0.5rem 2.8rem 0.5rem 0.9rem;
+      color: #fff;
+      background-color: $black;
       &::after {
         content: '';
         position: absolute;
@@ -36,13 +39,32 @@
         background-image: url("../../assets/icons/FQ-arrows-long.svg");
         background-size: contain;
         background-repeat: no-repeat;
+        filter: brightness(1000%);
+        transition: 0.2s ease;
       }
       &:hover{
-        &::after {
-          filter: brightness(1000%);
+        border: 2px solid $black;
+        &::after{
+          transform: translateX(5px);
         }
       }
     }
+    &.previous{
+      padding: 0.5rem 0.9rem 0.5rem 2.8rem;
+      &::after {
+        content: "";
+        left: -55px;
+        width: 25px;
+        height: 18px;
+        transform: rotate(180deg);
+      }
+      &:hover{
+        &::after{
+          transform: rotate(180deg) + translateX(5px);
+        }
+      }
+    }
+    
   }
   .button-divider{
     margin-top: auto;
@@ -60,6 +82,17 @@
           border: 2px solid $black;
         }
       }
+    }
+  }
+  .pages-indicator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 50px;
+    font-size: 1rem;
+    gap: 2px;
+     > * {
+      height: fit-content;
     }
   }
 }
