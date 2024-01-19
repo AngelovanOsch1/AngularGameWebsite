@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ArticleComponent } from './shop/article/article.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ArticleComponent } from './shop/article/article.component';
     WarningComponentComponent,
     ArticleComponent,
     PaginationComponent,
+    UserProfileComponent,
   ],
   imports: [
     AngularFireStorageModule,

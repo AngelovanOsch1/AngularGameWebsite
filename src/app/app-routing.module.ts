@@ -7,6 +7,7 @@ import { ShopComponent } from '../app/shop/shop.component';
 import { EventsComponent } from '../app/events/events.component';
 import { LandingComponent } from '../app/landing/landing.component';
 import { ArticleComponent } from './shop/article/article.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'article/:id', component: ArticleComponent },
   { path: 'events', component: EventsComponent },
+  { path: 'userProfile/:id', component: UserProfileComponent },
 ];
 
 @NgModule({
