@@ -1,6 +1,6 @@
-<header *ngIf="showHeader" [class.scrolled]="isScrolled">
+<header *ngIf="showHeader" [class.scrolled]="isScrolled" [ngClass]="{'second-header': UsesSecondHeader()}">
   <a class="logo" href="/">
-    <img src="../../assets/icons/white-FQ-logo.svg" alt="">
+    <img src="../../assets/icons/dark-FQ-logo.svg" alt="fantasy quest logo">
     <h1>FantasyQuest</h1>
   </a>
   <nav>

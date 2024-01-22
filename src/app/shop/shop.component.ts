@@ -157,7 +157,7 @@ export class ShopComponent implements OnInit {
   getStockClass(stock: number): string {
     if (stock < 10 && stock > 0) {
       return 'low-on-stock';
-    } else if (stock === 0) {
+    } else if (stock == 0) {
       return 'out-of-stock';
     } else {
       return ''; 

@@ -1,12 +1,21 @@
-<div class='column'>
-  <h1>{{article?.productName}}</h1>
-  <img [src]="article?.image" height='150' width='150' />
-  <h1>{{article?.description}}</h1>
-  <form [formGroup]='commentForm'>
-    <textarea formControlName='userComment'></textarea>
-    <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
-    <img *ngIf="image" [src]='article?.image' />
-    <button (click)="submitComment()">submit comment</button>
+<section class="article page {{articleId}}">
+  <section class='hero-2'>
+    <h1>{{article?.productName}}</h1>
+    <img [src]="article?.image" />
+    <p>
+      {{article?.description}}
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi enim, scelerisque vitae viverra nec, feugiat
+      interdum mi. Aenean efficitur tempus libero ut pulvinar. Vivamus ultrices augue ac sapien pellentesque luctus.
+      Nullam
+      dapibus leo ac velit suscipit iaculis. Mauris porta purus ut imperdiet tempus. Suspendisse sollicitudin, velit eu
+      pulvinar scelerisque, eros est pharetra eros, vitae consequat nunc tellus vel sem. Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+    </p>
+    <form [formGroup]='commentForm'>
+      <textarea formControlName='userComment'></textarea>
+      <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+      <img *ngIf="image" [src]='article?.image' />
+      <button (click)="submitComment()">submit comment</button>
     </form>
     <div *ngFor="let comment of commentsList">
       <p>{{comment.userComment}}</p>
@@ -15,4 +24,5 @@
       <button (click)="dislike(comment)">dislike:</button>
       <p>{{comment?.dislikes?.length}}</p>
     </div>
-</div>
+  </section>
+</section>

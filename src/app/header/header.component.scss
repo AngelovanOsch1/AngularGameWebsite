@@ -21,6 +21,7 @@ header {
         img{
             width: 50px;
             transition: 0.2s ease-in-out;
+            filter: brightness(1000%);
         }
         h1{
             font-weight: 900;
@@ -89,6 +90,33 @@ header {
         }
         a.logo h1{
             font-size: 30px;
+        }
+    }
+    &.second-header{
+        .logo{
+            color: $black;
+            img{
+                filter: none;
+            }
+        }
+        nav{
+            a{
+                color: $black;
+                &:hover{
+                    text-shadow: 1px 1px 5px rgb(43, 45, 66, 0.5);
+                }
+            }
+            button{
+                &.signup{
+                    background-color: transparent;
+                    color: $black;
+                    border: 2px solid $black;
+                    &:hover{
+                        background: $black;
+                        color: #fff;
+                    }
+                }
+            }
         }
     }
 }
