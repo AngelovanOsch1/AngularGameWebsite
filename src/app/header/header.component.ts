@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isOnShopPage(): boolean {
-    return this.router.url.includes('/shop' && '/article');
+    return this.router.url.includes('/shop') || this.router.url.includes('/article');
   }
   UsesSecondHeader(): boolean {
     return this.router.url.includes('/article');
