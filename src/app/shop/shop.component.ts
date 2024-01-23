@@ -8,11 +8,6 @@ import { Category } from '../enums/enums';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ViewportScroller } from '@angular/common';
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-}
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -25,13 +20,11 @@ export class ShopComponent implements OnInit {
   menList: Article[] = [];
   womenList: Article[] = [];
   unisexList: Article[] = [];
-  posts: Post[] = [];
-  postsTest: Post[] = [];
   article: Article | undefined;
   category = Category;
   activeIndex: Set<number> = new Set();
   currentPage: number | undefined;
-  isDropdownOpen = false;
+  isRotated: boolean = false;
   selectedOption = 'Stock high>low';
   constructor(
     private firestore: AngularFirestore,
@@ -171,11 +164,10 @@ export class ShopComponent implements OnInit {
     this.articlesListTest = this.articlesList.slice(startIndex, endIndex);
     this.viewportScroller.scrollToAnchor('scroll-up-element');
   }
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
   selectOption(option: string) {
     this.selectedOption = option;
-    this.isDropdownOpen = false;
+  }
+  toggleSelectOption() {
+    this.isRotated = !this.isRotated;
   }
 }

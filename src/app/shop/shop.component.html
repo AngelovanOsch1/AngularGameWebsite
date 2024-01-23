@@ -27,18 +27,14 @@
       <div class="info-filter-container">
         <div class="amount">{{articlesList.length}} items</div>
         <div class="filter-dropdown">
-          <label for="filter">Sort by:</label>
-          <div class="filters-container" [class.open]="isDropdownOpen">
-            <div class="custom-dropdown" (click)="toggleDropdown()">
-              {{ selectedOption }}
-            </div>
-            <select class="options-list" formControlName='sortByFilter'>
+          <label class='filter' for="filter">Sort by:</label>
+          <select class="options-list" formControlName='sortByFilter' [ngClass]="{'rotate': isRotated}"
+            (click)="toggleSelectOption()">
               <option [value]="'sortOnHighPrice'" (click)="selectOption('Price high>low')">Price high>low</option>
               <option [value]="'sortOnLowPrice'" (click)="selectOption('Price low>high')">Price low>high</option>
               <option [value]="'sortOnHighStock'" (click)="selectOption('Stock high>low')">Stock high>low</option>
               <option [value]="'sortOnLowStock'" (click)="selectOption('Stock low>high')">Stock low>high</option>
             </select>
-          </div>
         </div>
       </div>
     </div>
