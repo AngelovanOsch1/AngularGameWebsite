@@ -80,7 +80,7 @@ button.weapon{
   }
   &:hover{
     &::after{
-      background-image: url("../src/assets/icons/light-sword-svgrepo-com.svg");  
+      filter: brightness(1000%);
     }  
   }
 }
@@ -90,7 +90,7 @@ button.big.weapon {
 
   &::after {
     right: 20px;
-    background-image: url("../src/assets/icons/light-sword-svgrepo-com.svg");
+    filter: brightness(1000%);
     width: 35px;
     height: 35px;
   }
