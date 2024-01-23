@@ -1,5 +1,8 @@
 <div class="chat-container">
-  <div *ngFor="let chatItem of chatItemList">
-    <app-chat-item [chatItem]="chatItem">This is a chatItem</app-chat-item>
+  <div *ngFor="let chatItem of chatItemList" class="chat-item-wrapper">
+    <div>
+      <button (click)="toggleChatItem(chatItem)" class="toggle-button">Toggle Chat</button>
+      <app-chat-item [chatItem]="chatItem" [isOpen]="chatItem.isOpen">This is a chatItem</app-chat-item>
+    </div>
   </div>
 </div>

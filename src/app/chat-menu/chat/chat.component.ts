@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { switchMap, take, map, of } from 'rxjs';
 import { User } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
@@ -16,7 +17,8 @@ export class ChatComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private repositoryService: RepositoryService
+    private repositoryService: RepositoryService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.afAuth.authState
@@ -64,5 +66,9 @@ export class ChatComponent implements OnInit {
       .subscribe((chatItem) => {
         this.chatItemList = chatItem;
       });
+  }
+
+  toggleChatItem(chatItem: any) {
+    chatItem.isOpen = !chatItem.isOpen;
   }
 }

@@ -1,3 +1,4 @@
+<div *ngIf="isOpen">
 <h1>CHAT MESSAGES</h1>
 
 <div *ngFor="let message of messagesList" class="message-container">
@@ -9,4 +10,5 @@
     <input formControlName="newMessage" placeholder="Type your message..." class="message-input" />
     <button (click)="addMessage()" class="add-button">Add Message</button>
   </form>
+</div>
 </div>

@@ -10,6 +10,7 @@ import { map, tap } from 'rxjs';
 })
 export class ChatItemComponent implements OnInit {
   @Input() chatItem: any;
+  @Input() isOpen: boolean = false;
   messagesList: any[] = [];
 
   constructor(private firestore: AngularFirestore) {}
