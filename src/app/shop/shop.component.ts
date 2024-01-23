@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Category } from '../enums/enums';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ViewportScroller } from '@angular/common';
 
 interface Post {
   id: number;
@@ -34,8 +35,8 @@ export class ShopComponent implements OnInit {
   selectedOption = 'Stock high>low';
   constructor(
     private firestore: AngularFirestore,
-    private repositoryService: RepositoryService,
-    private router: Router
+    private router: Router,
+    private viewportScroller: ViewportScroller
   ) {}
   ngOnInit(): void {
     this.firestore
@@ -168,6 +169,7 @@ export class ShopComponent implements OnInit {
     const startIndex = (this.currentPage - 1) * 12;
     const endIndex = startIndex + 12;
     this.articlesListTest = this.articlesList.slice(startIndex, endIndex);
+    this.viewportScroller.scrollToAnchor('scroll-up-element');
   }
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

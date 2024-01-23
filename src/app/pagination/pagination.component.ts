@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -10,9 +11,9 @@ export class PaginationComponent {
   @Input() limit?: number;
   @Input() total?: number;
   @Output() changePage = new EventEmitter<number>();
-
   pageCount: number | undefined;
 
+  constructor(private viewportScroller: ViewportScroller) {}
   get pages(): number[] {
     this.pageCount = Math.ceil(this.total! / this.limit!);
     const visiblePages = 3;
@@ -32,10 +33,12 @@ export class PaginationComponent {
   nextStep() {
     this.currentPage!++;
     this.changePage.emit(this.currentPage);
+    this.viewportScroller.scrollToAnchor('scroll-up-element');
   }
 
   previousStep() {
     this.currentPage!--;
     this.changePage.emit(this.currentPage);
+    this.viewportScroller.scrollToAnchor('scroll-up-element');
   }
 }
