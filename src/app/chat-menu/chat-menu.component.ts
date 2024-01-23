@@ -1,99 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../interfaces/interfaces';
-import { RepositoryService } from '../services/repository.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { map, of, switchMap, take } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-chat-menu',
   templateUrl: './chat-menu.component.html',
   styleUrls: ['./chat-menu.component.scss'],
-  providers: [RepositoryService],
 })
-export class ChatMenuComponent implements OnInit {
-  user: User | undefined;
-  friendRequestsList: any | undefined;
+export class ChatMenu {
+  showChatMenu: boolean = false;
+  showChat: boolean = false;
+  showFriends: boolean = false;
 
-  isChatOpen: boolean | undefined;
-  constructor(
-    private firestore: AngularFirestore,
-    private afAuth: AngularFireAuth,
-    private repositoryService: RepositoryService
-  ) {}
-
-  ngOnInit(): void {
-    this.afAuth.authState
-      .pipe(
-        switchMap((user) => {
-          if (user) {
-            // Fetch user details from Firestore using the user's UID
-            return this.repositoryService.usersCollection
-              .doc<User>(user.uid)
-              .get()
-              .pipe(
-                take(1),
-                map((snapshot) => {
-                  const data = snapshot?.data() as User;
-                  const id = snapshot.id;
-                  this.user = { id, ...data } as User;
-                  return user;
-                })
-              );
-          } else {
-            this.user = undefined;
-            return of(null);
-          }
-        }),
-        switchMap((user) => {
-          if (user) {
-            return this.firestore
-              .collection('friendRequests', (ref) =>
-                ref.where('receiverId', '==', this.user?.id)
-              )
-              .snapshotChanges()
-              .pipe(
-                map((actions) =>
-                  actions.map((a: any) => {
-                    const data = a.payload.doc.data();
-                    const id = a.payload.doc.id;
-                    return { id, ...data };
-                  })
-                )
-              );
-          } else {
-            return of([]);
-          }
-        })
-      )
-      .subscribe((friendRequestsList) => {
-        this.friendRequestsList = friendRequestsList;
-      });
+  openChatMenu() {
+    this.showChatMenu = !this.showChatMenu;
   }
-
   openChat() {
-    this.isChatOpen ? (this.isChatOpen = false) : (this.isChatOpen = true);
+    this.showChat = true;
+    this.showFriends = false;
   }
 
-  acceptFriendRequest(friendRequests: any) {
-    const relationshipsCollection = this.firestore.collection(
-      `users/${friendRequests.sentBy}/relationships`
-    );
-
-    const documentId = 'your_document_id'; // Replace with the actual ID or use a dynamic method to generate an ID
-
-    // Use set with merge: true to update the document or create it if it doesn't exist
-    relationshipsCollection
-      .doc(documentId)
-      .update({
-        friendList: ['test12356'],
-      })
-      .then(() => {
-        console.log('Document updated or created successfully!');
-      })
-      .catch((error) => {
-        console.error('Error updating or creating document:', error);
-      });
+  openFriends() {
+    this.showChat = false;
+    this.showFriends = true;
   }
-  denyFriendRequest(friendRequests: any) {}
 }

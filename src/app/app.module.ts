@@ -23,7 +23,10 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ArticleComponent } from './shop/article/article.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ChatMenuComponent } from './chat-menu/chat-menu.component';
+import { ChatComponent } from './chat-menu/chat/chat.component';
+import { ChatItemComponent } from './chat-menu/chat/chat-item/chat-item.component';
+import { ChatMenu } from './chat-menu/chat-menu.component';
+import { FriendsComponent } from './chat-menu/friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,11 @@ import { ChatMenuComponent } from './chat-menu/chat-menu.component';
     ArticleComponent,
     PaginationComponent,
     UserProfileComponent,
-    ChatMenuComponent,
+    ChatMenu,
+    FriendsComponent,
+    ChatComponent,
+    ChatItemComponent,
+    FriendsComponent,
   ],
   imports: [
     AngularFireStorageModule,

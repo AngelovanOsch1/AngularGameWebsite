@@ -1,0 +1,46 @@
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.message-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin: 0;
+}
+
+.message-container:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+
+.add-message-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.add-button {
+  padding: 8px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-button:hover {
+  background-color: #2980b9;
+}
+

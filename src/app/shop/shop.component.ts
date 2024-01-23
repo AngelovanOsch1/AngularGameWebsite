@@ -5,6 +5,7 @@ import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Category } from '../enums/enums';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 interface Post {
   id: number;
@@ -32,11 +33,13 @@ export class ShopComponent implements OnInit {
   isDropdownOpen = false;
   selectedOption = 'Stock high>low';
   constructor(
+    private firestore: AngularFirestore,
     private repositoryService: RepositoryService,
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.repositoryService.shop
+    this.firestore
+      .collection('shop', (ref) => ref.orderBy('stock', 'desc'))
       .snapshotChanges()
       .pipe(
         map((actions) =>
@@ -47,30 +50,27 @@ export class ShopComponent implements OnInit {
           })
         ),
         tap((article: Article[]) => {
-          article.forEach((articleDoc: Article) => {
-            this.articlesList.push(articleDoc);
-          });
-          this.articlesList.sort((a, b) => b.stock - a.stock);
+          this.articlesList = article;
           this.changePage(1);
         })
       )
       .subscribe();
 
     this.shopForm.controls['sortByFilter'].valueChanges.subscribe((val) => {
-    switch (val) {
-      case 'sortOnLowPrice':
-        this.articlesListTest.sort((a, b) => a.price - b.price);
-        break;
-      case 'sortOnHighPrice':
-        this.articlesListTest.sort((a, b) => b.price - a.price);
-        break;
-      case 'sortOnLowStock':
-        this.articlesListTest.sort((a, b) => a.stock - b.stock);
-        break;
-      case 'sortOnHighStock':
-        this.articlesListTest.sort((a, b) => b.stock - a.stock);
-        break;
-    }
+      switch (val) {
+        case 'sortOnLowPrice':
+          this.articlesListTest.sort((a, b) => a.price - b.price);
+          break;
+        case 'sortOnHighPrice':
+          this.articlesListTest.sort((a, b) => b.price - a.price);
+          break;
+        case 'sortOnLowStock':
+          this.articlesListTest.sort((a, b) => a.stock - b.stock);
+          break;
+        case 'sortOnHighStock':
+          this.articlesListTest.sort((a, b) => b.stock - a.stock);
+          break;
+      }
     });
   }
   shopForm: FormGroup = new FormGroup({
@@ -160,7 +160,7 @@ export class ShopComponent implements OnInit {
     } else if (stock == 0) {
       return 'out-of-stock';
     } else {
-      return ''; 
+      return '';
     }
   }
   changePage(page: number): void {
