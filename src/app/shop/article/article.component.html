@@ -1,16 +1,32 @@
 <section class="article page {{articleId}}">
-  <section class='hero-2'>
-    <h1>{{article?.productName}}</h1>
+  <section class='hero-2 product-container'>
     <img [src]="article?.image" />
-    <p>
-      {{article?.description}}
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi enim, scelerisque vitae viverra nec, feugiat
-      interdum mi. Aenean efficitur tempus libero ut pulvinar. Vivamus ultrices augue ac sapien pellentesque luctus.
-      Nullam
-      dapibus leo ac velit suscipit iaculis. Mauris porta purus ut imperdiet tempus. Suspendisse sollicitudin, velit eu
-      pulvinar scelerisque, eros est pharetra eros, vitae consequat nunc tellus vel sem. Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit.
-    </p>
+    <div class="product-info">
+      <h1>{{article?.productName}}</h1>
+      <div class="types-container">
+        <div class="type" *ngIf="article?.productCategory">{{article?.productCategory}}</div>
+        <div class="gender" *ngIf="article?.targetAudience">{{article?.targetAudience}}</div>
+        <div class="stock" *ngIf="article?.stock"{{article?.stock}}></div>
+      </div>
+      <p>
+        {{article?.description}}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi enim, scelerisque vitae viverra nec, feugiat
+        interdum mi. Aenean efficitur tempus libero ut pulvinar. Vivamus ultrices augue ac sapien pellentesque luctus.
+        Nullam
+        dapibus leo ac velit suscipit iaculis. Mauris porta purus ut imperdiet tempus. Suspendisse sollicitudin, velit eu
+        pulvinar scelerisque, eros est pharetra eros, vitae consequat nunc tellus vel sem. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.
+      </p>
+      <div class="price-container">
+        <p>Now for</p>
+        <div class="price" *ngIf="article?.stock">{{article?.price}}</div>
+      </div>
+      <div class="buttons-container">
+        <button class="normal dark">Buy now for $49.99</button>
+        <button class="normal primary-color">Put in basket</button>
+      </div>
+    </div>
+  </section>
     <form [formGroup]='commentForm'>
       <textarea formControlName='userComment'></textarea>
       <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
@@ -24,5 +40,4 @@
       <button (click)="dislike(comment)">dislike:</button>
       <p>{{comment?.dislikes?.length}}</p>
     </div>
-  </section>
 </section>

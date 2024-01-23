@@ -52,7 +52,7 @@ header {
             &.shop-basket{
                 background-color: transparent;
                 padding: 0 0 0 15px;
-                img{ width: 40px; }
+                img{ width: 40px; filter: brightness(1000%);}
                 &:hover{
                     opacity: 0.7;
                 }
@@ -115,6 +115,9 @@ header {
                         background: $black;
                         color: #fff;
                     }
+                }
+                &.shop-basket{
+                    img{ width: 40px; filter: brightness(100%);}
                 }
             }
         }
