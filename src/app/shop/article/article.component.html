@@ -31,14 +31,15 @@
           src="https://firebasestorage.googleapis.com/v0/b/angulargamewebsite.appspot.com/o/shop%2Farticles%2FGryphonGuardian.jpg?alt=media&token=215e053c-1d42-4958-8cba-af8a3261e7cd"
           alt="user profile picture">
         <div class="comment-container">
-          <textarea formControlName='userComment' placeholder='Add comment ...'></textarea>
+          <textarea formControlName='userComment' placeholder='Add comment ...' [(ngModel)]="textareaContent"></textarea>
           <div class="bottom-row">
             <img *ngIf="image" [src]='article?.image' />
             <div class="buttons-container">
               <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
               <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
             </div>
-          </div>
+<p>Character Count: {{ textareaContent.length }}/500</p>
+</div>
         </div>
       </form>
     </div>

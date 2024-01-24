@@ -22,6 +22,7 @@ export class ArticleComponent implements OnInit {
   article: Article | undefined;
   file: File | undefined;
   image: string | undefined;
+  textareaContent: string = '';
 
   constructor(
     private afAuth: AngularFireAuth,
