@@ -25,6 +25,7 @@ $black: #2B2D42;
 $secondary-color: #00FFA3;
 $primary-color: #4056F4;
 $error-red: #ff3333;
+$green: #04DF00;
 
 * {
     box-sizing: border-box;
@@ -35,7 +36,7 @@ $error-red: #ff3333;
 h1{
   margin: 0;
 }
-div, p, a {
+div, p, a, textarea {
     font-family: 'PoppinsRegular';
 }
 span {
@@ -98,6 +99,7 @@ button.big.weapon {
 button.big.weapon.glowing{
   box-shadow: 10px 10px 50px $primary-color;
 }
+
 button.download{
   position: relative;
   padding: 8px calc(15px + 30px) 8px 15px;
@@ -124,6 +126,21 @@ button.search{
     background-repeat: no-repeat;
     width: 25px;
     height: 25px;
+  }
+}
+button.basket{
+  position: relative;
+  padding: 8px calc(50px + 30px) 8px 50px !important;
+  &::after{
+    content: '';
+    position: absolute;
+    right: 40px;
+    background-image: url("../src/assets/icons/shop-basket-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 20px;
+    filter: brightness(1000%);
   }
 }
 button.light{
@@ -173,6 +190,12 @@ button.rounded-corners{
 button.more-padding{
   padding: 8px 30px;
 }
+button.buy{
+  &:hover{
+    background-color: $green;
+  }
+}
+
 
 section{
   a.scroll-down{
@@ -375,6 +398,7 @@ footer.signup-footer {
   img {
     width: 125px;
     height: 125px;
+    filter: brightness(1000%);
   }
 
   .title-column {

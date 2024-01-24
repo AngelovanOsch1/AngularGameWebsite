@@ -8,31 +8,40 @@
         <div class="gender" *ngIf="article?.targetAudience">{{article?.targetAudience}}</div>
         <div class="stock" *ngIf="article?.stock"{{article?.stock}}></div>
       </div>
-      <p>
+      <p class='description'>
         {{article?.description}}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi enim, scelerisque vitae viverra nec, feugiat
-        interdum mi. Aenean efficitur tempus libero ut pulvinar. Vivamus ultrices augue ac sapien pellentesque luctus.
-        Nullam
-        dapibus leo ac velit suscipit iaculis. Mauris porta purus ut imperdiet tempus. Suspendisse sollicitudin, velit eu
-        pulvinar scelerisque, eros est pharetra eros, vitae consequat nunc tellus vel sem. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit.
+        The Gryphon Guardian cap boasts a majestic design with an embroidered gryphon emblem, capturing the mythical creature's
+        strength and grace. Crafted from high-quality materials in earthy tones, it offers a comfortable and versatile fit for
+        any occasion, blending fantasy aesthetics with contemporary style.
       </p>
       <div class="price-container">
         <p>Now for</p>
-        <div class="price" *ngIf="article?.stock">{{article?.price}}</div>
+        <div class="price" *ngIf="article?.stock">€{{article?.price}}</div>
       </div>
       <div class="buttons-container">
-        <button class="normal dark">Buy now for $49.99</button>
-        <button class="normal primary-color">Put in basket</button>
+        <button class="normal dark buy">Buy now for $49.99</button>
+        <button class="normal primary-color basket">Put in basket</button>
       </div>
     </div>
   </section>
-    <form [formGroup]='commentForm'>
-      <textarea formControlName='userComment'></textarea>
-      <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
-      <img *ngIf="image" [src]='article?.image' />
-      <button (click)="submitComment()">submit comment</button>
-    </form>
+    <div class="add-comments-container">
+      <h2 class='comments title'>comments</h2>
+      <form [formGroup]='commentForm' class='add-comment'>
+        <img class='profile-picture'
+          src="https://firebasestorage.googleapis.com/v0/b/angulargamewebsite.appspot.com/o/shop%2Farticles%2FGryphonGuardian.jpg?alt=media&token=215e053c-1d42-4958-8cba-af8a3261e7cd"
+          alt="user profile picture">
+        <div class="comment-container">
+          <textarea formControlName='userComment' placeholder='Add comment ...'></textarea>
+          <div class="bottom-row">
+            <img *ngIf="image" [src]='article?.image' />
+            <div class="buttons-container">
+              <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+              <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
     <div *ngFor="let comment of commentsList">
       <p>{{comment.userComment}}</p>
       <button (click)="like(comment)">likes:</button>
