@@ -526,4 +526,32 @@ footer.signup-footer {
     transform: scale(1.2) + translateX(-300px);
   }
 }
+@keyframes DislikeAnimation {
+
+  20%{
+    transform: translateY(0) +  scale(0.9);
+  }
+  50%{
+    transform: translateY(10px) + scale(1.5) + rotate(20deg);
+    filter: drop-shadow(5px 5px 20px $error-red);
+  }
+  100%{
+    transform: translateY(0) + scale(1);
+  }
+}
+@keyframes LikeAnimation {
+
+  20% {
+    transform: translateY(0) + scale(0.9);
+  }
+
+  50% {
+    transform: translateY(-10px) + scale(1.5) + rotate(-20deg);
+    filter: drop-shadow(5px 5px 20px $green);
+  }
+
+  100% {
+    transform: translateY(0) + scale(1);
+  }
+}
 
