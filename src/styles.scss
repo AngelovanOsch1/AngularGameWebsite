@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5, label, button, .pre-title, .question-container .number, .tit
 }
 a {
   text-decoration: none;
+  outline: none;
 }
 ::selection{
   background: $primary-color;

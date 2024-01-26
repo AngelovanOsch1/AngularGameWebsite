@@ -27,6 +27,7 @@ import { ChatComponent } from './chat-menu/chat/chat.component';
 import { ChatItemComponent } from './chat-menu/chat/chat-item/chat-item.component';
 import { ChatMenu } from './chat-menu/chat-menu.component';
 import { FriendsComponent } from './chat-menu/friends/friends.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FriendsComponent } from './chat-menu/friends/friends.component';
     ChatComponent,
     ChatItemComponent,
     FriendsComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     AngularFireStorageModule,

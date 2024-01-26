@@ -8,6 +8,7 @@ import { EventsComponent } from '../app/events/events.component';
 import { LandingComponent } from '../app/landing/landing.component';
 import { ArticleComponent } from './shop/article/article.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'article/:id', component: ArticleComponent },
   { path: 'events', component: EventsComponent },
   { path: 'userProfile/:id', component: UserProfileComponent },
+  { path: 'shopping-cart', component: ShoppingCartComponent },
 ];
 
 @NgModule({
