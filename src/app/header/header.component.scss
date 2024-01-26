@@ -92,7 +92,7 @@ header {
             font-size: 30px;
         }
     }
-    &.second-header{
+    &.second-header:not(.scrolled){
         .logo{
             color: $black;
             img{

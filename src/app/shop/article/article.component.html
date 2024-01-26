@@ -34,11 +34,13 @@
         <div class="comment-container">
           <textarea formControlName='userComment' placeholder='Add comment ...' [(ngModel)]="textareaContent"></textarea>
           <div class="bottom-row">
-            <img *ngIf="image" [src]='article?.image' />
             <p [ngClass]="{'ExceedCharacterLimit': textareaContent.length > 1000}">
               <Strong>{{ textareaContent.length }}</Strong>
               / 1000
             </p>
+            <div class="uploaded-image">
+              <img *ngIf="image" src="http://facebook.202devs.nl/img/about/Intersection%206.png" />
+            </div>
             <div class="buttons-container">
               <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
               <button (click)="submitComment()" [ngClass]="{'ExceedCharacterLimit': textareaContent.length > 1000}" class='normal rounded-corners primary-color' >comment</button>

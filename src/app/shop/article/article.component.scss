@@ -108,6 +108,7 @@ section.article{
             }
             .bottom-row{
                 display: flex;
+                gap: 20px;
                 width: 100%;
                 p.ExceedCharacterLimit{
                     position: relative;
@@ -121,6 +122,20 @@ section.article{
                         height: 15px;
                         background-image: url("../../../assets/icons/error-warning-icon.svg");
                         background-size: cover;
+                    }
+                }
+                .uploaded-image{
+                    width: 100px;
+                    height: 80px;
+                    transition: 0.2s ease;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    &:hover{
+                        opacity: 0.7;
+                        cursor: pointer;
                     }
                 }
                 .buttons-container{
