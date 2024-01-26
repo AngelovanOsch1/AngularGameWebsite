@@ -23,6 +23,7 @@ export class ArticleComponent implements OnInit {
   file: File | undefined;
   image: string | undefined;
   textareaContent: string = '';
+  remainingCharacters: number = 0;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -102,26 +103,26 @@ export class ArticleComponent implements OnInit {
   }
 
   async like(comment: Comment) {
-    if (comment.likes.includes(this.user!.username)) {
+    if (comment.likes.includes(this.user!.id!)) {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)
         .doc(comment.id)
         .update({
-          likes: arrayRemove(this.user!.username),
+          likes: arrayRemove(this.user!.id),
         });
     } else {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)
         .doc(comment.id)
         .update({
-          likes: arrayUnion(this.user!.username),
+          likes: arrayUnion(this.user!.id),
         });
-      if (comment.dislikes.includes(this.user!.username)) {
+      if (comment.dislikes.includes(this.user!.id!)) {
         this.firestore
           .collection(`shop/${this.articleId}/comments`)
           .doc(comment.id)
           .update({
-            dislikes: arrayRemove(this.user!.username),
+            dislikes: arrayRemove(this.user!.id),
           });
       }
     }
@@ -133,23 +134,28 @@ export class ArticleComponent implements OnInit {
         .collection(`shop/${this.articleId}/comments`)
         .doc(comment.id)
         .update({
-          dislikes: arrayRemove(this.user!.username),
+          dislikes: arrayRemove(this.user!.id),
         });
     } else {
       this.firestore
         .collection(`shop/${this.articleId}/comments`)
         .doc(comment.id)
         .update({
-          dislikes: arrayUnion(this.user!.username),
+          dislikes: arrayUnion(this.user!.id),
         });
-      if (comment.likes.includes(this.user!.username)) {
+      if (comment.likes.includes(this.user!.id!)) {
         this.firestore
           .collection(`shop/${this.articleId}/comments`)
           .doc(comment.id)
           .update({
-            likes: arrayRemove(this.user!.username),
+            likes: arrayRemove(this.user!.id),
           });
       }
     }
+  }
+
+  updateRemainingCharacters(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.remainingCharacters = 1000 - inputElement.value.length;
   }
 }
