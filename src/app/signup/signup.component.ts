@@ -9,6 +9,7 @@ import { UserCredential } from 'firebase/auth';
 import { RepositoryService } from '../services/repository.service';
 import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
 import { ToastService } from '../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -106,5 +108,7 @@ export class SignupComponent implements OnInit {
           profilePhoto: '',
         });
     }
+
+    this.router.navigate(['/']);
   }
 }
