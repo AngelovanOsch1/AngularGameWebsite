@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { map, take, tap } from 'rxjs';
 import { Article, Comment, User } from 'src/app/interfaces/interfaces';
@@ -22,9 +22,6 @@ export class ArticleComponent implements OnInit {
   article: Article | undefined;
   file: File | undefined;
   image: string | undefined;
-  textareaContent: string = '';
-  remainingCharacters: number = 0;
-
   constructor(
     private afAuth: AngularFireAuth,
     private userAuthService: UserAuthService,
@@ -79,7 +76,7 @@ export class ArticleComponent implements OnInit {
   }
 
   commentForm: FormGroup = new FormGroup({
-    userComment: new FormControl(''),
+    userComment: new FormControl('', Validators.maxLength(1000)),
     userCommentPhoto: new FormControl(null),
   });
 
@@ -152,10 +149,5 @@ export class ArticleComponent implements OnInit {
           });
       }
     }
-  }
-
-  updateRemainingCharacters(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.remainingCharacters = 1000 - inputElement.value.length;
   }
 }
