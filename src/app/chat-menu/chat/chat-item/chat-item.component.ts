@@ -50,9 +50,7 @@ export class ChatItemComponent implements OnInit {
           textMessage: newMessage,
         });
         this.newMessageForm.reset();
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     }
   }
 }

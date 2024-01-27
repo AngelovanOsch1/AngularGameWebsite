@@ -44,7 +44,7 @@ export class NewsletterSectionComponent implements OnInit {
     });
   }
   submitNewsletterForm() {
-    if (!this.user?.isOnline) {
+    if (!this.user) {
       this.dialog.open(WarningComponentComponent, {
         width: '250px',
         data: { text: 'Are you not logged in yet?', url: '/login' },
