@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../interfaces/interfaces';
+import { Article, User } from '../interfaces/interfaces';
 import { map, tap } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
@@ -7,12 +7,13 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Category } from '../enums/enums';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ViewportScroller } from '@angular/common';
+import { UserAuthService } from '../services/user-auth-service.service';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
-  providers: [RepositoryService],
+  providers: [RepositoryService, UserAuthService],
 })
 export class ShopComponent implements OnInit {
   articlesList: Article[] = [];
@@ -26,12 +27,17 @@ export class ShopComponent implements OnInit {
   currentPage: number | undefined;
   isRotated: boolean = false;
   selectedOption = 'Stock high>low';
+
+  user: User | undefined;
   constructor(
     private firestore: AngularFirestore,
+    private userAuthService: UserAuthService,
     private router: Router,
     private viewportScroller: ViewportScroller
   ) {}
-  ngOnInit(): void {
+  async ngOnInit(): Promise<any> {
+    this.user = await this.userAuthService.getLoggedInUser();
+    console.log(this.user);
     this.firestore
       .collection('shop', (ref) => ref.orderBy('stock', 'desc'))
       .snapshotChanges()
@@ -169,5 +175,9 @@ export class ShopComponent implements OnInit {
   }
   toggleSelectOption() {
     this.isRotated = !this.isRotated;
+  }
+
+  addToCart(event: Event) {
+    event.stopPropagation();
   }
 }

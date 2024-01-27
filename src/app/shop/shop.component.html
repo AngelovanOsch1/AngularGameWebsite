@@ -208,8 +208,9 @@
             <p>{{article.description}}</p>
             <div class="bottom-container">
               <div class="price">€{{article.price}}</div>
-              <button class='normal primary-color'><img src="../../assets/icons/shop-basket-icon.svg"
-                  alt="shop-basket-icon"></button>
+<button class='normal primary-color' (click)="addToCart($event)">
+  <img src="../../assets/icons/shop-basket-icon.svg" alt="shop-basket-icon">
+</button>
             </div>
           </div>
         </div>
