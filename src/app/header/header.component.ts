@@ -88,7 +88,6 @@ export class HeaderComponent implements OnInit {
   }
 
   private updateUserOnlineStatus(isOnline: boolean) {
-    console.log(this.user?.id);
     this.repositoryService.usersCollection.doc(this.user?.id).update({
       isOnline: isOnline,
     });
