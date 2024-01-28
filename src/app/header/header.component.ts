@@ -5,14 +5,13 @@ import { Subject } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
-import { UserAuthService } from '../services/user-auth-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [RepositoryService, FirebaseFunctionsService, UserAuthService],
+  providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class HeaderComponent implements OnInit {
   showHeader: boolean = true;
@@ -23,7 +22,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private afAuth: AngularFireAuth,
     private repositoryService: RepositoryService,
-    private userAuthService: UserAuthService,
     private router: Router,
     private firebaseFunctionsService: FirebaseFunctionsService
   ) {
@@ -50,7 +48,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.user = await this.userAuthService.getLoggedInUser();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection
@@ -61,6 +58,7 @@ export class HeaderComponent implements OnInit {
             const data = snapshot?.data() as User;
             const id = snapshot.id;
             this.user = { id, ...data } as User;
+            this.updateUserOnlineStatus(true);
           });
       } else {
         this.user = undefined;
@@ -69,13 +67,30 @@ export class HeaderComponent implements OnInit {
   }
 
   isOnShopPage(): boolean {
-    return this.router.url.includes('/shop') || this.router.url.includes('/article');
+    return (
+      this.router.url.includes('/shop') || this.router.url.includes('/article')
+    );
   }
   UsesSecondHeader(): boolean {
-    return this.router.url.includes('/article') || this.router.url.includes('/shopping-cart');
+    return (
+      this.router.url.includes('/article') ||
+      this.router.url.includes('/shopping-cart')
+    );
   }
 
   logout() {
     this.firebaseFunctionsService.logout(this.user!.id ?? '');
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler(event: any) {
+    this.updateUserOnlineStatus(false);
+  }
+
+  private updateUserOnlineStatus(isOnline: boolean) {
+    console.log(this.user?.id);
+    this.repositoryService.usersCollection.doc(this.user?.id).update({
+      isOnline: isOnline,
+    });
   }
 }
