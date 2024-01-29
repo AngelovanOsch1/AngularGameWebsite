@@ -34,8 +34,8 @@
         <div class="comment-container">
           <textarea formControlName='userComment' placeholder='Add comment ...'></textarea>
           <div class="bottom-row">
-            <p [ngClass]="{'ExceedCharacterLimit': commentForm.get('userComment')?.value.length >= 1000}">
-              <Strong>{{ commentForm.get('userComment')?.value.length }}</Strong>
+            <p [ngClass]="{'ExceedCharacterLimit': commentForm.get('userComment')?.value?.length >= 1000}">
+              <Strong>{{ commentForm.get('userComment')?.value?.length }}</Strong>
               / 1000
               </p>
             <div class="uploaded-image">
