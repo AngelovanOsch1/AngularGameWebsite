@@ -55,8 +55,8 @@
     <div class="user-comments-container">
       <div *ngFor="let comment of commentsList" class="user-comment">
         <div class="profile-picture">
-          <img src="https://cdn.pixabay.com/photo/2014/06/16/23/39/black-370118_1280.png" alt="">
-          <div class="initial-name">BK</div>
+          <img *ngIf="comment.profilePhoto; else elseFirstLetterforProfilePhoto" [src]='comment.profilePhoto' alt="" />
+          <ng-template #elseFirstLetterforProfilePhoto class="initial-name">{{comment.username[0]}}</ng-template>
         </div>
         <div class="container">
           <h3>PrincessAngoloBoberKurwa</h3>

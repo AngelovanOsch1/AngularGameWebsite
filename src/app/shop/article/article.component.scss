@@ -201,21 +201,20 @@ section.article{
                     justify-content: center;
                     align-items: center;
                     position: relative;
-
                     min-width: 60px;
                     height: 60px;
-
+                    text-transform: uppercase;
+                    background-color: $primary-color;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 1.5rem;
+                    
                     img{
                         position: absolute;
                         inset: 0;
                         width: 100%;
                         height: 100%;
                         border-radius: 50%;
-                    }
-                    .initial-name{
-                        z-index: 2;
-                        font-size: 1.1rem;
-                        color: #fff;
                     }
                 }
         
