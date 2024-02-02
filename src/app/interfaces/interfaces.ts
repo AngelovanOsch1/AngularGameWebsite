@@ -22,6 +22,8 @@ export interface Article {
 
 export interface Comment {
   id?: string;
+  username: string;
+  profilePhoto?: string;
   userComment: string;
   image?: string;
   likes: string[];

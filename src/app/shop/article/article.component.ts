@@ -84,6 +84,8 @@ export class ArticleComponent implements OnInit {
     const userComment = this.commentForm.controls['userComment'].value;
     try {
       this.firestore.collection(`shop/${this.articleId}/comments`).add({
+        username: this.user?.username,
+        profilePhoto: this.user?.profilePhoto,
         userComment: userComment,
         likes: [],
         dislikes: [],

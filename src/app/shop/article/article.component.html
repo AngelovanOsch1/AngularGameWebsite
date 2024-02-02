@@ -42,7 +42,10 @@
               <img *ngIf="image" [src]='image' />
             </div>
             <div class="buttons-container">
-              <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+<div class="custom-file-input">
+  <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+  <button type="button normal rounded-corners">Choose File</button>
+  </div>
               <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
             </div>
           </div>
@@ -51,7 +54,7 @@
     </div>
     <div class="user-comments-container">
       <div *ngFor="let comment of commentsList" class="user-comment">
-        <h3>PrincessAngoloBoberKurwa</h3>
+        <h3>{{comment.username}}</h3>
         <p>{{comment.userComment}}</p>
         <span>Did you like this comment?</span>
         <div class="buttons-container">
