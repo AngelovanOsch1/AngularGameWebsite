@@ -196,7 +196,23 @@ button.buy{
     background-color: $green;
   }
 }
-
+button.no-radius{
+  border-radius: 0;
+}
+button.big-button-with-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  gap: 20px;
+  img{
+    transform: rotate(-90deg);
+  }
+  &:hover{
+    background: $green;
+    transform: scale(100%);
+  }
+}
 
 section{
   a.scroll-down{
