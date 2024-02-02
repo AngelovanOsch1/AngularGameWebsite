@@ -140,6 +140,9 @@ section.article{
                 }
                 .buttons-container{
                     margin-left: auto;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
                     button{
                         padding: 5px 25px;
                             &.ExceedCharacterLimit{
@@ -149,6 +152,38 @@ section.article{
                             opacity: 0.3;
                         }
                     }
+
+                    .custom-file-input {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-file-input input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.custom-file-input button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: $black;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+}
+
+.custom-file-input button:hover {
+                            cursor: pointer;
+
+}
+
+
                 }
             }
         }

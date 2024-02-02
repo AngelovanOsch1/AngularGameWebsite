@@ -42,7 +42,10 @@
               <img *ngIf="image" [src]='image' />
             </div>
             <div class="buttons-container">
-              <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+<div class="custom-file-input">
+  <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+  <button type="button normal rounded-corners">Choose File</button>
+  </div>
               <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
             </div>
           </div>
