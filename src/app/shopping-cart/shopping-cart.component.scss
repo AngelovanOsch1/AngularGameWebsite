@@ -1,1 +1,10 @@
 @import "../../styles.scss";
+
+section.shopping-cart{
+    h1{
+        .main-content-container{
+            display: flex;
+            gap: 100px;
+        }
+    }
+}
