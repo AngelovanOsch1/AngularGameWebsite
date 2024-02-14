@@ -49,10 +49,16 @@ a {
   text-decoration: none;
   outline: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 ::selection{
   background: $primary-color;
   color: #fff;
 }
+
 
 button.normal{
   padding: 8px 15px;
