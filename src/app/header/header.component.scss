@@ -68,6 +68,10 @@ header {
                     color: $black;
                 }
             }
+            &.shop-basket{
+                position: relative;
+                .number-indicator{ position: absolute; top: 0; right: -10px; background-color: $error-red; color: #fff; font-weight: 600; font-size: .8rem; padding: 0 .4rem; border-radius: 2rem; }
+            }
             &:hover {
                 cursor: pointer;
                 transform: scale(108%);
