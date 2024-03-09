@@ -37,7 +37,6 @@ export class ShopComponent implements OnInit {
   ) {}
   async ngOnInit(): Promise<any> {
     this.user = await this.userAuthService.getLoggedInUser();
-    console.log(this.user);
     this.firestore
       .collection('shop', (ref) => ref.orderBy('stock', 'desc'))
       .snapshotChanges()
@@ -177,7 +176,18 @@ export class ShopComponent implements OnInit {
     this.isRotated = !this.isRotated;
   }
 
-  addToCart(event: Event) {
+  addToCart(event: Event, article: Article) {
     event.stopPropagation();
+
+    if (!this.user) {
+    } else {
+      this.firestore.collection(`users/${this.user!.id}/shoppingcart`).add({
+        image: article.image,
+        productName: article.productName,
+        price: article.price,
+        targetAudience: article.targetAudience,
+        product: article.product,
+      });
+    }
   }
 }

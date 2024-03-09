@@ -29,3 +29,12 @@ export interface Comment {
   likes: string[];
   dislikes: string[];
 }
+
+export interface ShoppingCart {
+  id?: string;
+  image: string;
+  productName: string;
+  price: number;
+  targetAudience: string;
+  product: string;
+}

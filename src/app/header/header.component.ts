@@ -1,11 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter, take, takeUntil } from 'rxjs/operators';
+import { filter, map, take, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { User } from '../interfaces/interfaces';
+import { User, ShoppingCart } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class HeaderComponent implements OnInit {
   showHeader: boolean = true;
   user: User | undefined;
+  shoppingCartList: ShoppingCart[] = [];
+
   private destroy$: Subject<void> = new Subject<void>();
   isScrolled: boolean = false;
 
@@ -23,7 +26,8 @@ export class HeaderComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private repositoryService: RepositoryService,
     private router: Router,
-    private firebaseFunctionsService: FirebaseFunctionsService
+    private firebaseFunctionsService: FirebaseFunctionsService,
+    private firestore: AngularFirestore
   ) {
     this.router.events
       .pipe(
@@ -47,7 +51,7 @@ export class HeaderComponent implements OnInit {
     this.isScrolled = scrollPosition >= 750;
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<any> {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection
@@ -59,6 +63,23 @@ export class HeaderComponent implements OnInit {
             const id = snapshot.id;
             this.user = { id, ...data } as User;
             this.updateUserOnlineStatus(true);
+
+            this.firestore
+              .collection(`users/${this.user!.id}/shoppingcart`)
+              .snapshotChanges()
+              .pipe(
+                map((actions) =>
+                  actions.map((a) => {
+                    const data = a.payload.doc.data() as ShoppingCart;
+                    const id = a.payload.doc.id;
+                    return { id, ...data } as ShoppingCart;
+                  })
+                ),
+                tap((shoppingCart: ShoppingCart[]) => {
+                  this.shoppingCartList = shoppingCart;
+                })
+              )
+              .subscribe();
           });
       } else {
         this.user = undefined;
