@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article, User } from '../interfaces/interfaces';
+import { Article, ShoppingCart, User } from '../interfaces/interfaces';
 import { map, tap } from 'rxjs';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,9 @@ import { Category } from '../enums/enums';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ViewportScroller } from '@angular/common';
 import { UserAuthService } from '../services/user-auth-service.service';
+import { increment } from 'firebase/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
 
 @Component({
   selector: 'app-shop',
@@ -18,6 +21,7 @@ import { UserAuthService } from '../services/user-auth-service.service';
 export class ShopComponent implements OnInit {
   articlesList: Article[] = [];
   articlesListTest: Article[] = [];
+  shoppingCartList: ShoppingCart[] = [];
   menList: Article[] = [];
   womenList: Article[] = [];
   unisexList: Article[] = [];
@@ -33,6 +37,7 @@ export class ShopComponent implements OnInit {
     private firestore: AngularFirestore,
     private userAuthService: UserAuthService,
     private router: Router,
+    private dialog: MatDialog,
     private viewportScroller: ViewportScroller
   ) {}
   async ngOnInit(): Promise<any> {
@@ -71,6 +76,23 @@ export class ShopComponent implements OnInit {
           break;
       }
     });
+
+    this.firestore
+      .collection(`users/${this.user!.id}/shoppingcart`)
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as ShoppingCart;
+            const id = a.payload.doc.id;
+            return { id, ...data } as ShoppingCart;
+          })
+        ),
+        tap((shoppingCart: ShoppingCart[]) => {
+          this.shoppingCartList = shoppingCart;
+        })
+      )
+      .subscribe();
   }
   shopForm: FormGroup = new FormGroup({
     sortByFilter: new FormControl('sortOnHighStock'),
@@ -180,14 +202,29 @@ export class ShopComponent implements OnInit {
     event.stopPropagation();
 
     if (!this.user) {
-    } else {
-      this.firestore.collection(`users/${this.user!.id}/shoppingcart`).add({
-        image: article.image,
-        productName: article.productName,
-        price: article.price,
-        targetAudience: article.targetAudience,
-        product: article.product,
+      this.dialog.open(WarningComponentComponent, {
+        width: '250px',
+        data: { text: 'Are you not logged in yet?', url: '/login' },
       });
+    } else if (this.shoppingCartList.some((item) => item.id === article.id)) {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(article.id)
+        .update({
+          quantity: increment(1),
+        });
+    } else {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(article.id)
+        .set({
+          image: article.image,
+          productName: article.productName,
+          price: article.price,
+          targetAudience: article.targetAudience,
+          product: article.product,
+          quantity: 1,
+        });
     }
   }
 }

@@ -37,4 +37,5 @@ export interface ShoppingCart {
   price: number;
   targetAudience: string;
   product: string;
+  quantity: number;
 }

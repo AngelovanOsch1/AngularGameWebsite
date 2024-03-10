@@ -16,7 +16,6 @@ import { take } from 'rxjs';
 export class UserProfileComponent implements OnInit {
   user: User | undefined;
   userProfile: User | undefined;
-
   constructor(
     private firestore: AngularFirestore,
     private afAuth: AngularFireAuth,

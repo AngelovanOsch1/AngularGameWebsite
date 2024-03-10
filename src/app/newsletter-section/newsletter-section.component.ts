@@ -21,27 +21,11 @@ export class NewsletterSectionComponent implements OnInit {
     private userAuthService: UserAuthService,
     private repositoryService: RepositoryService,
     private toastService: ToastService,
-    private afAuth: AngularFireAuth,
     private dialog: MatDialog
   ) {}
 
   async ngOnInit(): Promise<any> {
-    // this.user = await this.userAuthService.getLoggedInUser();
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.repositoryService.usersCollection
-          .doc<User>(user.uid)
-          .get()
-          .pipe(take(1))
-          .subscribe((snapshot) => {
-            const data = snapshot?.data() as User;
-            const id = snapshot.id;
-            this.user = { id, ...data } as User;
-          });
-      } else {
-        this.user = undefined;
-      }
-    });
+    this.user = await this.userAuthService.getLoggedInUser();
   }
   submitNewsletterForm() {
     if (!this.user) {

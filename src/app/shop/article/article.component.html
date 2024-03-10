@@ -20,8 +20,8 @@
         <div class="price" *ngIf="article?.stock">€{{article?.price}}</div>
       </div>
       <div class="buttons-container">
-        <button class="normal dark buy">Buy now for $49.99</button>
-        <button class="normal primary-color basket">Put in basket</button>
+        <button class="normal dark buy" (click)="buyArticleNow()">Buy now for $49.99</button>
+        <button class="normal primary-color basket" (click)="addToCart()">Put in basket</button>
       </div>
     </div>
   </section>
