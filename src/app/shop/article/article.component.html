@@ -17,10 +17,10 @@
       </p>
       <div class="price-container">
         <p>Now for</p>
-        <div class="price" *ngIf="article?.stock">€{{article?.price}}</div>
+        <div class="price" *ngIf="article?.stock">{{article?.price | currency:'EUR'}}</div>
       </div>
       <div class="buttons-container">
-        <button class="normal dark buy" (click)="buyArticleNow()">Buy now for $49.99</button>
+        <button class="normal dark buy" (click)="buyArticleNow()">Buy now for {{article?.price | currency:'EUR'}}</button>
         <button class="normal primary-color basket" (click)="addToCart()">Put in basket</button>
       </div>
     </div>

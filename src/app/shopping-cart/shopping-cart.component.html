@@ -38,7 +38,7 @@
                             <div class="gender" *ngIf="shoppingCartItem.targetAudience">{{shoppingCartItem.targetAudience}}</div>
                         </div>
                         <div class="product-name" *ngIf="shoppingCartItem.productName">{{shoppingCartItem.productName}}</div>
-                        <div class="price" *ngIf="shoppingCartItem.price">{{shoppingCartItem.price}}</div>
+                        <div class="price" *ngIf="shoppingCartItem.price">{{shoppingCartItem.price | currency:'EUR' }}</div>
                     </div>
                     <div class="items-amount-container">
                         <button class="decrement" (click)="decrementQuantity(shoppingCartItem)">-</button>
