@@ -20,7 +20,7 @@ import { WarningComponentComponent } from '../helper-components/warning-componen
 })
 export class ShopComponent implements OnInit {
   articlesList: Article[] = [];
-  articlesListTest: Article[] = [];
+  articlesListOrderBy: Article[] = [];
   shoppingCartList: ShoppingCart[] = [];
   menList: Article[] = [];
   womenList: Article[] = [];
@@ -63,18 +63,19 @@ export class ShopComponent implements OnInit {
     this.shopForm.controls['sortByFilter'].valueChanges.subscribe((val) => {
       switch (val) {
         case 'sortOnLowPrice':
-          this.articlesListTest.sort((a, b) => a.price - b.price);
+          this.articlesList.sort((a, b) => a.price - b.price);
           break;
         case 'sortOnHighPrice':
-          this.articlesListTest.sort((a, b) => b.price - a.price);
+          this.articlesList.sort((a, b) => b.price - a.price);
           break;
         case 'sortOnLowStock':
-          this.articlesListTest.sort((a, b) => a.stock - b.stock);
+          this.articlesList.sort((a, b) => a.stock - b.stock);
           break;
         case 'sortOnHighStock':
-          this.articlesListTest.sort((a, b) => b.stock - a.stock);
+          this.articlesList.sort((a, b) => b.stock - a.stock);
           break;
       }
+      this.changePage(1);
     });
 
     this.firestore
@@ -188,7 +189,7 @@ export class ShopComponent implements OnInit {
     this.currentPage = page;
     const startIndex = (this.currentPage - 1) * 12;
     const endIndex = startIndex + 12;
-    this.articlesListTest = this.articlesList.slice(startIndex, endIndex);
+    this.articlesListOrderBy = this.articlesList.slice(startIndex, endIndex);
     this.viewportScroller.scrollToAnchor('scroll-up-element');
   }
   selectOption(option: string) {

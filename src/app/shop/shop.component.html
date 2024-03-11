@@ -188,7 +188,8 @@
       </div>
       <div class="shop-index-container">
         <div class="shop-index">
-          <div class='product' *ngFor="let article of articlesListTest" (click)="showArticle(article)" [ngClass]="getStockClass(article.stock)">
+          <div class='product' *ngFor="let article of articlesListOrderBy" (click)="showArticle(article)"
+            [ngClass]="getStockClass(article.stock)">
             <div class="image-container">
               <img class="main-image" [src]="article.image" alt="{{article.productName}}"/>
               <div class="indicator low-on-stock-warning">
@@ -208,20 +209,19 @@
             <p>{{article.description}}</p>
             <div class="bottom-container">
               <div class="price">€{{article.price}}</div>
-<button class='normal primary-color' (click)="addToCart($event, article)">
-  <img src="../../assets/icons/shop-basket-icon.svg" alt="shop-basket-icon">
-</button>
+              <button class='normal primary-color' (click)="addToCart($event, article)">
+                <img src="../../assets/icons/shop-basket-icon.svg" alt="shop-basket-icon">
+              </button>
             </div>
           </div>
         </div>
         <div class='pagination-menu'>
           <app-pagination [currentPage]="currentPage" [limit]="12" [total]="articlesList.length"
             (changePage)="changePage($event)">
-        </app-pagination>
-</div>
+          </app-pagination>
+          </div>
       </div>
     </div>
-    
   </section>
   </form>
 </section>
