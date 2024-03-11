@@ -11,7 +11,7 @@
                     <div class="info">
                         <div class="total-cost">
                             <span>Total cost</span>
-                            <h2>€720.00</h2>
+                            <h2>{{ totalPrice | currency:'EUR' }}</h2>
                         </div>
                         <div class="total-items">
                             <span>items</span>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="to-be-paid-container">
                     <div class="to-be-paid">To be paid</div>
-                    <div class="price"><span>€</span>473.00</div>
+                <div class="price">{{ totalPrice | currency:'EUR' }}</div>
                 </div>
                 <hr>
                 <button class="normal primary-color no-radius big-button-with-image">Continue with your order <img src="../../assets/icons/FQ-arrows.svg" alt=""></button>
@@ -43,7 +43,7 @@
                     <div class="items-amount-container">
                         <button class="decrement" (click)="decrementQuantity(shoppingCartItem)">-</button>
                         <form [formGroup]="shoppingCartFormGroups[i]">
-                            <input class="quantity-input" (change)="inputQuantity(shoppingCartItem, i)" formControlName='quantity' />
+                            <input class="quantity-input" (change)="inputQuantity(shoppingCartItem, $event)" formControlName='quantity' />
                         </form>
                         <button class="increment" (click)="incrementQuantity(shoppingCartItem)">+</button>
                     </div>

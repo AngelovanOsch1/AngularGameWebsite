@@ -17,6 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   shoppingCartList: ShoppingCart[] = [];
   shoppingCartFormGroups: FormGroup[] = [];
   totalItems: number = 0;
+  totalPrice: number = 0;
 
   constructor(
     private firestore: AngularFirestore,
@@ -43,6 +44,11 @@ export class ShoppingCartComponent implements OnInit {
             (acc, item) => acc + item.quantity,
             0
           );
+
+          this.totalPrice = shoppingCart.reduce(
+            (acc, item) => acc + item.quantity * item.price,
+            0
+          );
           this.shoppingCartList.forEach((shoppingCartItem) => {
             const shoppingCartForm = new FormGroup({
               quantity: new FormControl(shoppingCartItem.quantity),
@@ -59,12 +65,21 @@ export class ShoppingCartComponent implements OnInit {
   });
 
   decrementQuantity(shoppingCartItem: ShoppingCart) {
-    this.firestore
-      .collection(`users/${this.user!.id}/shoppingcart`)
-      .doc(shoppingCartItem.id)
-      .update({
-        quantity: increment(-1),
-      });
+    const quantityValue = shoppingCartItem.quantity - 1;
+
+    if (quantityValue <= 0) {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(shoppingCartItem.id)
+        .delete();
+    } else {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(shoppingCartItem.id)
+        .update({
+          quantity: increment(-1),
+        });
+    }
   }
 
   incrementQuantity(shoppingCartItem: ShoppingCart) {
@@ -75,14 +90,21 @@ export class ShoppingCartComponent implements OnInit {
         quantity: increment(1),
       });
   }
-  inputQuantity(shoppingCartItem: ShoppingCart, i: number) {
-    const quantityValue = this.shoppingCartFormGroups[i].get('quantity')!.value;
+  inputQuantity(shoppingCartItem: ShoppingCart, event: Event) {
+    const quantityValue = parseInt((event.target as HTMLInputElement).value);
 
-    this.firestore
-      .collection(`users/${this.user!.id}/shoppingcart`)
-      .doc(shoppingCartItem.id)
-      .update({
-        quantity: quantityValue,
-      });
+    if (quantityValue <= 0) {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(shoppingCartItem.id)
+        .delete();
+    } else {
+      this.firestore
+        .collection(`users/${this.user!.id}/shoppingcart`)
+        .doc(shoppingCartItem.id)
+        .update({
+          quantity: quantityValue,
+        });
+    }
   }
 }
