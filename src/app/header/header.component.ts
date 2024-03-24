@@ -95,7 +95,8 @@ export class HeaderComponent implements OnInit {
   UsesSecondHeader(): boolean {
     return (
       this.router.url.includes('/article') ||
-      this.router.url.includes('/shopping-cart')
+      this.router.url.includes('/shopping-cart') ||
+      this.router.url.includes('/order-payments')
     );
   }
 

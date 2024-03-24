@@ -24,7 +24,7 @@
                 <div class="price">{{ totalPrice | currency:'EUR' }}</div>
                 </div>
                 <hr>
-                <button class="normal primary-color no-radius big-button-with-image">Continue with your order <img src="../../assets/icons/FQ-arrows.svg" alt=""></button>
+                <button routerLink="/order-payments" class="normal primary-color no-radius big-button-with-image">Continue with your order <img src="../../assets/icons/FQ-arrows.svg" alt=""></button>
             </div>
             <div class="items-container">
                 <div class="item" *ngFor="let shoppingCartItem of shoppingCartList; let i = index">

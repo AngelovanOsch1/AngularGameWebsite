@@ -9,6 +9,7 @@ import { LandingComponent } from '../app/landing/landing.component';
 import { ArticleComponent } from './shop/article/article.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { OrderPaymentsComponent } from './order-payments/order-payments.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'userProfile/:id', component: UserProfileComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'order-payments', component: OrderPaymentsComponent },
 ];
 
 @NgModule({
