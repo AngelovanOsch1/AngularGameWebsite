@@ -13,12 +13,9 @@ export class OrderPaymentsComponent {
   constructor(private toastService: ToastService, private dialog: MatDialog) {}
 
   addAddress() {
-    if (true == true) {
-      this.dialog.open(addAddressModal, {
-        width: '250px',
-      });
-    } else {
-      this.toastService.show('Address added!');
-    }
+         this.dialog.open(addAddressModal, {
+           width: '250px',
+           data: { text: 'Are you not logged in yet?', url: '/login' },
+         });
   }
 }

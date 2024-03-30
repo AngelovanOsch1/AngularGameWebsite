@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { addAddressModal } from './add-address.compontent.spec';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
-describe('addAddressModal', () => {
-  let component: addAddressModal;
-  let fixture: ComponentFixture<addAddressModal>;
+@Component({
+  selector: 'app-warning-component',
+  templateUrl: './add-address.component.html',
+  styleUrls: ['./add-address.component.scss'],
+})
+export class addAddressModal {
+  text: String | undefined;
+  url: String | null;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [addAddressModal],
-    });
-    fixture = TestBed.createComponent(addAddressModal);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<addAddressModal>,
+    private router: Router
+  ) {
+    this.text = data.text;
+    this.url = data.url;
+  }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
-export { addAddressModal };
+  navigateToLogin() {
+    this.dialogRef.close();
+    this.router.navigate([this.url]);
+  }
+}
 

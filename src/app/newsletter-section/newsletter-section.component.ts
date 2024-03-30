@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RepositoryService } from '../services/repository.service';
 import { ToastService } from '../services/toast.service';
 import { User } from '../interfaces/interfaces';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
-import { take } from 'rxjs';
 import { UserAuthService } from '../services/user-auth-service.service';
 
 @Component({
