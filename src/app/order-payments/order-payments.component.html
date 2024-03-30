@@ -1,10 +1,10 @@
 <section class="order-payments page">
   <section class="hero-2">
-    <a href="" class="btn back"><i class="fq-icon"></i>Back</a>
+    <a href="" class="btn icon--back"><i class="fq-icon icon--arrow-back"></i>Back</a>
     <hr/>
     <div class="main-content-container">
       <div class="information-container">
-        <h1 class="title"><i class='fq-icon payments'></i>Payment details</h1>
+        <h1 class="title"><i class='fq-icon icon--payments'></i>Payment details</h1>
         <div class="overview">
           <div class="title">Overview</div>
           <div class="info">
@@ -103,27 +103,27 @@
     <div class="select-address-container">
       <h2>Choose your delivery point</h2>
       <form class='select-address'>
-        <div class="address">
+        <div class="address active">
           <h3>Your address</h3>
           <div class="address-info">
             <p class="fullname">Angelo osch</p>
             <p class="streetname housenumber">Essiknklaan 2</p>
             <div class="postal city country">5361 JT Grave, Netherlands</div>
           </div>
-          <i class='fq-icon'></i>
+          <i class='fq-icon icon--location'></i>
         </div>
         <div class="address">
-          <h3>Your address</h3>
+          <h3>Your address (2)</h3>
           <div class="address-info">
             <p class="fullname">Angelo osch</p>
             <p class="streetname housenumber">Essiknklaan 2</p>
             <div class="postal city country">5361 JT Grave, Netherlands</div>
           </div>
-          <i class='fq-icon'></i>
+          <i class='fq-icon icon--location'></i>
         </div>
-        <button class="add-address"><i class="fq-icon"></i> Add address</button>
+        <button class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
       </form>
-      <button routerLink="/order-payments" class="normal primary-color">Continue with your order <img src="../../assets/icons/FQ-arrows.svg" alt=""></button>
+      <button routerLink="/order-payments" class="normal primary-color order">Continue with your order <i class='fq-icon icon--arrow-next'></i></button>
     </div>
   </section>
 </section>

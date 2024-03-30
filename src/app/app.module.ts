@@ -29,6 +29,8 @@ import { ChatMenu } from './chat-menu/chat-menu.component';
 import { FriendsComponent } from './chat-menu/friends/friends.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderPaymentsComponent } from './order-payments/order-payments.component';
+import { addAddressModal } from './helper-components/add-address-modal/add-address.compontent';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { OrderPaymentsComponent } from './order-payments/order-payments.componen
     FriendsComponent,
     ShoppingCartComponent,
     OrderPaymentsComponent,
+    addAddressModal,
   ],
   imports: [
     AngularFireStorageModule,

@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5, label, button, .pre-title, .question-container .number, .tit
 a {
   text-decoration: none;
   outline: none;
+  transition: .2s ease-in-out;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -207,15 +208,19 @@ button.no-radius{
 }
 button.big-button-with-image{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 50px;
   gap: 20px;
+  border-right: 0px solid $primary-color;
+  transition: 0.3s ease;
   img{
     transform: rotate(-90deg);
+    transition: 0.3s ease;
   }
   &:hover{
-    background: $green;
+    img{ transform: translateX(20px); }
+    border-right: 20px solid $green;
     transform: scale(100%);
   }
 }
@@ -529,6 +534,113 @@ footer.signup-footer {
           }
       }
     }
+}
+.main-content-container{
+  display: flex;
+  gap: 150px;
+  margin: 30px 0 100px 0;
+  .information-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 500px;
+    .overview {
+      border: 2px solid $black;
+      padding: 25px 40px;
+      color: $black;
+      .title{
+        font-size: 1.2rem;
+        padding: 0 0 15px 0;
+        border-bottom: 1px solid $black;
+      }
+      .info{
+        padding: 25px 0 0 0;
+        display: flex;
+        gap: 50px;
+        span{ font-family: "PoppinsBold";}
+        h2{ font-size: 2rem; }
+        .total-cost h2{ color: $green; }
+        .total-items h2{ color: $primary-color; }
+      }
+    }
+    .to-be-paid-container{
+      padding: 25px 50px;
+      display: flex;
+      background: $black;
+      color: #fff;
+      .to-be-paid{
+        padding: 0 30px 0 0;
+        border-right: 2px solid #fff;
+        font-size: 1.1rem;
+      }
+      .price{
+        padding: 0 0 0 30px;
+        font-size: 1.5rem;
+        span{ font-family: "PoppinsBold"; color: $green; }
+      }
+    }
+  }
+  .items-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 50px;
+    .item{
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      color: $black;
+      &:not(:last-child){
+        &::after{ content: ''; position: absolute; left: 0;  right: 0; bottom: -25px; height: 1px; background-color: $grey; }
+      }
+      .image-container{
+        max-width: 100px;
+        img{ width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; }
+      }
+      .product-information{
+        line-height: normal;
+        .types-container {
+          display: flex;
+          gap: 30px;
+          font-size: 1rem;
+          text-transform: capitalize;
+          .type{
+            position: relative;
+            &::after { content: ""; position: absolute; right: -20px; top: 0; bottom: 0; margin: auto; width: 7px; height: 7px; border-radius: 50px; background-color: #4056F4; }
+          }
+        }
+        .product-name{ font-size: 1.8rem; font-family: 'PoppinsSemibold'; }
+        .price { background-color: $green; padding: 3px 20px; border-radius: 5px; color: #fff; width: fit-content; font-size: 1rem; }
+      }
+    }
+  }
+}
+
+// ICONS
+.fq-icon{
+  --src: '';
+  --clr: black;
+  --w: 20px;
+  --h: 20px;
+
+  display: inline-block; width: var(--w); height: var(--h);
+  mask-image: var(--src); -webkit-mask-image: var(--src);
+  mask-size: contain;     -webkit-mask-size: contain;
+  mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+  mask-position: center;  -webkit-mask-position: center;
+  background-color: var(--clr); transition: .2s ease-in-out;
+}
+.fq-icon.icon--arrow-back { --src: url('assets/icons/FQ-arrows-long.svg'); transform: rotate(180deg); }
+.fq-icon.icon--arrow-next { --src: url('assets/icons/FQ-arrows-long.svg'); }
+.fq-icon.icon--payments   { --src: url('assets/icons/payment-methods-icon.svg'); }
+.fq-icon.icon--location   { --src: url('assets/icons/location-icon.svg'); }
+.fq-icon.icon--quote      { --src: url('assets/icons/quote-icon.svg'); }
+
+// Their A tags
+a.btn.icon--back{ 
+  display: flex; gap: 5px; font-size: 1rem; color:$primary-color; font-weight: bold; padding: 5px 0; width: fit-content; i{ --clr: #{$primary-color};}  
+  &:hover{ $hover-clr: $black; color: $hover-clr; i{ --clr: #{$hover-clr};} }
 }
 
 // ANIMATIONS
