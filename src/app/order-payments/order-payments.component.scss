@@ -1,8 +1,8 @@
 @import "../../styles.scss";
 
 section.order-payments{
-  h1{ font-size: 32px; color: $black; i{--clr: #{$black}; --w: 30px; --h: 30px; margin: 0 20px 0 0; transform: translateY(5px); } }
-  h2{ font-size: 26px; margin-bottom: 20px; color: $primary-color; }
+  h1{ font-size: 2.3rem; color: $black; i{--clr: #{$black}; --w: 30px; --h: 30px; margin: 0 20px 0 0; transform: translateY(5px); } }
+  h2{ font-size: 1.7rem; margin-bottom: 20px; color: $primary-color; }
   .items-container{
     display: grid;
     grid-template-columns: 1fr 1fr;

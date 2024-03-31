@@ -61,7 +61,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-button.normal{
+button.normal, .btn.normal{
   padding: 8px 15px;
   border: none;
   border-radius: 3px;
@@ -166,7 +166,7 @@ button.dark{
       background-color: $primary-color;
     }
 }
-button.primary-color{
+button.primary-color, .btn.normal.primary-color{
     color: #fff;
     background-color: $primary-color;
 }

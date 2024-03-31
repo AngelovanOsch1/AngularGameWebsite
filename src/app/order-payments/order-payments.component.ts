@@ -14,8 +14,8 @@ export class OrderPaymentsComponent {
 
   addAddress() {
          this.dialog.open(addAddressModal, {
-           width: '250px',
-           data: { text: 'Are you not logged in yet?', url: '/login' },
+           width: '600px',
+           data: { text: 'You paid succesfully !!!', url: '/order-payments' },
          });
   }
 }
