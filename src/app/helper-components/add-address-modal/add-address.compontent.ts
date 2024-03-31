@@ -24,5 +24,8 @@ export class addAddressModal {
     this.dialogRef.close();
     this.router.navigate([this.url]);
   }
+  closeModal() {
+    this.dialogRef.close();
+  }
 }
 

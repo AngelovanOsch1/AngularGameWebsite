@@ -12,7 +12,6 @@ app-warning-component{ width: 5000px; }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-
     .input-field{ 
       display: flex; flex-direction: column; gap: 5px;
       font-size: 1.1rem; color: $black;
@@ -20,6 +19,8 @@ app-warning-component{ width: 5000px; }
     }
     input:not([type="submit"]), select{ padding: 5px 10px; border: 1px solid $black; border-radius: 5px; font-size: 1rem; }
     select{ background-color: $black; color: #fff; }
-    input[type="submit"] { grid-column: span 2; margin: 30px 0 0 0; padding: 8px 30px; width: fit-content; &:hover{ transform: scale(100%); background-color: $green;}}
+    input[type="submit"] { grid-column: span 2; margin: 30px 0 0 0; font-weight: bold; padding: 8px 30px; width: fit-content; background-color: $green; &:hover{ filter: drop-shadow(1px 1px 15px $green); }}
   }
+
+  .close-btn{ position: absolute; top: 15px; right: 15px; button{ color: #fff; padding: 5px 12px; } }
 }
