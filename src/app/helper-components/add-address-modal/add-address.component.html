@@ -2,6 +2,14 @@
   <h2>Address your address</h2>
   <form action="">
     <div class="input-field">
+      <label>Firstname<span>*</span></label>
+      <input type="text" placeholder="Enter your firstname">
+    </div>
+    <div class="input-field">
+      <label>Lastname<span>*</span></label>
+      <input type="text" placeholder="Enter your lastname">
+    </div>
+    <div class="input-field">
       <label>Postal<span>*</span></label>
       <input type="text" placeholder="Enter your postal code">
     </div>
@@ -25,6 +33,15 @@
         <option value="">Option 2</option>
         <option value="">Option 3</option>
         <option value="">Option 4</option>
+      </select>
+    </div>
+    <div class="input-field">
+      <label>Gender<span>*</span></label>
+      <select name="" id="">
+        <option value="" disabled selected>Select your gender</option>
+        <option value="">Man</option>
+        <option value="">Woman</option>
+        <option value="">Dinosaurus</option>
       </select>
     </div>
     <input type='submit' class='btn normal primary-color' (click)='navigateToLogin()'>
