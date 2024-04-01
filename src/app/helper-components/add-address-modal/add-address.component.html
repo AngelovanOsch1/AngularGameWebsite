@@ -1,17 +1,17 @@
 <div class="add-address-component">
-  <h2>Address your address</h2>
-  <form action="">
+  <h2>Create an address card</h2>
+  <form>
     <div class="input-field span-2">
-      <label>Address name<span>*</span></label>
-      <input type="text" placeholder="Enter your address name">
+      <label>Name of address card<span>*</span></label>
+      <input type="text" placeholder="Enter your address card name">
     </div>
     <div class="input-field">
-      <label>Firstname<span>*</span></label>
-      <input type="text" placeholder="Enter your firstname">
+      <label>First name<span>*</span></label>
+      <input type="text" placeholder="Enter your first name">
     </div>
     <div class="input-field">
-      <label>Lastname<span>*</span></label>
-      <input type="text" placeholder="Enter your lastname">
+      <label>Last name<span>*</span></label>
+      <input type="text" placeholder="Enter your last name">
     </div>
     <div class="input-field">
       <label>Postal<span>*</span></label>
@@ -31,7 +31,7 @@
     </div>
     <div class="input-field">
       <label>Country<span>*</span></label>
-      <select name="" id="">
+      <select>
         <option value="" disabled selected>Select your country</option>
         <option value="">Option 1</option>
         <option value="">Option 2</option>
@@ -41,14 +41,14 @@
     </div>
     <div class="input-field">
       <label>Gender<span>*</span></label>
-      <select name="" id="">
+      <select>
         <option value="" disabled selected>Select your gender</option>
         <option value="">Man</option>
         <option value="">Woman</option>
-        <option value="">Dinosaurus</option>
+        <option value="">Prefer not to say</option>
       </select>
     </div>
-    <input type='submit' class='btn normal primary-color' (click)='navigateToLogin()'>
+    <input type='submit' class='btn normal primary-color' value="Create address card" />
   </form>
   <div class="close-btn">
     <button class='btn normal red' (click)="closeModal()">X</button>
