@@ -10,12 +10,15 @@ import { addAddressModal } from '../helper-components/add-address-modal/add-addr
   styleUrls: ['./order-payments.component.scss'],
 })
 export class OrderPaymentsComponent {
+  isMenuOpen: { [key: number]: boolean } = {};
   constructor(private toastService: ToastService, private dialog: MatDialog) {}
-
+  toggleMenu(addressIndex: number) {
+    this.isMenuOpen[addressIndex] = !this.isMenuOpen[addressIndex];
+  }
   addAddress() {
-         this.dialog.open(addAddressModal, {
-           width: '600px',
-           data: { text: 'You paid succesfully !!!', url: '/order-payments' },
-         });
+    this.dialog.open(addAddressModal, {
+      width: '600px',
+      data: { text: 'You paid succesfully !!!', url: '/order-payments' },
+    });
   }
 }

@@ -112,10 +112,12 @@
           </div>
           <i class='fq-icon icon--location'></i>
           <div class="address-settings">
-            <button><i class='fq-icon icon--dot'></i></button>
-            <div class="kebab-menu">
-              <button><i class='fq-icon icon--update'></i></button>
-              <button><i class='fq-icon icon--delete'></i></button>
+            <button class='kebab-menu-btn' (click)="toggleMenu(1)">
+              <i class='fq-icon icon--dot kebab-menu-icon'></i>
+            </button>
+            <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[1] }">
+              <button class='update'>Update <i class='fq-icon icon--update'></i></button>
+              <button class='delete'>Delete <i class='fq-icon icon--delete'></i></button>
             </div>
           </div>
         </div>
@@ -128,10 +130,12 @@
           </div>
           <i class='fq-icon icon--location'></i>
           <div class="address-settings">
-            <button><i class='fq-icon icon--dot'></i></button>
-            <div class="kebab-menu">
-              <button><i class='fq-icon icon--update'></i></button>
-              <button><i class='fq-icon icon--delete'></i></button>
+            <button class='kebab-menu-btn' (click)="toggleMenu(2)">
+              <i class='fq-icon icon--dot kebab-menu-icon'></i>
+            </button>
+            <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[2] }">
+              <button class='update'>Update <i class='fq-icon icon--update'></i></button>
+              <button class='delete'>Delete <i class='fq-icon icon--delete'></i></button>
             </div>
           </div>
         </div>
