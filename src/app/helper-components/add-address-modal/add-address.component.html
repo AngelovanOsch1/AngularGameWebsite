@@ -1,54 +1,56 @@
 <div class="add-address-component">
   <h2>Create an address card</h2>
-  <form>
+  <form [formGroup]='addressForm'>
     <div class="input-field span-2">
       <label>Name of address card<span>*</span></label>
-      <input type="text" placeholder="Enter your address card name">
+      <input type="text" placeholder="Enter your address card name" formControlName='nameOfAddressCard'>
+      <div>{{ getError('nameOfAddressCard') }}</div>
     </div>
     <div class="input-field">
       <label>First name<span>*</span></label>
-      <input type="text" placeholder="Enter your first name">
+      <input type="text" placeholder="Enter your first name" formControlName='firstName'>
+      <div>{{ getError('firstName') }}</div>
     </div>
     <div class="input-field">
       <label>Last name<span>*</span></label>
-      <input type="text" placeholder="Enter your last name">
+      <input type="text" placeholder="Enter your last name" formControlName='lastName'>
+      <div>{{ getError('lastName') }}</div>
     </div>
     <div class="input-field">
       <label>Postal<span>*</span></label>
-      <input type="text" placeholder="Enter your postal code">
+      <input type="text" placeholder="Enter your postal code" formControlName="postal">
+      <div>{{ getError('postal') }}</div>
     </div>
     <div class="input-field">
       <label>Street name<span>*</span></label>
-      <input type="text" placeholder="Enter your street name">
+      <input type="text" placeholder="Enter your street name" formControlName='streetName'>
+      <div>{{ getError('streetName') }}</div>
     </div>
     <div class="input-field">
       <label>House number<span>*</span></label>
-      <input type="text" placeholder="Enter your house number">
+      <input type="text" placeholder="Enter your house number" formControlName='houseNumber'>
+      <div>{{ getError('houseNumber') }}</div>
     </div>
     <div class="input-field">
       <label>City<span>*</span></label>
-      <input type="text" placeholder="Enter your city">
+      <input type="text" placeholder="Enter your city" formControlName='city'>
+      <div>{{ getError('city') }}</div>
     </div>
     <div class="input-field">
       <label>Country<span>*</span></label>
-      <select>
+      <select formControlName="country">
         <option value="" disabled selected>Select your country</option>
-        <option value="">Option 1</option>
-        <option value="">Option 2</option>
-        <option value="">Option 3</option>
-        <option value="">Option 4</option>
+        <option value="{{ country }}" *ngFor="let country of countryList">{{ country }}</option>
       </select>
     </div>
     <div class="input-field">
       <label>Gender<span>*</span></label>
-      <select>
+      <select formControlName="gender">
         <option value="" disabled selected>Select your gender</option>
-        <option value="">Man</option>
-        <option value="">Woman</option>
-        <option value="">Prefer not to say</option>
+        <option value="{{ gender }}" *ngFor="let gender of genderList">{{ gender }}</option>
       </select>
     </div>
-    <input type='submit' class='btn normal primary-color' value="Create address card" />
+    <input type='submit' class='btn normal primary-color' value="Create address card" (click)="submitAddressForm()" />
   </form>
   <div class="close-btn">
     <button class='btn normal red' (click)="closeModal()">X</button>

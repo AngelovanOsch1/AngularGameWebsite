@@ -29,3 +29,9 @@ export enum TargetAudience {
   WOMEN = 'women',
   UNISEX = 'unisex',
 }
+
+export enum Gender {
+  MALE = 'Male',
+  FEMALE = 'Female',
+  OTHER = 'Other',
+}
