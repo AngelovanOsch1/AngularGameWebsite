@@ -102,8 +102,8 @@
     <hr />
     <div class="select-address-container">
       <h2>Choose your delivery point</h2>
-      <form class='select-address'>
-        <div class="address active" *ngFor="let address of addressList">
+      <form class='select-address' [formGroup]="checkoutForm">
+        <div class="address" [ngClass]="{'active': address.id === selectedAddress?.id}" *ngFor="let address of addressList" (click)='selectAddress(address)'>
           <h3>{{address.nameOfAddressCard}}</h3>
           <div class="address-info">
             <p class="fullname">{{address.firstName + ' ' + address.lastName}}</p>
@@ -123,7 +123,7 @@
         </div>
         <button *ngIf="addressList.length < 5" class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
       </form>
-      <button routerLink="/order-payments" class="normal primary-color order">Continue with your order <i
+      <button routerLink="/order-payments" class="normal primary-color order" (click)="submitCheckoutForm()">Continue with your order <i
           class='fq-icon icon--arrow-next'></i></button>
     </div>
   </section>

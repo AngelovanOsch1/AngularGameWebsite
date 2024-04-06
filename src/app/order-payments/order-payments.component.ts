@@ -5,6 +5,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, tap } from 'rxjs';
 import { Address, User } from '../interfaces/interfaces';
 import { UserAuthService } from '../services/user-auth-service.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from '../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-payments',
@@ -16,9 +19,12 @@ export class OrderPaymentsComponent implements OnInit {
   user: User | undefined;
   addressList: Address[] = [];
   isMenuOpen: { [key: number]: boolean } = {};
+  selectedAddress: Address | undefined;
   constructor(
     private userAuthService: UserAuthService,
     private firestore: AngularFirestore,
+    private toastService: ToastService,
+    private router: Router,
     private dialog: MatDialog
   ) {}
   async ngOnInit(): Promise<any> {
@@ -42,15 +48,24 @@ export class OrderPaymentsComponent implements OnInit {
       )
       .subscribe();
   }
+
+  checkoutForm: FormGroup = new FormGroup({
+    selectedAddress: new FormControl('', Validators.required),
+  });
   toggleMenu(addressIndex: number) {
     this.isMenuOpen[addressIndex] = !this.isMenuOpen[addressIndex];
   }
 
+  selectAddress(address: Address) {
+    this.selectedAddress = address;
+    this.checkoutForm.controls['selectedAddress'].setValue(address);
+  }
+
   updateAddress(address: Address) {
     this.dialog.open(addAddressModal, {
-    width: '750px',
-    data: address,
-    })
+      width: '750px',
+      data: address,
+    });
   }
 
   deleteAddress(address: Address) {
@@ -63,5 +78,12 @@ export class OrderPaymentsComponent implements OnInit {
     this.dialog.open(addAddressModal, {
       width: '750px',
     });
+  }
+
+  submitCheckoutForm() {
+    if (this.checkoutForm.invalid) {
+      return this.toastService.show('Please select an address to continue');
+    }
+    this.router.navigate(['home']);
   }
 }
