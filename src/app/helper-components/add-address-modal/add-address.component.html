@@ -50,7 +50,7 @@
         <option value="{{ gender }}" *ngFor="let gender of genderList">{{ gender }}</option>
       </select>
     </div>
-    <input type='submit' class='btn normal primary-color' value="{{this.data? 'Update address card' : 'Create address card'}}" (click)="submitAddressForm()" />
+    <input type='submit' class='btn normal primary-color' value="{{addressUpdateComponent ? 'Update address card' : 'Create address card'}}" (click)="submitAddressForm()" />
   </form>
   <div class="close-btn">
     <button class='btn normal red' (click)="closeModal()">X</button>

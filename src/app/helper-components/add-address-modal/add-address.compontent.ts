@@ -15,6 +15,7 @@ import { UserAuthService } from 'src/app/services/user-auth-service.service';
   providers: [UserAuthService],
 })
 export class addAddressModal implements OnInit {
+  addressUpdateComponent: boolean | undefined;
   user: User | undefined;
   genderList: string[] = Object.values(Gender);
   countryList: string[] = Object.values(Country);
@@ -24,23 +25,24 @@ export class addAddressModal implements OnInit {
     private firestore: AngularFirestore,
     @Inject(MAT_DIALOG_DATA) public data: Address,
     private dialogRef: MatDialogRef<addAddressModal>,
-    private toastService: ToastService,
+    private toastService: ToastService
   ) {}
   async ngOnInit(): Promise<any> {
-    if (this.data) {
-      this.addressForm.controls['nameOfAddressCard'].setValue(this.data.nameOfAddressCard);
-      this.addressForm.controls['firstName'].setValue(
-        this.data.firstName
-      );this.addressForm.controls['lastName'].setValue(
-        this.data.lastName
-      );this.addressForm.controls['postal'].setValue(this.data.postal);
+    this.user = await this.userAuthService.getLoggedInUser();
+    this.addressUpdateComponent = this.data ? true : false;
+    if (this.addressUpdateComponent) {
+      this.addressForm.controls['nameOfAddressCard'].setValue(
+        this.data.nameOfAddressCard
+      );
+      this.addressForm.controls['firstName'].setValue(this.data.firstName);
+      this.addressForm.controls['lastName'].setValue(this.data.lastName);
+      this.addressForm.controls['postal'].setValue(this.data.postal);
       this.addressForm.controls['streetName'].setValue(this.data.streetName);
       this.addressForm.controls['houseNumber'].setValue(this.data.houseNumber);
-            this.addressForm.controls['city'].setValue(this.data.city);
+      this.addressForm.controls['city'].setValue(this.data.city);
       this.addressForm.controls['country'].setValue(this.data.country);
       this.addressForm.controls['gender'].setValue(this.data.gender);
     }
-    this.user = await this.userAuthService.getLoggedInUser();
   }
   addressForm: FormGroup = new FormGroup({
     nameOfAddressCard: new FormControl('', Validators.required),
@@ -88,19 +90,19 @@ export class addAddressModal implements OnInit {
     }
 
     const nameOfAddressCard =
-      this.addressForm.controls['nameOfAddressCard'].value.trim();
-    const firstName = this.addressForm.controls['firstName'].value.trim();
-    const lastName = this.addressForm.controls['lastName'].value.trim();
+      this.addressForm.controls['nameOfAddressCard'].value;
+    const firstName = this.addressForm.controls['firstName'].value;
+    const lastName = this.addressForm.controls['lastName'].value;
     const postal = this.addressForm.controls['postal'].value
       .trim()
       .toUpperCase();
-    const streetName = this.addressForm.controls['streetName'].value.trim();
-    const houseNumber = this.addressForm.controls['houseNumber'].value.trim();
-    const city = this.addressForm.controls['city'].value.trim();
-    const country = this.addressForm.controls['country'].value.trim();
-    const gender = this.addressForm.controls['gender'].value.trim();
+    const streetName = this.addressForm.controls['streetName'].value;
+    const houseNumber = this.addressForm.controls['houseNumber'].value;
+    const city = this.addressForm.controls['city'].value;
+    const country = this.addressForm.controls['country'].value;
+    const gender = this.addressForm.controls['gender'].value;
 
-    if (this.data) {
+    if (this.addressUpdateComponent) {
       this.firestore
         .collection(`users/${this.user?.id}/addresses`)
         .doc(this.data.id)
@@ -120,21 +122,21 @@ export class addAddressModal implements OnInit {
       this.dialogRef.close();
       this.toastService.show('Address card has been updated');
     } else {
-    this.firestore.collection(`users/${this.user?.id}/addresses`).add({
-      nameOfAddressCard: nameOfAddressCard,
-      firstName: firstName,
-      lastName: lastName,
-      postal: postal,
-      streetName: streetName,
-      houseNumber: houseNumber,
-      city: city,
-      country: country,
-      gender: gender,
-      nameOfAddressCardCreatedAt: new Date(),
-    });
+      this.firestore.collection(`users/${this.user?.id}/addresses`).add({
+        nameOfAddressCard: nameOfAddressCard,
+        firstName: firstName,
+        lastName: lastName,
+        postal: postal,
+        streetName: streetName,
+        houseNumber: houseNumber,
+        city: city,
+        country: country,
+        gender: gender,
+        nameOfAddressCardCreatedAt: new Date(),
+      });
 
-    this.dialogRef.close();
-    this.toastService.show('Address card has been added');
+      this.dialogRef.close();
+      this.toastService.show('Address card has been added');
     }
   }
 }

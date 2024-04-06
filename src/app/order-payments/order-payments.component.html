@@ -121,7 +121,7 @@
             </div>
           </div>
         </div>
-        <button class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
+        <button *ngIf="addressList.length < 5" class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
       </form>
       <button routerLink="/order-payments" class="normal primary-color order">Continue with your order <i
           class='fq-icon icon--arrow-next'></i></button>
