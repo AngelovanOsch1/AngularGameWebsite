@@ -39,3 +39,17 @@ export interface ShoppingCart {
   product: string;
   quantity: number;
 }
+
+export interface Address {
+  id?: string;
+  nameOfAddressCard: string;
+  firstName: string;
+  lastName: string;
+  postal: string;
+  streetName: string;
+  houseNumber: string;
+  city: string;
+  country: string;
+  gender: string;
+  nameOfAddressCardCreatedAt: Date;
+}

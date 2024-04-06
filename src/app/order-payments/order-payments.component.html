@@ -1,7 +1,7 @@
 <section class="order-payments page">
   <section class="hero-2">
     <a href="" class="btn icon--back"><i class="fq-icon icon--arrow-back"></i>Back</a>
-    <hr/>
+    <hr />
     <div class="main-content-container">
       <div class="information-container">
         <h1 class="title"><i class='fq-icon icon--payments'></i>Payment details</h1>
@@ -99,16 +99,16 @@
         </div>
       </div>
     </div>
-    <hr/>
+    <hr />
     <div class="select-address-container">
       <h2>Choose your delivery point</h2>
       <form class='select-address'>
-        <div class="address active">
-          <h3>Your address</h3>
+        <div class="address active" *ngFor="let address of addressList">
+          <h3>{{address.nameOfAddressCard}}</h3>
           <div class="address-info">
-            <p class="fullname">Angelo osch</p>
-            <p class="streetname housenumber">Essiknklaan 2</p>
-            <div class="postal city country">5361 JT Grave, Netherlands</div>
+            <p class="fullname">{{address.firstName + ' ' + address.lastName}}</p>
+            <p class="streetname housenumber">{{address.streetName + ' ' + address.houseNumber}}</p>
+            <div class="postal city country">{{address.postal + ' ' + address.city}}, {{address.country}}</div>
           </div>
           <i class='fq-icon icon--location'></i>
           <div class="address-settings">
@@ -116,32 +116,15 @@
               <i class='fq-icon icon--dot kebab-menu-icon'></i>
             </button>
             <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[1] }">
-              <button class='update'>Update <i class='fq-icon icon--update'></i></button>
-              <button class='delete'>Delete <i class='fq-icon icon--delete'></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="address">
-          <h3>Your address (2)</h3>
-          <div class="address-info">
-            <p class="fullname">Angelo osch</p>
-            <p class="streetname housenumber">Essiknklaan 2</p>
-            <div class="postal city country">5361 JT Grave, Netherlands</div>
-          </div>
-          <i class='fq-icon icon--location'></i>
-          <div class="address-settings">
-            <button class='kebab-menu-btn' (click)="toggleMenu(2)">
-              <i class='fq-icon icon--dot kebab-menu-icon'></i>
-            </button>
-            <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[2] }">
-              <button class='update'>Update <i class='fq-icon icon--update'></i></button>
-              <button class='delete'>Delete <i class='fq-icon icon--delete'></i></button>
+              <button class='update' (click)="updateAddress(address)">Update <i class='fq-icon icon--update'></i></button>
+              <button class='delete' (click)="deleteAddress(address)">Delete <i class='fq-icon icon--delete'></i></button>
             </div>
           </div>
         </div>
         <button class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
       </form>
-      <button routerLink="/order-payments" class="normal primary-color order">Continue with your order <i class='fq-icon icon--arrow-next'></i></button>
+      <button routerLink="/order-payments" class="normal primary-color order">Continue with your order <i
+          class='fq-icon icon--arrow-next'></i></button>
     </div>
   </section>
 </section>
