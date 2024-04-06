@@ -17,7 +17,7 @@ export class OrderPaymentsComponent {
   }
   addAddress() {
     this.dialog.open(addAddressModal, {
-      width: '600px',
+      width: '750px',
       data: { text: 'You paid succesfully !!!', url: '/order-payments' },
     });
   }
