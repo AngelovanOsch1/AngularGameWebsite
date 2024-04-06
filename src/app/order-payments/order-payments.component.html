@@ -112,11 +112,11 @@
           </div>
           <i class='fq-icon icon--location'></i>
           <div class="address-settings">
-            <button class='kebab-menu-btn' (click)="toggleMenu(1)">
+            <button class='kebab-menu-btn' (click)="toggleMenu($event, 1)">
               <i class='fq-icon icon--dot kebab-menu-icon'></i>
             </button>
             <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[1] }">
-              <button class='update' (click)="updateAddress(address)">Update <i class='fq-icon icon--update'></i></button>
+              <button class='update' (click)="updateAddress($event, address)">Update <i class='fq-icon icon--update'></i></button>
               <button class='delete' (click)="deleteAddress(address)">Delete <i class='fq-icon icon--delete'></i></button>
             </div>
           </div>

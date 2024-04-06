@@ -31,7 +31,7 @@ export class OrderPaymentsComponent implements OnInit {
     this.user = await this.userAuthService.getLoggedInUser();
     this.firestore
       .collection(`users/${this.user?.id}/addresses`, (ref) =>
-        ref.orderBy('nameOfAddressCardCreatedAt', 'asc')
+        ref.orderBy('nameOfAddressCardCreatedAt', 'desc')
       )
       .snapshotChanges()
       .pipe(
@@ -44,6 +44,7 @@ export class OrderPaymentsComponent implements OnInit {
         ),
         tap((address: Address[]) => {
           this.addressList = address;
+          this.selectedAddress = address[0];
         })
       )
       .subscribe();
@@ -52,7 +53,8 @@ export class OrderPaymentsComponent implements OnInit {
   checkoutForm: FormGroup = new FormGroup({
     selectedAddress: new FormControl('', Validators.required),
   });
-  toggleMenu(addressIndex: number) {
+  toggleMenu(event: Event, addressIndex: number) {
+    event.stopPropagation();
     this.isMenuOpen[addressIndex] = !this.isMenuOpen[addressIndex];
   }
 
@@ -61,7 +63,8 @@ export class OrderPaymentsComponent implements OnInit {
     this.checkoutForm.controls['selectedAddress'].setValue(address);
   }
 
-  updateAddress(address: Address) {
+  updateAddress(event: Event, address: Address) {
+    event.stopPropagation();
     this.dialog.open(addAddressModal, {
       width: '750px',
       data: address,
