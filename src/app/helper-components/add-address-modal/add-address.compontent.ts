@@ -67,7 +67,7 @@ export class addAddressModal implements OnInit {
   }
   getError(name: string) {
     const field = this.addressForm.get(name);
-    let error: string;
+    let error: string | null = null;
 
     if (field!.touched || !field!.pristine) {
       if (field!.hasError('invalidPostalCode')) {
@@ -82,7 +82,7 @@ export class addAddressModal implements OnInit {
         error = 'This field is required';
       }
     }
-    return error! as string;
+    return error ? error : '';
   }
   submitAddressForm() {
     if (this.addressForm.invalid) {

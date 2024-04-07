@@ -103,7 +103,8 @@
     <div class="select-address-container">
       <h2>Choose your delivery point</h2>
       <form class='select-address' [formGroup]="checkoutForm">
-        <div class="address" [ngClass]="{'active': address.id === selectedAddress?.id}" *ngFor="let address of addressList" (click)='selectAddress(address)'>
+        <div class="address" [ngClass]="{ 'active': selectedAddress?.id === address.id }" *ngFor="let address of addressList"
+          (click)='selectAddress(address)'>
           <h3>{{address.nameOfAddressCard}}</h3>
           <div class="address-info">
             <p class="fullname">{{address.firstName + ' ' + address.lastName}}</p>
@@ -112,16 +113,18 @@
           </div>
           <i class='fq-icon icon--location'></i>
           <div class="address-settings">
-            <button class='kebab-menu-btn' (click)="toggleMenu($event, 1)">
+            <button class='kebab-menu-btn' (click)="toggleMenu($event, address)">
               <i class='fq-icon icon--dot kebab-menu-icon'></i>
             </button>
-            <div class="kebab-menu" [ngClass]="{ 'active': isMenuOpen[1] }">
-              <button class='update' (click)="updateAddress($event, address)">Update <i class='fq-icon icon--update'></i></button>
+            <div class="kebab-menu" [ngClass]="{ 'active': toggleKebabMenu === address.id }">
+              <button class='update' (click)="updateAddress($event, address)">Update <i
+                  class='fq-icon icon--update'></i></button>
               <button class='delete' (click)="deleteAddress(address)">Delete <i class='fq-icon icon--delete'></i></button>
             </div>
           </div>
         </div>
-        <button *ngIf="addressList.length < 5" class="add-address" (click)="addAddress()"><strong>+</strong> Add address</button>
+        <button *ngIf="addressList.length < 5" class="add-address" (click)="addAddress()"><strong>+</strong> Add
+          address</button>
       </form>
       <button routerLink="/order-payments" class="normal primary-color order" (click)="submitCheckoutForm()">Continue with your order <i
           class='fq-icon icon--arrow-next'></i></button>

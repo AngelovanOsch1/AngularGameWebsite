@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class OrderPaymentsComponent implements OnInit {
   user: User | undefined;
   addressList: Address[] = [];
-  isMenuOpen: { [key: number]: boolean } = {};
+  toggleKebabMenu: string | undefined;
   selectedAddress: Address | undefined;
   constructor(
     private userAuthService: UserAuthService,
@@ -53,9 +53,9 @@ export class OrderPaymentsComponent implements OnInit {
   checkoutForm: FormGroup = new FormGroup({
     selectedAddress: new FormControl('', Validators.required),
   });
-  toggleMenu(event: Event, addressIndex: number) {
+  toggleMenu(event: Event, address: Address) {
     event.stopPropagation();
-    this.isMenuOpen[addressIndex] = !this.isMenuOpen[addressIndex];
+    this.toggleKebabMenu = address.id;
   }
 
   selectAddress(address: Address) {
@@ -65,6 +65,7 @@ export class OrderPaymentsComponent implements OnInit {
 
   updateAddress(event: Event, address: Address) {
     event.stopPropagation();
+    this.toggleKebabMenu = undefined;
     this.dialog.open(addAddressModal, {
       width: '750px',
       data: address,
