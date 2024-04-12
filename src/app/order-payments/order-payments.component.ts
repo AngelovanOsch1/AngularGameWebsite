@@ -55,6 +55,9 @@ export class OrderPaymentsComponent implements OnInit {
   });
   toggleMenu(event: Event, address: Address) {
     event.stopPropagation();
+    if (this.toggleKebabMenu === address.id) {
+      return this.toggleKebabMenu = undefined;
+    }
     this.toggleKebabMenu = address.id;
   }
 

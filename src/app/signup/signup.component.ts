@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
   providers: [RepositoryService, FirebaseFunctionsService, ToastService],
 })
 export class SignupComponent implements OnInit {
+  currentYear: number = new Date().getFullYear();
   constructor(
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,

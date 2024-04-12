@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, map, take, tap } from 'rxjs';
+import { map, take, tap } from 'rxjs';
 import { User } from '../interfaces/interfaces';
 import { RepositoryService } from '../services/repository.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -21,14 +21,11 @@ export class LandingComponent implements OnInit {
   activeIndex: number = 1;
   constructor(
     private afAuth: AngularFireAuth,
-    private userAuthService: UserAuthService,
     private firestore: AngularFirestore,
-
     private router: Router,
     private repositoryService: RepositoryService
   ) {}
   async ngOnInit(): Promise<any> {
-    // this.user = await this.userAuthService.getLoggedInUser();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.repositoryService.usersCollection

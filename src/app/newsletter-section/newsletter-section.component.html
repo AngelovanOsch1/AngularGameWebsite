@@ -1,4 +1,4 @@
-<section class='newsletter-container'>
+<section *ngIf="renderNewsLetter" class='newsletter-container'>
   <img src="../../assets/icons/quote-icon.svg" alt="quote icon" class="icon">
   <h1 *ngIf="user?.isOnline && !user?.newsletter">Hi, {{user!.username}}</h1>
   <p>Subscribe to our newsletter and stay enchanted with the latest updates, exclusive offers, and thrilling news from the

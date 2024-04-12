@@ -46,7 +46,7 @@ section.order-payments{
             width: 10px; height: 16px; 
             &:hover{ cursor: pointer; transform: scale(1.25); }
           }
-          button.kebab-menu-btn{ margin-left: auto; }
+          button.kebab-menu-btn{ margin-left: auto; height: 30px; width: 30px; cursor: pointer; }
           .kebab-menu{ 
             position: absolute; left: calc(100% + 10px); z-index: 5;
             display: none; gap: 5px; background-color: #fff; box-shadow: 1px 1px 15px $black;

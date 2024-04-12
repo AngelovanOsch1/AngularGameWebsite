@@ -9,6 +9,7 @@ import { Subject, filter, takeUntil } from 'rxjs';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  currentYear: number = new Date().getFullYear();
   showFooter: boolean = true;
   private destroy$: Subject<void> = new Subject<void>();
 

@@ -17,7 +17,7 @@
       </p>
       <div class="price-container">
         <p>Now for</p>
-        <div class="price" *ngIf="article?.stock">{{article?.price | currency:'EUR'}}</div>
+        <div class="price" *ngIf="article?.stock">{{article?.price | currency:'USD'}}</div>
       </div>
       <div class="buttons-container">
         <button class="normal dark buy" (click)="buyArticleNow()">Buy now for {{article?.price | currency:'EUR'}}</button>

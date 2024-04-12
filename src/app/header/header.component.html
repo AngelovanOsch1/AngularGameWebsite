@@ -17,7 +17,7 @@
         alt="shop basket"
         routerLink="/shopping-cart">
     <span class="number-indicator">
-      {{ shoppingCartList.length <= 0 ? '' : shoppingCartList.length> 9 ? '9+' : shoppingCartList.length }}
+      {{ numberOfItemsInShoppingCart <= 0 ? '' : numberOfItemsInShoppingCart > 9 ? '9+' : numberOfItemsInShoppingCart }}
     </span>
     </button>
   </nav>

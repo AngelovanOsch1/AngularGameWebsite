@@ -12,6 +12,7 @@ import { FirebaseFunctionsService } from '../services/firebasefunctions.service'
   providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class LoginComponent {
+  currentYear: number = new Date().getFullYear();
   userCredentials?: UserCredential | null;
   constructor(
     private firebaseFunctionsService: FirebaseFunctionsService,

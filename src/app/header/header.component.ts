@@ -17,7 +17,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class HeaderComponent implements OnInit {
   showHeader: boolean = true;
   user: User | undefined;
-  shoppingCartList: ShoppingCart[] = [];
+  numberOfItemsInShoppingCart: number = 0;
 
   private destroy$: Subject<void> = new Subject<void>();
   isScrolled: boolean = false;
@@ -76,7 +76,11 @@ export class HeaderComponent implements OnInit {
                   })
                 ),
                 tap((shoppingCart: ShoppingCart[]) => {
-                  this.shoppingCartList = shoppingCart;
+                  let totalItems = 0;
+                  shoppingCart.forEach((shoppingCartItem) => {
+                    totalItems = shoppingCartItem.quantity + totalItems;
+                  });
+                  this.numberOfItemsInShoppingCart = totalItems;
                 })
               )
               .subscribe();

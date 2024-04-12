@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RepositoryService } from '../services/repository.service';
 import { ToastService } from '../services/toast.service';
 import { User } from '../interfaces/interfaces';
 import { MatDialog } from '@angular/material/dialog';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
 import { UserAuthService } from '../services/user-auth-service.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-newsletter-section',
@@ -15,9 +15,10 @@ import { UserAuthService } from '../services/user-auth-service.service';
 export class NewsletterSectionComponent implements OnInit {
   user: User | undefined;
   userId: string | undefined;
+  renderNewsLetter: boolean = true;
   constructor(
     private userAuthService: UserAuthService,
-    private repositoryService: RepositoryService,
+    private firestore: AngularFirestore,
     private toastService: ToastService,
     private dialog: MatDialog
   ) {}
@@ -32,10 +33,11 @@ export class NewsletterSectionComponent implements OnInit {
         data: { text: 'Are you not logged in yet?', url: '/login' },
       });
     } else {
-      this.repositoryService.usersCollection.doc(this.userId).update({
+      this.firestore.doc(`users/${this.user.id}`).update({
         newsletter: true,
       });
       this.toastService.show('Thank you for your interest in our newsletter!');
+      this.renderNewsLetter = false;
     }
   }
 }
