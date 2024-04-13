@@ -1,0 +1,61 @@
+<section class='page'>
+  <div class="add-comments-container">
+    <h2 class='comments title'>comments</h2>
+    <form [formGroup]='commentForm' class='add-comment'>
+      <img class='profile-picture'
+        src="https://firebasestorage.googleapis.com/v0/b/angulargamewebsite.appspot.com/o/shop%2Farticles%2FGryphonGuardian.jpg?alt=media&token=215e053c-1d42-4958-8cba-af8a3261e7cd"
+        alt="user profile picture">
+      <div class="comment-container">
+        <textarea formControlName='userComment' placeholder='Add comment ...'></textarea>
+        <div class="bottom-row">
+          <p [ngClass]="{'ExceedCharacterLimit': commentForm.get('userComment')?.value?.length >= 1000}">
+            <Strong>{{ commentForm.get('userComment')?.value?.length }}</Strong>
+            / 1000
+          </p>
+          <div class="uploaded-image">
+            <img *ngIf="image" [src]='image' />
+          </div>
+          <div class="buttons-container">
+            <div class="custom-file-input">
+              <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+              <button type="button normal rounded-corners">Choose File</button>
+            </div>
+            <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="user-comments-container">
+    <div *ngFor="let comment of commentsList" class="user-comment">
+      <div class="profile-picture">
+        <img *ngIf="comment.profilePhoto; else elseFirstLetterforProfilePhoto" [src]='comment.profilePhoto' alt="" />
+        <ng-template #elseFirstLetterforProfilePhoto class="initial-name">{{comment.username[0]}}</ng-template>
+      </div>
+      <div class="container">
+        <h3>PrincessAngoloBoberKurwa</h3>
+        <p>{{comment.userComment}}</p>
+        <span>Did you like this comment?</span>
+        <div class="buttons-container">
+          <button (click)="like(comment)" [ngClass]="{'active' : comment.likes.includes(this.user?.id!)}" class="like">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.21289 12.8251L11.3629 3.37505C11.3993 3.29338 11.4516 3.21977 11.5168 3.15849C11.5819 3.09721 11.6586 3.04948 11.7423 3.01808C11.826 2.98667 11.9152 2.97223 12.0046 2.97557C12.0939 2.97891 12.1817 2.99998 12.2629 3.03756L13.3879 3.60005C13.8616 3.8465 14.2588 4.21792 14.5364 4.67404C14.8141 5.13016 14.9616 5.65358 14.9629 6.18755V10.5751H22.1629C22.5028 10.5812 22.8369 10.6644 23.1401 10.8182C23.4432 10.972 23.7076 11.1926 23.9133 11.4632C24.119 11.7339 24.2607 12.0477 24.3277 12.381C24.3948 12.7143 24.3854 13.0584 24.3004 13.3876L22.0504 22.3876C21.9275 22.8638 21.652 23.2867 21.2659 23.5914C20.8799 23.8962 20.4046 24.0661 19.9129 24.0751H4.83789C4.24115 24.0751 3.66886 23.838 3.2469 23.416C2.82494 22.9941 2.58789 22.4218 2.58789 21.8251V15.0751C2.58789 14.4783 2.82494 13.906 3.2469 13.4841C3.66886 13.0621 4.24115 12.8251 4.83789 12.8251H8.21289ZM8.21289 12.8251V24.0751"
+                stroke="#2B2D42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p>{{comment?.likes?.length}}</p>
+          </button>
+          <button (click)="dislike(comment)" [ngClass]="{'active' : comment.dislikes.includes(this.user?.id!)}"
+            class="dislike">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.7871 14.1749L15.6371 23.6249C15.6007 23.7066 15.5484 23.7802 15.4832 23.8415C15.4181 23.9028 15.3414 23.9505 15.2577 23.9819C15.174 24.0133 15.0848 24.0278 14.9954 24.0244C14.9061 24.0211 14.8183 24 14.7371 23.9624L13.6121 23.3999C13.1384 23.1535 12.7412 22.7821 12.4636 22.326C12.1859 21.8698 12.0384 21.3464 12.0371 20.8124L12.0371 16.4249L4.83711 16.4249C4.4972 16.4188 4.16311 16.3356 3.85995 16.1818C3.55678 16.028 3.29241 15.8074 3.0867 15.5368C2.88099 15.2661 2.7393 14.9523 2.67225 14.619C2.60521 14.2857 2.61456 13.9416 2.69961 13.6124L4.94961 4.61244C5.07249 4.13621 5.34803 3.71335 5.73406 3.40858C6.1201 3.10382 6.59536 2.93394 7.08711 2.92495L22.1621 2.92495C22.7588 2.92495 23.3311 3.162 23.7531 3.58396C24.1751 4.00591 24.4121 4.57821 24.4121 5.17495L24.4121 11.9249C24.4121 12.5217 24.1751 13.094 23.7531 13.5159C23.3311 13.9379 22.7588 14.1749 22.1621 14.1749L18.7871 14.1749ZM18.7871 14.1749L18.7871 2.92495"
+                stroke="#2B2D42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p>{{comment?.dislikes?.length}}</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<div class="information-container">
+  <div class="overview">
+    <div class="title">Overview</div>
+    <div class="info">
+      <div class="total-cost">
+        <span>Total cost</span>
+        <h2>{{ totalPrice | currency:'USD' }}</h2>
+      </div>
+      <div class="total-items">
+        <span>items</span>
+        <h2>{{totalItems + 'X'}}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="to-be-paid-container">
+    <div class="to-be-paid">To be paid</div>
+    <div class="price">{{ totalPrice | currency:'USD' }}</div>
+  </div>
+  <hr>
+  <button routerLink="/order-payments" class="normal primary-color no-radius big-button-with-image">Continue with your order <img src="../../assets/icons/FQ-arrows.svg" alt=""></button>
+</div>

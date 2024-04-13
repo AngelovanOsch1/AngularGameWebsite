@@ -22,7 +22,6 @@ import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ArticleComponent } from './shop/article/article.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ChatComponent } from './chat-menu/chat/chat.component';
 import { ChatItemComponent } from './chat-menu/chat/chat-item/chat-item.component';
 import { ChatMenu } from './chat-menu/chat-menu.component';
@@ -31,6 +30,9 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderPaymentsComponent } from './order-payments/order-payments.component';
 import { addAddressModal } from './helper-components/add-address-modal/add-address.compontent';
 import { AuthfooterComponent } from './auth/auth-footer/auth-footer.component';
+import { ShoppingCardOverviewComponent } from './shopping-card-overview/shopping-card-overview.component';
+import { UserCommentsComponent } from './user-comments/user-comments.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { AuthfooterComponent } from './auth/auth-footer/auth-footer.component';
     OrderPaymentsComponent,
     addAddressModal,
     AuthfooterComponent,
+    ShoppingCardOverviewComponent,
+    UserCommentsComponent,
   ],
   imports: [
     AngularFireStorageModule,

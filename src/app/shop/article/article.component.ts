@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, take, tap } from 'rxjs';
 import {
@@ -102,11 +101,6 @@ export class ArticleComponent implements OnInit {
       .subscribe();
   }
 
-  commentForm: FormGroup = new FormGroup({
-    userComment: new FormControl('', Validators.maxLength(1000)),
-    userCommentPhoto: new FormControl(null),
-  });
-
   buyArticleNow() {
     if (!this.user) {
     } else if (
@@ -165,90 +159,4 @@ export class ArticleComponent implements OnInit {
     }
   }
 
-  async submitComment() {
-    const userComment = this.commentForm.controls['userComment'].value;
-    try {
-      this.firestore.collection(`shop/${this.articleId}/comments`).add({
-        username: this.user?.username,
-        profilePhoto: this.user?.profilePhoto,
-        userComment: userComment,
-        likes: [],
-        dislikes: [],
-      });
-      this.commentForm.reset();
-    } catch (e: any) {}
-  }
-
-  async onFileSelected(event: any) {
-    this.file = event.target.files[0];
-    const filePath = `test6/${this.file?.name}`;
-    await this.storage.upload(filePath, this.file);
-    this.image = await this.storage.ref(filePath).getDownloadURL().toPromise();
-  }
-
-  async like(comment: Comment) {
-    if (!this.user) {
-      this.dialog.open(WarningComponentComponent, {
-        width: '250px',
-        data: { text: 'Are you not logged in yet?', url: '/login' },
-      });
-    } else {
-      if (comment.likes.includes(this.user!.id!)) {
-        this.firestore
-          .collection(`shop/${this.articleId}/comments`)
-          .doc(comment.id)
-          .update({
-            likes: arrayRemove(this.user!.id),
-          });
-      } else {
-        this.firestore
-          .collection(`shop/${this.articleId}/comments`)
-          .doc(comment.id)
-          .update({
-            likes: arrayUnion(this.user!.id),
-          });
-        if (comment.dislikes.includes(this.user!.id!)) {
-          this.firestore
-            .collection(`shop/${this.articleId}/comments`)
-            .doc(comment.id)
-            .update({
-              dislikes: arrayRemove(this.user!.id),
-            });
-        }
-      }
-    }
-  }
-
-  async dislike(comment: Comment) {
-    if (!this.user) {
-      this.dialog.open(WarningComponentComponent, {
-        width: '250px',
-        data: { text: 'Are you not logged in yet?', url: '/login' },
-      });
-    } else {
-      if (comment.dislikes.includes(this.user!.username)) {
-        this.firestore
-          .collection(`shop/${this.articleId}/comments`)
-          .doc(comment.id)
-          .update({
-            dislikes: arrayRemove(this.user!.id),
-          });
-      } else {
-        this.firestore
-          .collection(`shop/${this.articleId}/comments`)
-          .doc(comment.id)
-          .update({
-            dislikes: arrayUnion(this.user!.id),
-          });
-        if (comment.likes.includes(this.user!.id!)) {
-          this.firestore
-            .collection(`shop/${this.articleId}/comments`)
-            .doc(comment.id)
-            .update({
-              likes: arrayRemove(this.user!.id),
-            });
-        }
-      }
-    }
-  }
 }
