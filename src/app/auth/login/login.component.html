@@ -1,4 +1,14 @@
-<div class='container signup'>
+<!-- <form [formGroup]='loginForm'>
+  <label>email</label>
+  <input formControlName='emailAddress' />
+  <div class="loan-form__get-error">{{getError('emailAddress')}}</div>
+  <label>password</label>
+  <input formControlName='password' />
+  <div class="loan-form__get-error">{{getError('password')}}</div>
+
+  <button (click)='login()'>login</button>
+</form> -->
+<div class='container login'>
   <div class="black-background">
     <svg viewBox="0 0 890 814" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -13,56 +23,36 @@
       <p>the place to track your statistics</p>
     </div>
     <div class='line'></div>
-    <h3>Signup</h3>
+    <h3>Login</h3>
   </div>
-  <div class='signup-container'>
-    <form [formGroup]='signUpForm'>
-      <div class="row row-1">
-        <div class="input-field">
-          <label>username</label>
-          <input formControlName='username' />
-          <div *ngIf="getError('username')" class="loan-form__get-error">{{getError('username')}}</div>
-        </div>
-        <div class="input-field">
-          <label>email</label>
-          <input formControlName='emailAddress' />
-          <div *ngIf="getError('emailAddress')" class="loan-form__get-error">{{getError('emailAddress')}}</div>
+  <div class='login-container'>
+    <form [formGroup]='loginForm'>
+      <div class='input-field'>
+        <label>email address</label>
+        <input formControlName='emailAddress' placeholder='Type your email address ...' />
+        <div *ngIf="getError('emailAddress')" class="loan-form__get-error">
+          {{ getError('emailAddress') }}
         </div>
       </div>
-      <div class="row row-2">
-        <div class="input-field">
-          <label>password</label>
-          <input type="password" formControlName='password' />
-          <div *ngIf="getError('password')" class="loan-form__get-error">{{getError('password')}}</div>
-        </div>
-        <div class="input-field">
-          <label>repeat password</label>
-          <input type="password" formControlName='repeatPassword' />
-          <div *ngIf="getError('repeatPassword')" class="loan-form__get-error">{{getError('repeatPassword')}}</div>
-          <div class="loan-form__get-error" *ngIf="signUpForm.hasError('passwordsNotMatch')">
-            Passwords do not match.
-          </div>
+      <div class='input-field'>
+        <label>password</label>
+        <input type="password" formControlName='password' placeholder='Type your password ...' />
+        <div *ngIf="getError('emailAddress')" class="loan-form__get-error">
+          {{ getError('emailAddress') }}
         </div>
       </div>
     </form>
-    <div class="button-row">
-      <div class="extra-content">
-        <a href="/login">I already have an account</a>
+    <div class='button-row'>
+      <a href="/signup">I dont have an account</a>
+      <div class='button-column'>
+        <button class="normal primary-color big weapon glowing" (click)='login()'>Login</button>
         <div class="fq-checkbox light small">
-          <input type='checkbox' formControlName='newsletter'>
+          <input type='checkbox'>
           <span class="fq-checkbox-background"></span>
-          <label>I am interested in getting a weekly newsletter to keep me informed about the game.</label>
+          <label>Remember me</label>
         </div>
       </div>
-      <button (click)='submitForm()' class='normal primary-color big weapon glowing'>Sign up</button>
     </div>
   </div>
-  <footer class="login-footer">
-    <div class="copyright-text">© {{ currentYear }} FantasyQuest. All Rights Reserved.</div>
-    <div class="extra-links">
-      <a href="">Privacybeleid</a>
-      <a href="">Sitemap</a>
-      <a href="">Player support</a>
-    </div>
-  </footer>
+  <app-authfooter></app-authfooter>
 </div>

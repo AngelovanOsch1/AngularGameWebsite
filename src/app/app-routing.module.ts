@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { LeaderboardComponent } from '../app/leaderboard/leaderboard.component';
 import { ShopComponent } from '../app/shop/shop.component';
 import { EventsComponent } from '../app/events/events.component';

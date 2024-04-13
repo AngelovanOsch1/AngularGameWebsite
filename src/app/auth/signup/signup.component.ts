@@ -6,9 +6,9 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { UserCredential } from 'firebase/auth';
-import { RepositoryService } from '../services/repository.service';
-import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
-import { ToastService } from '../services/toast.service';
+import { RepositoryService } from '../../services/repository.service';
+import { FirebaseFunctionsService } from '../../services/firebasefunctions.service';
+import { ToastService } from '../../services/toast.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,6 @@ import { Router } from '@angular/router';
   providers: [RepositoryService, FirebaseFunctionsService, ToastService],
 })
 export class SignupComponent implements OnInit {
-  currentYear: number = new Date().getFullYear();
   constructor(
     private repositoryService: RepositoryService,
     private firebaseFunctionsService: FirebaseFunctionsService,

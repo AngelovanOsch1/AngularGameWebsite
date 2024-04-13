@@ -1,8 +1,8 @@
-@import '../../styles.scss';
+@import '../../../styles.scss';
 
 .container {
   &::before {
-    background: url("../../assets/images/Login-IMG.jpg");
+    background: url("../../../assets/images/Login-IMG.jpg");
   }
   .black-background{
     position: absolute;
@@ -30,7 +30,7 @@
         background-color: #ffff;
         .loan-form__get-error{
           &::before{
-            background-image: url("../../assets/icons/error-warning-icon.svg");
+            background-image: url("../../../assets/icons/error-warning-icon.svg");
           }
         }
     }

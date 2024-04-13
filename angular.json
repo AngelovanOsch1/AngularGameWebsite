@@ -37,28 +37,11 @@
           "defaultConfiguration": "production",
           "options": {
             "assets": [
-              "src/assets"
-            ],
-            "index": "src/index.html",
-            "inlineStyleLanguage": "sass",
-            "main": "src/main.ts",
-            "outputPath": "dist/gamewebsite",
-            "polyfills": [
-              "zone.js"
-            ],
-            "scripts": [],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "tsConfig": "tsconfig.app.json"
-          },
-          "options": {
-            "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "index": "src/index.html",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "main": "src/main.ts",
             "outputPath": "dist/gamewebsite",
             "polyfills": [
@@ -96,14 +79,14 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
             "scripts": [],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "tsConfig": "tsconfig.spec.json"
           }
@@ -114,7 +97,7 @@
       "root": "",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "sourceRoot": "src"

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { UserCredential } from 'firebase/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RepositoryService } from '../services/repository.service';
+import { RepositoryService } from '../../services/repository.service';
 import { Router } from '@angular/router';
-import { FirebaseFunctionsService } from '../services/firebasefunctions.service';
+import { FirebaseFunctionsService } from '../../services/firebasefunctions.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,6 @@ import { FirebaseFunctionsService } from '../services/firebasefunctions.service'
   providers: [RepositoryService, FirebaseFunctionsService],
 })
 export class LoginComponent {
-  currentYear: number = new Date().getFullYear();
   userCredentials?: UserCredential | null;
   constructor(
     private firebaseFunctionsService: FirebaseFunctionsService,
