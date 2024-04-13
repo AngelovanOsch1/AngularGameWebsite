@@ -38,13 +38,13 @@ h1{
   margin: 0;
 }
 div, p, a, textarea {
-    font-family: 'PoppinsRegular';
+    font-family: 'PoppinsRegular' !important;
 }
 span {
-    font-family: 'PoppinsItalic';
+    font-family: 'PoppinsItalic' !important;
 }
 h1, h2, h3, h4, h5, label, button, .pre-title, .question-container .number, .title, .price {
-    font-family: 'PoppinsBold';
+    font-family: 'PoppinsBold' !important;
 }
 a {
   text-decoration: none;
@@ -397,7 +397,7 @@ section.hero-2{
     p {
       color: #ffff;
       font-size: 0.8rem;
-      font-family: 'PoppinsItalic';
+      font-family: 'PoppinsItalic' !important;
     }
   }
 
@@ -442,7 +442,7 @@ section.hero-2{
           color: var(--error-red);
           font-size: 1rem;
           margin-left: auto;
-          font-family: 'PoppinsBold';
+          font-family: 'PoppinsBold' !important;
           position: relative;
           transition: 0.2s ease;
           &::before{
@@ -488,7 +488,7 @@ section.hero-2{
             left: 25px;
             width: 130px;
             color: #fff7;
-            font-family: 'PoppinsRegular';
+            font-family: 'PoppinsRegular' !important;
           }
       }
     }
@@ -515,7 +515,7 @@ section.hero-2{
         padding: 25px 0 0 0;
         display: flex;
         gap: 50px;
-        span{ font-family: "PoppinsBold";}
+        span{ font-family: "PoppinsBold" !important;}
         h2{ font-size: 2rem; }
         .total-cost h2{ color: var(--green); }
         .total-items h2{ color: var(--primary-color); }
@@ -534,7 +534,7 @@ section.hero-2{
       .price{
         padding: 0 0 0 30px;
         font-size: 1.5rem;
-        span{ font-family: "PoppinsBold"; color: var(--green); }
+        span{ font-family: "PoppinsBold" !important; color: var(--green); }
       }
     }
   }
@@ -568,7 +568,7 @@ section.hero-2{
             &::after { content: ""; position: absolute; right: -20px; top: 0; bottom: 0; margin: auto; width: 7px; height: 7px; border-radius: 50px; background-color: #4056F4; }
           }
         }
-        .product-name{ font-size: 1.8rem; font-family: 'PoppinsSemibold'; }
+        .product-name{ font-size: 1.8rem; font-family: 'PoppinsSemibold' !important; }
         .price { background-color: var(--green); padding: 3px 20px; border-radius: 5px; color: #fff; width: fit-content; font-size: 1rem; }
       }
     }

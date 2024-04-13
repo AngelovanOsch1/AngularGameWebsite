@@ -78,7 +78,8 @@
           "options": {
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/fonts"
             ],
             "inlineStyleLanguage": "scss",
             "polyfills": [
