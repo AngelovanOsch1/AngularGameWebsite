@@ -373,49 +373,7 @@ section.hero-2{
       z-index: -1;
     }
 }
-footer.auth-footer {
-  position: absolute;
-  bottom: 30px;
-  right: 200px;
-  display: flex;
-  gap: 80px;
-  margin-left: auto;
-  color: #fff;
-  font-size: 0.8rem;
 
-  .extra-links {
-    display: flex;
-    gap: 40px;
-
-    a {
-      color: #fff;
-      transition: 0.2s ease;
-      position: relative;
-      height: fit-content;
-
-      &:hover {
-        opacity: 0.7;
-      }
-
-      &:not(:last-child) {
-        position: relative;
-
-        &::after {
-          content: '';
-          position: absolute;
-          right: -20px;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          width: 7px;
-          height: 7px;
-          border-radius: 50px;
-          background-color: $primary-color;
-        }
-      }
-    }
-  }
-}
 .container.login .top-row,
 .container.signup .top-row{
   display: flex;
