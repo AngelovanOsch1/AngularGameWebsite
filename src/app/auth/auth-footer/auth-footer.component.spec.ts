@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthfooterComponent } from './authfooter.component';
+import { AuthfooterComponent } from './auth-footer.component';
 
 describe('AuthfooterComponent', () => {
   let component: AuthfooterComponent;

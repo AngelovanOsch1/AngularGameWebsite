@@ -30,7 +30,7 @@ import { FriendsComponent } from './chat-menu/friends/friends.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { OrderPaymentsComponent } from './order-payments/order-payments.component';
 import { addAddressModal } from './helper-components/add-address-modal/add-address.compontent';
-import { AuthfooterComponent } from './auth/authfooter/authfooter.component';
+import { AuthfooterComponent } from './auth/auth-footer/auth-footer.component';
 
 
 @NgModule({
