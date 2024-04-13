@@ -20,12 +20,13 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-$grey: #B6B6B6;
-$black: #2B2D42;
-$secondary-color: #00FFA3;
-$primary-color: #4056F4;
-$error-red: #ff3333;
-$green: #04DF00;
+:root {
+  --grey: #B6B6B6;
+  --black: #2B2D42;
+  --primary-color: #4056F4;
+  --error-red: #ff3333;
+  --green: #04DF00;
+}
 
 * {
     box-sizing: border-box;
@@ -56,7 +57,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 ::selection{
-  background: $primary-color;
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -66,7 +67,7 @@ button.normal, .btn.normal{
   border: none;
   border-radius: 3px;
   font-size: 16px;
-  color: $black;
+  color: var(--black);
   background-color: #fff;
   transition: 0.2s ease-in-out;
   &:hover{
@@ -105,7 +106,7 @@ button.big.weapon {
   }
 }
 button.big.weapon.glowing{
-  box-shadow: 10px 10px 50px $primary-color;
+  box-shadow: 10px 10px 50px var(--primary-color);
 }
 
 button.download{
@@ -152,30 +153,30 @@ button.basket{
   }
 }
 button.light{
-    color: $black;
+    color: var(--black);
     background-color: #fff;
     &:hover{
       color: #fff;
-      background-color: $black;
+      background-color: var(--black);
     }
 }
 button.dark{
     color: #fff;
-    background-color: $black;
+    background-color: var(--black);
     &:hover{
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
 }
 button.primary-color, .btn.normal.primary-color{
     color: #fff;
-    background-color: $primary-color;
+    background-color: var(--primary-color);
 }
 button.red {
   color: #fff;
-  background-color: $error-red !important;
+  background-color: var(--error-red) !important;
 
   &:hover {
-    box-shadow: 5px 5px 25px $error-red;
+    box-shadow: 5px 5px 25px var(--error-red);
   }
 }
 button.logout{
@@ -200,7 +201,7 @@ button.more-padding{
 }
 button.buy{
   &:hover{
-    background-color: $green;
+    background-color: var(--green);
   }
 }
 button.no-radius{
@@ -212,7 +213,7 @@ button.big-button-with-image{
   align-items: center;
   padding: 15px 50px;
   gap: 20px;
-  border-right: 0px solid $primary-color;
+  border-right: 0px solid var(--primary-color);
   transition: 0.3s ease;
   img{
     transform: rotate(-90deg);
@@ -220,7 +221,7 @@ button.big-button-with-image{
   }
   &:hover{
     img{ transform: translateX(20px); }
-    border-right: 20px solid $green;
+    border-right: 20px solid var(--green);
     transform: scale(100%);
   }
 }
@@ -279,7 +280,7 @@ section.hero-2{
   position: relative;
   width: 22px;
   height: 22px;
-  border: 2px solid $black;
+  border: 2px solid var(--black);
   border-radius: 3px;
   cursor: pointer;
   display: inline-block;
@@ -289,10 +290,10 @@ section.hero-2{
     height: 16px;
   }
   &.gender{
-    border: 2px solid $primary-color;
+    border: 2px solid var(--primary-color);
     input{
       &:checked + span {
-        background: $primary-color;
+        background: var(--primary-color);
       }
     }
   }
@@ -314,7 +315,7 @@ section.hero-2{
     cursor: pointer;
 
     &:checked + span {
-      background: $black;
+      background: var(--black);
       transform: scale(100%) + rotate(360deg);
     }
   }
@@ -365,7 +366,7 @@ section.hero-2{
       right: 0;
       bottom: 0;
       left: 0;
-      background: $black;
+      background: var(--black);
       margin-left: auto;
       min-width: 1000px;
       width: 60%;
@@ -433,12 +434,12 @@ section.hero-2{
         }
         input{
           padding: 10px 20px;
-          border: 2px solid $black;
+          border: 2px solid var(--black);
           border-radius: 5px;
           font-size: 1.1rem;
         }
         .loan-form__get-error{
-          color: $error-red;
+          color: var(--error-red);
           font-size: 1rem;
           margin-left: auto;
           font-family: 'PoppinsBold';
@@ -502,13 +503,13 @@ section.hero-2{
     gap: 20px;
     min-width: 500px;
     .overview {
-      border: 2px solid $black;
+      border: 2px solid var(--black);
       padding: 25px 40px;
-      color: $black;
+      color: var(--black);
       .title{
         font-size: 1.2rem;
         padding: 0 0 15px 0;
-        border-bottom: 1px solid $black;
+        border-bottom: 1px solid var(--black);
       }
       .info{
         padding: 25px 0 0 0;
@@ -516,14 +517,14 @@ section.hero-2{
         gap: 50px;
         span{ font-family: "PoppinsBold";}
         h2{ font-size: 2rem; }
-        .total-cost h2{ color: $green; }
-        .total-items h2{ color: $primary-color; }
+        .total-cost h2{ color: var(--green); }
+        .total-items h2{ color: var(--primary-color); }
       }
     }
     .to-be-paid-container{
       padding: 25px 50px;
       display: flex;
-      background: $black;
+      background: var(--black);
       color: #fff;
       .to-be-paid{
         padding: 0 30px 0 0;
@@ -533,7 +534,7 @@ section.hero-2{
       .price{
         padding: 0 0 0 30px;
         font-size: 1.5rem;
-        span{ font-family: "PoppinsBold"; color: $green; }
+        span{ font-family: "PoppinsBold"; color: var(--green); }
       }
     }
   }
@@ -547,9 +548,9 @@ section.hero-2{
       display: flex;
       align-items: center;
       gap: 50px;
-      color: $black;
+      color: var(--black);
       &:not(:last-child){
-        &::after{ content: ''; position: absolute; left: 0;  right: 0; bottom: -25px; height: 1px; background-color: $grey; }
+        &::after{ content: ''; position: absolute; left: 0;  right: 0; bottom: -25px; height: 1px; background-color: var(--grey); }
       }
       .image-container{
         max-width: 100px;
@@ -568,7 +569,7 @@ section.hero-2{
           }
         }
         .product-name{ font-size: 1.8rem; font-family: 'PoppinsSemibold'; }
-        .price { background-color: $green; padding: 3px 20px; border-radius: 5px; color: #fff; width: fit-content; font-size: 1rem; }
+        .price { background-color: var(--green); padding: 3px 20px; border-radius: 5px; color: #fff; width: fit-content; font-size: 1rem; }
       }
     }
   }
@@ -599,8 +600,8 @@ section.hero-2{
 
 // Their A tags
 a.btn.icon--back{ 
-  display: flex; gap: 5px; font-size: 1rem; color:$primary-color; font-weight: bold; padding: 5px 0; width: fit-content; i{ --clr: #{$primary-color};}  
-  &:hover{ $hover-clr: $black; color: $hover-clr; i{ --clr: #{$hover-clr};} }
+  display: flex; gap: 5px; font-size: 1rem; color:var(--primary-color); font-weight: bold; padding: 5px 0; width: fit-content; i{ --clr: #{var(--primary-color)};}  
+  &:hover{ $hover-clr: var(--black); color: $hover-clr; i{ --clr: #{$hover-clr};} }
 }
 
 // ANIMATIONS
@@ -628,7 +629,7 @@ a.btn.icon--back{
   }
   50%{
     transform: translateY(10px) + scale(1.5) + rotate(20deg);
-    filter: drop-shadow(5px 5px 20px $error-red);
+    filter: drop-shadow(5px 5px 20px var(--error-red));
   }
   100%{
     transform: translateY(0) + scale(1);
@@ -642,7 +643,7 @@ a.btn.icon--back{
 
   50% {
     transform: translateY(-10px) + scale(1.5) + rotate(-20deg);
-    filter: drop-shadow(5px 5px 20px $green);
+    filter: drop-shadow(5px 5px 20px var(--green));
   }
 
   100% {

@@ -1,8 +1,6 @@
-@import "../../styles.scss";
-
 footer{
   color: #fff;
-  background: $black;
+  background: var(--black);
   padding: 75px 125px;
   .above-the-line{
     display: flex;
@@ -12,7 +10,7 @@ footer{
         display: flex;
         gap: 40px;
         .logo{
-          background-color: $primary-color;
+          background-color: var(--primary-color);
           padding: 5px 10px;
           border-radius: 5px;
           width: fit-content;
@@ -29,7 +27,7 @@ footer{
           span.slogan{
             line-height: 2;
             opacity: 0.6;
-            color: $grey;
+            color: var(--grey);
           }
         }
     }
@@ -40,7 +38,7 @@ footer{
         display: flex;
         flex-direction: column;
         strong{
-          color: $primary-color;
+          color: var(--primary-color);
           font-family: 'PoppinsBold';
           padding: 0 0 10px 0;
           font-size: 20px;
@@ -48,7 +46,7 @@ footer{
         a{
           color: #fff;
           transition: 0.2s ease;
-          &:hover{ color: $grey;}
+          &:hover{ color: var(--grey);}
         }
       }
     }
@@ -82,7 +80,7 @@ footer{
             width: 7px;
             height: 7px;
             border-radius: 50px;
-            background-color: $primary-color;
+            background-color: var(--primary-color);
           }
         }
       }

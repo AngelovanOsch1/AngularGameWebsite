@@ -1,7 +1,3 @@
-@import "../../../styles.scss";
-
-
-
 .cdk-overlay-container .cdk-overlay-backdrop.cdk-overlay-backdrop-showing{
   background-color: red !important;
 }
@@ -11,5 +7,5 @@
   display: flex;
   flex-direction: column;
   
-  h3{ color: $black; font-size: 110%; padding-bottom: 10px; border-bottom: 1px solid #efefef;}
+  h3{ color: var(--black); font-size: 110%; padding-bottom: 10px; border-bottom: 1px solid #efefef;}
 }

@@ -1,9 +1,7 @@
-@import "../../../styles.scss";
-
 .add-address-component{
   background-color: #fff;
   padding: 30px;  
-  h2{ color: $primary-color; font-size: 1.7rem; padding-bottom: 10px; border-bottom: 1px solid #efefef;}
+  h2{ color: var(--primary-color); font-size: 1.7rem; padding-bottom: 10px; border-bottom: 1px solid #efefef;}
 
   form{
     display: grid;
@@ -11,13 +9,13 @@
     gap: 20px;
     .input-field{ 
       display: flex; flex-direction: column; gap: 5px;
-      font-size: 1.1rem; color: $black;
-      span{ color: $primary-color; font-weight: bold; }
+      font-size: 1.1rem; color: var(--black);
+      span{ color: var(--primary-color); font-weight: bold; }
     }
-    input:not([type="submit"]), select{ padding: 5px 10px; border: 1px solid $black; border-radius: 5px; font-size: 1rem; }
-    select{ background-color: $black; color: #fff; }
+    input:not([type="submit"]), select{ padding: 5px 10px; border: 1px solid var(--black); border-radius: 5px; font-size: 1rem; }
+    select{ background-color: var(--black); color: #fff; }
     input[type="submit"], .input-field.span-2{ grid-column: span 2; }
-    input[type="submit"] { margin: 30px 0 0 0; font-weight: bold; padding: 8px 30px; width: fit-content; background-color: $green; &:hover{ filter: drop-shadow(1px 1px 15px $green); }}
+    input[type="submit"] { margin: 30px 0 0 0; font-weight: bold; padding: 8px 30px; width: fit-content; background-color: var(--green); &:hover{ filter: drop-shadow(1px 1px 15px var(--green)); }}
   }
 
   .close-btn{ position: absolute; top: 15px; right: 15px; button{ color: #fff; padding: 5px 12px; } }

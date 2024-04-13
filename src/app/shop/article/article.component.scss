@@ -1,5 +1,3 @@
-@import "../../../styles.scss";
-
 section.article{
     > * {
         margin: 0 0 100px 0;
@@ -20,7 +18,7 @@ section.article{
             display: flex;
             flex-direction: column;
             gap: 20px;
-            color: $black;
+            color: var(--black);
             max-width: 750px;
             h1{
                 font-size: 2.5rem;
@@ -54,8 +52,8 @@ section.article{
                 font-size: 1.125rem;
             }
             .price-container{
-                border-top: 1px solid $grey;
-                border-bottom: 1px solid $grey;
+                border-top: 1px solid var(--grey);
+                border-bottom: 1px solid var(--grey);
                 padding: 20px 0;
                 p{
                     font-family: 'PoppinsBold';
@@ -63,7 +61,7 @@ section.article{
                     font-size: 1.125rem;
                 }
                 .price{
-                    color: $green;
+                    color: var(--green);
                     font-size: 3.125rem;
                     line-height: 2.5rem;
                 }
@@ -78,12 +76,12 @@ section.article{
         }
     }
     h2.title.comments{
-        color: $black;
+        color: var(--black);
         text-transform: uppercase;
         font-size: 1.875rem;
         padding: 0 0 10px 0;
         margin: 0 0 50px 0;
-        border-bottom: 1px solid $grey;
+        border-bottom: 1px solid var(--grey);
     }
     form.add-comment{
         display: flex;
@@ -100,7 +98,7 @@ section.article{
             width: 100%;
             textarea{
                 border: none;
-                border-bottom: 2px solid $black;
+                border-bottom: 2px solid var(--black);
                 resize: none;
                 outline: none;
                 font-size: 1.125rem;
@@ -112,7 +110,7 @@ section.article{
                 width: 100%;
                 p.ExceedCharacterLimit{
                     position: relative;
-                    color: $error-red; 
+                    color: var(--error-red); 
                     &::after{
                         content: '';
                         position: absolute;
@@ -148,7 +146,7 @@ section.article{
                             &.ExceedCharacterLimit{
                             pointer-events: none;
                             cursor: help;
-                            background: $black;
+                            background: var(--black);
                             opacity: 0.3;
                         }
                     }
@@ -172,7 +170,7 @@ section.article{
 .custom-file-input button {
   padding: 10px 15px;
   cursor: pointer;
-  background-color: $black;
+  background-color: var(--black);
   color: #fff;
   border: none;
   border-radius: 50px;
@@ -204,7 +202,7 @@ section.article{
                     min-width: 60px;
                     height: 60px;
                     text-transform: uppercase;
-                    background-color: $primary-color;
+                    background-color: var(--primary-color);
                     border-radius: 50%;
                     color: #fff;
                     font-size: 1.5rem;
@@ -222,10 +220,10 @@ section.article{
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
-                    color: $black;
+                    color: var(--black);
         
                     h3 {
-                        color: $primary-color;
+                        color: var(--primary-color);
                         margin: 0;
                     }
                     p{
@@ -256,10 +254,10 @@ section.article{
         
                             &.like {
                                 &.active {
-                                    color: $green;
+                                    color: var(--green);
         
                                     svg path {
-                                        stroke: $green;
+                                        stroke: var(--green);
                                     }
         
                                     &:hover svg {
@@ -270,10 +268,10 @@ section.article{
         
                             &.dislike {
                                 &.active {
-                                    color: $error-red;
+                                    color: var(--error-red);
         
                                     svg path {
-                                        stroke: $error-red;
+                                        stroke: var(--error-red);
                                     }
         
                                     &:hover svg {

@@ -1,5 +1,3 @@
-@import "../../styles.scss";
-
 section.newsletter-container{
   display: flex;
   justify-content: center;
@@ -43,7 +41,7 @@ section.newsletter-container{
     }
   }
   .small-text{
-    color: $grey;
+    color: var(--grey);
     text-transform: uppercase;
     font-size: 12px;
   }
