@@ -38,7 +38,8 @@
           "options": {
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/fonts"
             ],
             "index": "src/index.html",
             "inlineStyleLanguage": "scss",

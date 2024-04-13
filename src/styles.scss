@@ -1,21 +1,21 @@
 @font-face {
   font-family: 'PoppinsItalic';
-  src: url('./app/fonts/Poppins-Italic.ttf');
+  src: url('./assets/fonts/Poppins-Italic.ttf') format("truetype");
 }
 
 @font-face {
   font-family: 'PoppinsRegular';
-  src: url('./app/fonts/Poppins-Regular.ttf');
+  src: url('./assets/fonts/Poppins-Regular.ttf') format("truetype");
 }
 
 @font-face {
   font-family: 'PoppinsSemiBold';
-  src: url('./app/fonts/Poppins-SemiBold.ttf');
+  src: url('./assets/fonts/Poppins-SemiBold.ttf') format("truetype");
 }
 
 @font-face {
   font-family: 'PoppinsBold';
-  src: url('./app/fonts/Poppins-Bold.ttf');
+  src: url('./assets/fonts/Poppins-Bold.ttf') format("truetype");
 }
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
