@@ -9,6 +9,7 @@ import { ToastService } from '../services/toast.service';
 import { RepositoryService } from '../services/repository.service';
 import { Router } from '@angular/router';
 import { auth } from '../firebase/firebase';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class FirebaseFunctionsService {
   constructor(
     private toastService: ToastService,
     private repositoryService: RepositoryService,
+    private afAuth: AngularFireAuth,
     private router: Router
   ) {}
 
@@ -58,7 +60,8 @@ export class FirebaseFunctionsService {
 
   async loginUser(
     email: string,
-    password: string
+    password: string,
+    rememberMe: boolean
   ): Promise<UserCredential | null> {
     try {
       this.userCredentials = await signInWithEmailAndPassword(
@@ -66,6 +69,11 @@ export class FirebaseFunctionsService {
         email,
         password
       );
+
+      if (!rememberMe) {
+        await this.afAuth.setPersistence('session');
+      }
+
       return this.userCredentials;
     } catch (e: any) {
       const error: string = e.code;

@@ -41,18 +41,18 @@
           {{ getError('emailAddress') }}
         </div>
       </div>
-    </form>
     <div class='button-row'>
       <a href="/signup">I dont have an account</a>
       <div class='button-column'>
         <button class="normal primary-color big weapon glowing" (click)='login()'>Login</button>
         <div class="fq-checkbox light small">
-          <input type='checkbox'>
+          <input type='checkbox' formControlName='rememberMe'>
           <span class="fq-checkbox-background"></span>
           <label>Remember me</label>
         </div>
       </div>
     </div>
+    </form>
   </div>
   <app-authfooter></app-authfooter>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserCredential } from 'firebase/auth';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepositoryService } from '../../services/repository.service';
@@ -11,16 +11,23 @@ import { FirebaseFunctionsService } from '../../services/firebasefunctions.servi
   styleUrls: ['./login.component.scss'],
   providers: [RepositoryService, FirebaseFunctionsService],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   userCredentials?: UserCredential | null;
+  rememberMe: boolean = false;
   constructor(
     private firebaseFunctionsService: FirebaseFunctionsService,
     private repositoryService: RepositoryService,
     private router: Router
   ) {}
+  ngOnInit(): void {
+    this.loginForm.controls['rememberMe'].valueChanges.subscribe((value) => {
+      this.rememberMe = value;
+    });
+  }
   loginForm: FormGroup = new FormGroup({
     emailAddress: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    rememberMe: new FormControl(false),
   });
 
   getError(name: string) {
@@ -43,10 +50,12 @@ export class LoginComponent {
     const emailAddress: string =
       this.loginForm.controls['emailAddress'].value.trim();
     const password: string = this.loginForm.controls['password'].value.trim();
+    const rememberMe: boolean = this.loginForm.controls['rememberMe'].value;
 
     this.userCredentials = await this.firebaseFunctionsService.loginUser(
       emailAddress,
-      password
+      password,
+      rememberMe
     );
 
     if (this.userCredentials) {
