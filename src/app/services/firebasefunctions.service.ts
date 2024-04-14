@@ -34,6 +34,7 @@ export class FirebaseFunctionsService {
         email,
         password
       );
+      await this.afAuth.setPersistence('session');
       return this.userCredentials;
     } catch (e: any) {
       const error: string = e.code;
@@ -70,8 +71,8 @@ export class FirebaseFunctionsService {
         password
       );
 
-      if (!rememberMe) {
-        await this.afAuth.setPersistence('session');
+      if (rememberMe) {
+        await this.afAuth.setPersistence('local');
       }
 
       return this.userCredentials;
