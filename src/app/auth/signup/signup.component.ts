@@ -107,8 +107,8 @@ export class SignupComponent implements OnInit {
           role: 'user',
           profilePhoto: '',
         });
+        
+      this.router.navigate(['/']);
     }
-
-    this.router.navigate(['/']);
   }
 }
