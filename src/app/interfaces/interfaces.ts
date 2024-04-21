@@ -25,9 +25,9 @@ export interface Comment {
   username: string;
   profilePhoto?: string;
   userComment: string;
-  image?: string;
   likes: string[];
   dislikes: string[];
+  commentPhoto: string;
 }
 
 export interface ShoppingCart {

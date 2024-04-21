@@ -10,16 +10,25 @@ h2.title.comments{
     form.add-comment{
         display: flex;
         gap: 20px;
-        img.profile-picture{
-            width: 100px;
-            height: 100px;
+        .profile-picture{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-width: 60px;
+            height: 60px;
+            text-transform: uppercase;
+            background-color: var(--primary-color);
             border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
         }
         .comment-container{
             display: flex;
             flex-direction: column;
             gap: 20px;
             width: 100%;
+
             textarea{
                 border: none;
                 border-bottom: 2px solid var(--black);
@@ -145,6 +154,14 @@ h2.title.comments{
                     flex-direction: column;
                     gap: 10px;
                     color: var(--black);
+
+                    .comment-image {
+                        width: 100px;
+                        height: 100px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: cover;
+                    }
         
                     h3 {
                         color: var(--primary-color);

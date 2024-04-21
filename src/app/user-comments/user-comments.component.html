@@ -2,9 +2,10 @@
   <div class="add-comments-container">
     <h2 class='comments title'>comments</h2>
     <form [formGroup]='commentForm' class='add-comment'>
-      <img class='profile-picture'
-        src="https://firebasestorage.googleapis.com/v0/b/angulargamewebsite.appspot.com/o/shop%2Farticles%2FGryphonGuardian.jpg?alt=media&token=215e053c-1d42-4958-8cba-af8a3261e7cd"
-        alt="user profile picture">
+      <div class="profile-picture">
+        <img *ngIf="user?.profilePhoto; else elseFirstLetterforProfilePhoto" [src]='user?.profilePhoto' alt="" />
+        <ng-template #elseFirstLetterforProfilePhoto class="initial-name">{{user!.username[0]}}</ng-template>
+      </div>
       <div class="comment-container">
         <textarea formControlName='userComment' placeholder='Add comment ...'></textarea>
         <div class="bottom-row">
@@ -17,7 +18,7 @@
           </div>
           <div class="buttons-container">
             <div class="custom-file-input">
-              <input type="file" (change)="onFileSelected($event)" formControlName='userCommentPhoto' />
+              <input type="file" (change)="userCommentPhotoUpload($event)" formControlName='userCommentPhoto' />
               <button type="button normal rounded-corners">Choose File</button>
             </div>
             <button (click)="submitComment()" class='normal rounded-corners primary-color'>comment</button>
@@ -30,11 +31,12 @@
     <div *ngFor="let comment of commentsList" class="user-comment">
       <div class="profile-picture">
         <img *ngIf="comment.profilePhoto; else elseFirstLetterforProfilePhoto" [src]='comment.profilePhoto' alt="" />
-        <ng-template #elseFirstLetterforProfilePhoto class="initial-name">{{comment.username[0]}}</ng-template>
+        <ng-template #elseFirstLetterforProfilePhoto>{{comment.username[0]}}</ng-template>
       </div>
       <div class="container">
-        <h3>PrincessAngoloBoberKurwa</h3>
+        <h3>{{comment.username}}</h3>
         <p>{{comment.userComment}}</p>
+        <div class="comment-image" [ngStyle]="{ 'background-image': comment.commentPhoto ? 'url(' + comment.commentPhoto + ')' : 'none' }"></div>
         <span>Did you like this comment?</span>
         <div class="buttons-container">
           <button (click)="like(comment)" [ngClass]="{'active' : comment.likes.includes(this.user?.id!)}" class="like">

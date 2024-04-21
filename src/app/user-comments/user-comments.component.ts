@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { arrayRemove, arrayUnion } from 'firebase/firestore';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
 import { UserAuthService } from '../services/user-auth-service.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-user-comments',
@@ -46,16 +47,18 @@ export class UserCommentsComponent implements OnInit {
         userComment: userComment,
         likes: [],
         dislikes: [],
+        commentPhoto: this.image,
       });
       this.commentForm.reset();
+      this.image = undefined;
     } catch (e: any) {}
   }
 
-  async onFileSelected(event: any) {
+  async userCommentPhotoUpload(event: any) {
     this.file = event.target.files[0];
-    const filePath = `test6/${this.file?.name}`;
-    await this.storage.upload(filePath, this.file);
-    this.image = await this.storage.ref(filePath).getDownloadURL().toPromise();
+    const filePath = `user/comments/${this.user?.id}/${this.articleId}/${this.file?.name}`;
+    const uploadTask = await this.storage.upload(filePath, this.file);
+    this.image = await uploadTask.ref.getDownloadURL();
   }
 
   async like(comment: Comment) {
