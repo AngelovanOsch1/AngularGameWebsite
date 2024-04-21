@@ -40,20 +40,18 @@ export class FirebaseFunctionsService {
       const error: string = e.code;
       switch (error) {
         case 'auth/email-already-in-use':
-          this.toastService.show('Deze E-mail adres in al ingebruik');
+          this.toastService.show('This email address is already in use');
           break;
         case 'auth/invalid-email':
-          this.toastService.show('onjuiste E-mail adress');
+          this.toastService.show('Incorrect email address');
           break;
         case 'auth/weak-password':
           this.toastService.show(
-            'Wachtwoord is niet sterk genoeg. Wachtwoord moet minimaal 6 tekens zijn'
+            'Password is not strong enough. Password must be at least 6 characters'
           );
           break;
         default:
-          this.toastService.show(
-            'Oeps! Er is iets verkeerd gegaan. Probeer het later nog een keer'
-          );
+          this.toastService.show('Oops! Something went wrong. Try again later');
       }
       return null;
     }
@@ -83,21 +81,19 @@ export class FirebaseFunctionsService {
 
       switch (error) {
         case 'auth/invalid-email':
-          this.toastService.show('onjuiste E-mail adress');
+          this.toastService.show('Incorrect e-mail address');
           break;
         case 'auth/invalid-credential':
-          this.toastService.show('inloggegevens ongeldig');
+          this.toastService.show('Login details invalid');
           break;
         case 'auth/user-disabled':
-          this.toastService.show('Deze user is geblokkeerd');
+          this.toastService.show('This user has been blocked');
           break;
         case 'auth/INVALID_LOGIN_CREDENTIALS':
-          this.toastService.show('Onjuiste email of wachtwoord gegevens');
+          this.toastService.show('Incorrect email or password information');
           break;
         default:
-          this.toastService.show(
-            'Oeps! Er is iets verkeerd gegaan. Probeer het later nog een keer'
-          );
+          this.toastService.show('Oops! Something went wrong. Try again later');
       }
     }
     return null;
@@ -111,9 +107,7 @@ export class FirebaseFunctionsService {
       });
       this.router.navigate(['/']);
     } catch (e) {
-      this.toastService.show(
-        'Oeps! Er is iets verkeerd gegaan. Probeer het later nog een keer'
-      );
+      this.toastService.show('Oops! Something went wrong. Try again later');
     }
   }
 }

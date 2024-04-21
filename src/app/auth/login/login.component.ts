@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     if (field!.touched || !field!.pristine) {
       if (field!.hasError('required')) {
-        error = 'Dit veld is verplicht';
+        error = 'This field is required';
       }
     }
     return error! as string;

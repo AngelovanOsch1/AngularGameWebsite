@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
 
     if (field!.touched || !field!.pristine) {
       if (field!.hasError('required')) {
-        error = 'Dit veld is verplicht';
+        error = 'This field is required';
       }
     }
     return error! as string;
@@ -65,11 +65,14 @@ export class SignupComponent implements OnInit {
     const password = control.get('password');
     const repeatPassword = control.get('repeatPassword');
 
-    if (password?.value === repeatPassword?.value) {
-      return null;
-    } else {
-      return { passwordsNotMatch: true };
+    if (password?.value && repeatPassword?.value) {
+      if (password.value === repeatPassword.value) {
+        return null;
+      } else {
+        return { passwordsNotMatch: true }; 
+      }
     }
+    return null; 
   }
 
   async submitForm() {
@@ -87,7 +90,7 @@ export class SignupComponent implements OnInit {
     const newsletter: boolean = this.signUpForm.controls['newsletter'].value;
 
     if (password !== repeatPassword) {
-      this.toastService.show('Wachtwoorden komen niet overheen.');
+      this.toastService.show('Passwords do not match');
       return;
     }
 
@@ -107,7 +110,7 @@ export class SignupComponent implements OnInit {
           role: 'user',
           profilePhoto: '',
         });
-        
+
       this.router.navigate(['/']);
     }
   }

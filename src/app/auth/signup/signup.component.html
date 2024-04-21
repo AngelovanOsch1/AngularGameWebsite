@@ -34,6 +34,9 @@
           <label>password</label>
           <input type="password" formControlName='password' />
           <div *ngIf="getError('password')" class="loan-form__get-error">{{getError('password')}}</div>
+            <div class="loan-form__get-error" *ngIf="signUpForm.hasError('passwordsNotMatch')">
+              Passwords do not match.
+            </div>
         </div>
         <div class="input-field">
           <label>repeat password</label>
@@ -44,7 +47,6 @@
           </div>
         </div>
       </div>
-    </form>
     <div class="button-row">
       <div class="extra-content">
         <a href="/login">I already have an account</a>
@@ -56,6 +58,7 @@
       </div>
       <button (click)='submitForm()' class='normal primary-color big weapon glowing'>Sign up</button>
     </div>
+  </form>
   </div>
   <app-authfooter></app-authfooter>
 </div>
