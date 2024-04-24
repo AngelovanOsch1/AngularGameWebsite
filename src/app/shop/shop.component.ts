@@ -94,6 +94,27 @@ export class ShopComponent implements OnInit {
         })
       )
       .subscribe();
+
+  //  this.shopForm.valueChanges.subscribe(() => {
+  //    const selectedAudiences: any = [];
+  //    if (this.shopForm.controls['men'].value) {
+  //      selectedAudiences.push('men');
+  //    }
+  //    if (this.shopForm.controls['women'].value) {
+  //      selectedAudiences.push('women');
+  //    }
+  //    if (this.shopForm.controls['unisex'].value) {
+  //      selectedAudiences.push('unisex');
+  //    }
+
+  //    if (selectedAudiences.length > 0) {
+  //      this.articlesListOrderBy = this.articlesList.filter((article) =>
+  //        selectedAudiences.includes(article.targetAudience)
+  //      );
+  //    } else {
+  //      this.articlesListOrderBy = this.articlesList;
+  //    }
+  //  });
   }
   shopForm: FormGroup = new FormGroup({
     sortByFilter: new FormControl('sortOnHighStock'),
