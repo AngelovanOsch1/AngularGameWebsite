@@ -95,26 +95,81 @@ export class ShopComponent implements OnInit {
       )
       .subscribe();
 
-  //  this.shopForm.valueChanges.subscribe(() => {
-  //    const selectedAudiences: any = [];
-  //    if (this.shopForm.controls['men'].value) {
-  //      selectedAudiences.push('men');
-  //    }
-  //    if (this.shopForm.controls['women'].value) {
-  //      selectedAudiences.push('women');
-  //    }
-  //    if (this.shopForm.controls['unisex'].value) {
-  //      selectedAudiences.push('unisex');
-  //    }
+   this.shopForm.valueChanges.subscribe(() => {
+     const selectedAudiences: any = [];
+     const selectedProducts: any = [];
 
-  //    if (selectedAudiences.length > 0) {
-  //      this.articlesListOrderBy = this.articlesList.filter((article) =>
-  //        selectedAudiences.includes(article.targetAudience)
-  //      );
-  //    } else {
-  //      this.articlesListOrderBy = this.articlesList;
-  //    }
-  //  });
+     // Check which target audiences are selected
+     if (this.shopForm.controls['men'].value) {
+       selectedAudiences.push('men');
+     }
+     if (this.shopForm.controls['women'].value) {
+       selectedAudiences.push('women');
+     }
+     if (this.shopForm.controls['unisex'].value) {
+       selectedAudiences.push('unisex');
+     }
+
+     // Check which products are selected
+     if (this.shopForm.controls['tshirts'].value) {
+       selectedProducts.push('tshirts');
+     }
+     if (this.shopForm.controls['hoodies'].value) {
+       selectedProducts.push('hoodies');
+     }
+     if (this.shopForm.controls['pants'].value) {
+       selectedProducts.push('pants');
+     }
+     if (this.shopForm.controls['shoes'].value) {
+       selectedProducts.push('shoes');
+     }
+     if (this.shopForm.controls['caps'].value) {
+       selectedProducts.push('caps');
+     }
+     if (this.shopForm.controls['wristwears'].value) {
+       selectedProducts.push('wristwears');
+     }
+     if (this.shopForm.controls['mice'].value) {
+       selectedProducts.push('mice');
+     }
+     if (this.shopForm.controls['keyboards'].value) {
+       selectedProducts.push('keyboards');
+     }
+     if (this.shopForm.controls['headsets'].value) {
+       selectedProducts.push('headsets');
+     }
+     if (this.shopForm.controls['candles'].value) {
+       selectedProducts.push('candles');
+     }
+     if (this.shopForm.controls['vases'].value) {
+       selectedProducts.push('vases');
+     }
+     if (this.shopForm.controls['lights'].value) {
+       selectedProducts.push('lights');
+     }
+
+     // Filter the articles based on selected audiences and products
+     if (selectedAudiences.length > 0 && selectedProducts.length > 0) {
+       this.articlesListOrderBy = this.articlesList.filter(
+         (article) =>
+           selectedAudiences.includes(article.targetAudience) &&
+           selectedProducts.includes(article.product)
+       );
+     } else if (selectedAudiences.length > 0) {
+       this.articlesListOrderBy = this.articlesList.filter((article) =>
+         selectedAudiences.includes(article.product)
+       );
+     } else if (selectedProducts.length > 0) {
+       this.articlesListOrderBy = this.articlesList.filter((article) =>
+         selectedProducts.includes(article.product)
+       );
+     } else {
+       // If no target audience or product is selected, show all articles
+       this.articlesListOrderBy = this.articlesList;
+     }
+
+     console.log(this.articlesListOrderBy);
+   });
   }
   shopForm: FormGroup = new FormGroup({
     sortByFilter: new FormControl('sortOnHighStock'),
