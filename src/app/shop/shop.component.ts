@@ -21,6 +21,7 @@ import { WarningComponentComponent } from '../helper-components/warning-componen
 export class ShopComponent implements OnInit {
   articlesList: Article[] = [];
   articlesListOrderBy: Article[] = [];
+  testList: Article[] = [];
   shoppingCartList: ShoppingCart[] = [];
   menList: Article[] = [];
   womenList: Article[] = [];
@@ -55,6 +56,7 @@ export class ShopComponent implements OnInit {
         ),
         tap((article: Article[]) => {
           this.articlesList = article;
+          this.testList = this.articlesList;
           this.changePage(1);
         })
       )
@@ -131,13 +133,15 @@ export class ShopComponent implements OnInit {
     } else {
       this.articlesListOrderBy = this.articlesList;
     }
+    
+    this.testList = this.articlesListOrderBy;
   });
 }
   shopForm: FormGroup = new FormGroup({
     sortByFilter: new FormControl('sortOnHighStock'),
-    men: new FormControl(true),
-    women: new FormControl(true),
-    unisex: new FormControl(true),
+    men: new FormControl(false),
+    women: new FormControl(false),
+    unisex: new FormControl(false),
     tshirts: new FormControl(false),
     hoodies: new FormControl(false),
     pants: new FormControl(false),
