@@ -131,7 +131,7 @@ export class ShopComponent implements OnInit {
       );
     } else {
       this.articlesList = this.articlesListOrderBy;
-    }
+    } 
   });
 }
   shopForm: FormGroup = new FormGroup({
