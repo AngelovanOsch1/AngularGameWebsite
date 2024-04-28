@@ -55,6 +55,7 @@ export class ShopComponent implements OnInit {
         ),
         tap((article: Article[]) => {
           this.articlesList = article;
+          this.articlesListOrderBy = article;
           this.changePage(1);
         })
       )
@@ -115,21 +116,21 @@ export class ShopComponent implements OnInit {
     ].filter((product) => this.shopForm.controls[product].value);
 
     if (selectedAudiences.length > 0 && selectedProducts.length > 0) {
-      this.articlesListOrderBy = this.articlesList.filter(
+      this.articlesList = this.articlesListOrderBy.filter(
         (article) =>
           selectedAudiences.includes(article.targetAudience) &&
           selectedProducts.includes(article.product)
       );
     } else if (selectedAudiences.length > 0) {
-      this.articlesListOrderBy = this.articlesList.filter((article) =>
+      this.articlesList = this.articlesListOrderBy.filter((article) =>
         selectedAudiences.includes(article.targetAudience)
       );
     } else if (selectedProducts.length > 0) {
-      this.articlesListOrderBy = this.articlesList.filter((article) =>
+      this.articlesList = this.articlesListOrderBy.filter((article) =>
         selectedProducts.includes(article.product)
       );
     } else {
-      this.articlesListOrderBy = this.articlesList;
+      this.articlesList = this.articlesListOrderBy;
     }
   });
 }
