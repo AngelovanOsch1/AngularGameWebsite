@@ -1,18 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ArticleComponent } from './article.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('ArticleComponent', () => {
   let component: ArticleComponent;
   let fixture: ComponentFixture<ArticleComponent>;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ArticleComponent]
-    });
+      declarations: [ ArticleComponent ],
+      imports: [ AppModule ],
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(ArticleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
+    // Use whenStable to wait for component initialization
+    fixture.whenStable().then(() => {
+      component.user = {
+        id: '1',
+        emailAddress: 'test@example.com',
+        isOnline: true,
+        newsletter: true,
+        role: 'user',
+        username: 'testUser' // Ensure username is properly initialized
+      }; 
+
+      fixture.detectChanges(); // Trigger change detection
+    });
   });
 
   it('should create', () => {

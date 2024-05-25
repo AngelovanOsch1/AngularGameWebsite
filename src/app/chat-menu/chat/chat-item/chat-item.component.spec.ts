@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatItemComponent } from './chat-item.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('ChatItemComponent', () => {
   let component: ChatItemComponent;
@@ -8,7 +9,8 @@ describe('ChatItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ChatItemComponent]
+      declarations: [ChatItemComponent],
+      imports: [ AppModule ],
     });
     fixture = TestBed.createComponent(ChatItemComponent);
     component = fixture.componentInstance;

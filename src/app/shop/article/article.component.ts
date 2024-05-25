@@ -10,7 +10,7 @@ import {
   User,
 } from 'src/app/interfaces/interfaces';
 import { RepositoryService } from 'src/app/services/repository.service';
-import { arrayRemove, arrayUnion, increment } from 'firebase/firestore';
+import { increment } from 'firebase/firestore';
 import { UserAuthService } from 'src/app/services/user-auth-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { WarningComponentComponent } from 'src/app/helper-components/warning-component/warning-component.component';
@@ -37,7 +37,6 @@ export class ArticleComponent implements OnInit {
     private repositoryService: RepositoryService,
     private route: ActivatedRoute,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage
   ) {}
 
   async ngOnInit(): Promise<any> {

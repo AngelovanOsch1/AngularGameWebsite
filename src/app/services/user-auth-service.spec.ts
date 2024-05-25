@@ -28,7 +28,6 @@ describe('UserAuthService', () => {
               profilePhoto: 'http://example.com/photo.jpg',
               role: 'user',
               username: 'johndoe',
-              name: 'John Doe' // Include 'name' property
             })
           }))
         }))

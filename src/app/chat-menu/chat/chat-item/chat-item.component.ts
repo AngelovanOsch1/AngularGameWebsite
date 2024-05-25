@@ -17,7 +17,7 @@ export class ChatItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore
-      .collection(`chats/${this.chatItem.id}/messages`, (ref) =>
+      .collection(`chats/${this.chatItem?.id}/messages`, (ref) =>
         ref.orderBy('date')
       )
       .snapshotChanges()

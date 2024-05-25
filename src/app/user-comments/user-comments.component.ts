@@ -7,7 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { arrayRemove, arrayUnion } from 'firebase/firestore';
 import { WarningComponentComponent } from '../helper-components/warning-component/warning-component.component';
 import { UserAuthService } from '../services/user-auth-service.service';
-import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-user-comments',
