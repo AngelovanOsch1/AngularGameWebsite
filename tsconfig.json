@@ -9,6 +9,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "declaration": false,
+    "esModuleInterop": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,

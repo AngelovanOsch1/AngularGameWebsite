@@ -1,37 +1,72 @@
-import { initializeTestEnvironment, RulesTestEnvironment, assertSucceeds } from "@firebase/rules-unit-testing";
+import { assertSucceeds } from "@firebase/rules-unit-testing";
 import { setDoc, doc, getDoc } from "firebase/firestore";
-
-const PROJECT_ID = 'angulargamewebsite';
-const FIRESTORE_PORT = 8080;
+import { CustomFirebaseEmulatorSettings } from "../../../../firebase-emulator-settings";
+import { ArticleComponent } from "./article.component";
+import { TestBed } from "@angular/core/testing";
+import { Article, User } from "src/app/interfaces/interfaces";
 
 describe('Firestore rules tests', () => {
-  let testEnv: RulesTestEnvironment;
+  let component: ArticleComponent;
 
   beforeAll(async () => {
-    testEnv = await initializeTestEnvironment({
-      projectId: PROJECT_ID,
-      firestore: {
-        host: "127.0.0.1",
-        port: FIRESTORE_PORT,
-      },
-    });
+    await CustomFirebaseEmulatorSettings.initializeTestEnvironment();
   });
 
+  afterAll(async () => {
+    // await CustomFirebaseEmulatorSettings.clearFirestore();
+    await CustomFirebaseEmulatorSettings.cleanUp();
+  });
+
+  component = TestBed.createComponent(ArticleComponent).componentInstance;
+  component.user = {
+    id: '1',
+    emailAddress: 'test@example.com',
+    isOnline: true,
+    newsletter: true,
+    role: 'user',
+    username: 'testUser'
+  } as User
+
+  component.articleId = '123'
+
+  component.article = {
+    productName: 'Test Product',
+    productCategory: 'Test Category',
+    product: 'Test Product Type',
+    price: 50,
+    targetAudience: 'Test Audience',
+    stock: 100,
+    description: 'Test Description',
+    image: 'test-image-url.jpg',
+  } as Article
+
   it('should write and read data to/from Firestore', async () => {
-    const context = testEnv.unauthenticatedContext();
-    const db = context.firestore();
+    component.addToCart();
+    const db = CustomFirebaseEmulatorSettings.unauthenticatedContext();
 
-    const userRef = doc(db, 'users', 'user123');
-    
-    // Write data to Firestore
-    await assertSucceeds(setDoc(userRef, {
-      test: 'data'
-    }));
+    const snapshot = await db.collection(`users/${component.user!.id}/shoppingcart`).doc(`${component.articleId}`).get();
 
-    // Read data from Firestore
-    const snapshot = await assertSucceeds(getDoc(userRef));
+    expect(snapshot.exists).toBe(true);
+    expect(snapshot.data()).toEqual({
+      image: 'articleImage.jpg',
+      productName: 'Product Name',
+      price: 10.99,
+      targetAudience: 'Target Audience',
+      product: 'Product',
+      quantity: 1,
+    });
+
+
+    // const db = CustomFirebaseEmulatorSettings.unauthenticatedContext();
+    // const userRef = doc(db, 'users', 'user123');
     
-    expect(snapshot.exists()).toBe(true);
-    expect(snapshot.data()).toEqual({ test: 'data' });
+    // await assertSucceeds(setDoc(userRef, {
+    //   test: 'data'
+    // }));
+
+    // const snapshot = await assertSucceeds(getDoc(userRef));
+    
+    // expect(snapshot.exists()).toBe(true);
+    // expect(snapshot.data()).toEqual({ test: 'data' });
   });
 });
