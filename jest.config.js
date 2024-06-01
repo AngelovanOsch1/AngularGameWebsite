@@ -1,7 +1,6 @@
 module.exports = {
-    preset: 'jest-preset-angular',
-    setupFilesAfterEnv: ['<rootDir>/src/setup.jest.ts'],
-    moduleNameMapper: {
-      '^src/(.*)$': '<rootDir>/src/$1',
-    },
-  };
+  projects: [
+    '<rootDir>/jest.config.angular.js',
+    '<rootDir>/jest.config.firestore.js'
+  ],
+};

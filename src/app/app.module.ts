@@ -33,6 +33,7 @@ import { AuthfooterComponent } from './auth/auth-footer/auth-footer.component';
 import { ShoppingCardOverviewComponent } from './shopping-card-overview/shopping-card-overview.component';
 import { UserCommentsComponent } from './user-comments/user-comments.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { firebaseConfig } from './firebase/firebase';
 
 
 @NgModule({
@@ -71,15 +72,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyAYffvUNsu0hA40k3eP2O0zdNCnvrQGym8',
-      authDomain: 'angulargamewebsite.firebaseapp.com',
-      projectId: 'angulargamewebsite',
-      storageBucket: 'angulargamewebsite.appspot.com',
-      messagingSenderId: '1079738413297',
-      appId: '1:1079738413297:web:8f037f13d2e8195a233950',
-      measurementId: 'G-KDZ5D9J89E',
-    }),
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserAnimationsModule,
   ],
   providers: [],
